@@ -13,6 +13,10 @@
 
 Route::group(['prefix' => 'api/v1'], function () {
 
+	Route::get('/', function (){
+		return "Hello world :), not that I care";
+	});	
+
 	Route::post('login', [
 		'uses' 	=> 'Auth\AuthController@postLogin',
 		'as' 	=> 'api.v1.login'
