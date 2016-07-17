@@ -14,10 +14,3 @@ function checkRequestTokenUserExist($token)
 {
    	return User::where('email', requestTokenUserData($token)->email)->count();
 }
-
-
-function FunctionName($value='')
-{
-	# code...
-}
-
