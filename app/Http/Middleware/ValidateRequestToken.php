@@ -37,8 +37,16 @@ class ValidateRequestToken
 
         if ($request->header('token') != null && $request->header('token') != "") 
         {
-            checkUserRequestToken($request->header('token'));
-            dd(1);
+            if (checkRequestTokenUserExist($request->header('token')) < 1) 
+            {
+                $response =  [
+                    "status"    =>"200",
+                    "message"   => "User Successful created",
+                ];
+
+                return response()->json($response);
+            }
+            
             return $next($request);
         }
         else
