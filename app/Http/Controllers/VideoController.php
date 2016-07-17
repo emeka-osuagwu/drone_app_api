@@ -10,7 +10,7 @@ class VideoController extends Controller
 
 	public function postUpdateVideo(Request $request)
 	{
-		$file = $request->file('video');
+		return $file = $request->file('video');
 	}
 
 }

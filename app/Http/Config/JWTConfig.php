@@ -55,3 +55,8 @@ class JWTConfig
         return $this->jwt_expiration_time;
     }
 }
+
+
+// jwt_key=anakle_drone_app
+// jwt_issuer=anakle_drone_app
+// jwt_not_before=anakle_drone_app
