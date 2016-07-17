@@ -10,9 +10,9 @@ class JWTConfig
     {
         $this->jwt_key              		= getenv('jwt_key');
         $this->jwt_issuer               	= getenv('jwt_issuer');
-        $this->jwt_issuer_at            	= Carbon::now();
+        $this->jwt_issuer_at            	= time();
         $this->jwt_not_before           	= getenv('jwt_not_before');
-        $this->jwt_expiration_time          = Carbon::now()->addMinutes(5);
+        $this->jwt_expiration_time          = time() + 300;
     }
     
     /*

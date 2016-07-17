@@ -22,17 +22,17 @@ class TokenRepo
 
         $token  = 
         [
-            "iss"   => $this->jwtConfig->jwt_issuer(),
-            "iat"   => $this->jwtConfig->jwt_issuer_at(),
-            "nbf"   => $this->jwtConfig->jwt_not_before(),
-            "exp"   => $this->jwtConfig->jwt_expiration_time(),
-            "data"  => 
+            "iss"           => $this->jwtConfig->jwt_issuer(),
+            "iat"           => $this->jwtConfig->jwt_issuer_at(),
+            "nbf"           => $this->jwtConfig->jwt_not_before(),
+            "exp"           => $this->jwtConfig->jwt_expiration_time(),
+            "user_data"     => 
             [
                 "id"        => $data["id"],
                 "email"     => $data['email']
             ]
         ];
 
-        return $encode_jwt     = JWT::encode($token, $key, 'HS512');
+        return $encode_jwt  = JWT::encode($token, $key, 'HS512');
     }
 }
