@@ -11,6 +11,10 @@
 |
 */
 
+Route::get('/', function (){
+	return "Hello world :), not that I care";
+});	
+
 Route::group(['prefix' => 'api/v1'], function () {
 
 	Route::get('/', function (){
