@@ -40,13 +40,13 @@ class ValidateRequestToken
             if (checkRequestTokenUserExist($request->header('token')) < 1) 
             {
                 $response =  [
-                    "status"    =>"200",
-                    "message"   => "User Successful created",
+                    "status"    =>"500",
+                    "message"   => "invalid user request token",
                 ];
 
                 return response()->json($response);
             }
-            
+
             return $next($request);
         }
         else
