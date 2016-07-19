@@ -35,4 +35,14 @@ class ValidationRepo
 
 		return $validator;
 	}
+
+	public function uploadVideoValidation($data)
+	{	
+		$validator = Validator::make($data, [
+			'title' 		=> 'required|exists:videos|title',
+			'description' 		=> 'required|max:20|min:4',
+		]);
+
+		return $validator;
+	}
 }

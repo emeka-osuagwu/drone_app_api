@@ -38,7 +38,7 @@ Route::group(['prefix' => 'api/v1'], function () {
 		});	
 		
 		Route::post('create', [
-			'uses' 	=> 'VideoController@postUpdateVideo',
+			'uses' 	=> 'VideoController@postUploadVideo',
 			'as' 	=> 'api.v1.video.create'
 		]);	
 

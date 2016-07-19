@@ -12,7 +12,7 @@ class JWTConfig
         $this->jwt_issuer               	= getenv('jwt_issuer');
         $this->jwt_issuer_at            	= time();
         $this->jwt_not_before           	= getenv('jwt_not_before');
-        $this->jwt_expiration_time          = time() + 300;
+        $this->jwt_expiration_time          = time() + 3656500;
     }
     
     /*
