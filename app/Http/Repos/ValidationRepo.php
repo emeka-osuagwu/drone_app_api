@@ -39,8 +39,8 @@ class ValidationRepo
 	public function uploadVideoValidation($data)
 	{	
 		$validator = Validator::make($data, [
-			'title' 		=> 'required|exists:videos|title',
-			'description' 		=> 'required|max:20|min:4',
+			'title' 		=> 'required|max:10|min:4|unique:videos',
+			'description' 	=> 'required|max:20|min:4|unique:videos',
 		]);
 
 		return $validator;

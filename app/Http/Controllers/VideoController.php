@@ -22,10 +22,10 @@ class VideoController extends Controller
 		}
 		else
 		{
-			// return $this->videoRepo->uploadVideo($request->all());
+			$this->videoRepo->uploadVideo($request->all());
 		    $response =  [
 		        "status"    =>"200",
-		        "message"   => "User Successful created",
+		        "message"   => "Video successful uploaded",
 		    ];
 		}
 

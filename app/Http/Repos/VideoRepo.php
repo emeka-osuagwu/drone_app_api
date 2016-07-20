@@ -12,8 +12,8 @@ class VideoRepo
 	public function uploadVideo($data)
 	{
 		$create = [
-			"name" 			=> $data['name'],
-			"url"			=> $data['url'],
+			"url"			=> "https://www.youtube.com/watch?v=5uvxslq63k0",
+			"title" 		=> $data['title'],
 			"description" 	=> $data['description'],
 		];
 		
