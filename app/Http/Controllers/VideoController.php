@@ -11,17 +11,17 @@ class VideoController extends Controller
 
 	public function getAllVideo()
 	{
-		return $this->videoRepo->getAllVideo();
+		$response =   [
+		    "status"    =>"200",
+			"videos"	=> $this->videoRepo->getAllVideo()
+		];
+		
+		return response()->json($response);
 	}
 
 	public function getVideo($id)
 	{
-		return $this->videoRepo->getVideoWhere("id", $id);
-	}
-
-	public function delete($id)
-	{
-		$validator = $this->validator->deleteVideoValidation(["id" => $id]);
+		$validator = $this->validator->getSingleVideoValidation(["id" => $id]);
 
 		if ($validator->fails())
 		{
@@ -32,12 +32,43 @@ class VideoController extends Controller
 		}
 		else
 		{
-			
+		    
+		    $response =  [
+		        "status"    => "200",
+		        "message"   => "Video successful deleted",
+		    	"video"		=> $this->videoRepo->getVideoWhere("id", $id),
+		    ];
+		}
+		
+		return response()->json($response);
+	}
+
+	public function delete(Request $request, $id)
+	{
+		
+		$validator = $this->validator->deleteVideoValidation(["id" => $id]);
+
+		if ($validator->fails())
+		{
+		    $response =   [
+		        "status"    =>"501",
+		        "message"   => $validator->errors()
+		    ];
+		}
+		elseif (!$this->videoRepo->checkUserCreatedVideo(requestTokenUserData($request->header('token'))->id, $id)) 
+		{
+			$response = [
+		        "status"    => 500,
+		        "message"   => "error video can only be deleted by created user",
+			];
+		}
+		else
+		{
 			$this->videoRepo->deleteVideo($id);
 		    
 		    $response =  [
-		        "status"    =>"200",
-		        "message"   => "Video successful uploaded",
+		    	"status"	=> 200,
+		        "message"   => "Video successful deleted",
 		    ];
 		}
 
@@ -70,6 +101,22 @@ class VideoController extends Controller
 
 		return response()->json($response);
 	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	// public function postUpdateVideo(Request $request)
 	// {

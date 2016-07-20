@@ -27,7 +27,6 @@ class ValidateRequestToken
             
             "api/v1/videos",
             "api/v1/video/1",
-            "api/v1/video/1/delete",
             
             // "api/v1/video/create",
         ];

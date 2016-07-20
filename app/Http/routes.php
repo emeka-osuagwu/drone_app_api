@@ -52,7 +52,7 @@ Route::group(['prefix' => 'api/v1'], function () {
 			'as' 	=> 'api.v1.video.{id}'
 		]);
 
-		Route::get('{id}/delete', [
+		Route::post('{id}/delete', [
 			'uses' 	=> 'VideoController@delete',
 			'as' 	=> 'api.v1.video.{id}.delete'
 		]);	

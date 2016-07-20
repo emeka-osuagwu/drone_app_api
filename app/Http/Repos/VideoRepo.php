@@ -18,6 +18,20 @@ class VideoRepo
 		return Video::where($feild, $value)->get();
 	}
 
+	public function checkUserCreatedVideo($token_user_id, $id)
+	{
+		$video = Video::where("id", $id)->get()->first();
+		
+		if ($video->user_id == $token_user_id) 
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+
 	public function uploadVideo($data)
 	{
 		$create = [

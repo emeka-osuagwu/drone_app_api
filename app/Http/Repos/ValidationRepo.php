@@ -54,4 +54,13 @@ class ValidationRepo
 
 		return $validator;
 	}
+	
+	public function getSingleVideoValidation($data)
+	{	
+		$validator = Validator::make($data, [
+			'id' 	=> 'required|exists:videos',
+		]);
+
+		return $validator;
+	}
 }
