@@ -45,4 +45,13 @@ class ValidationRepo
 
 		return $validator;
 	}
+
+	public function deleteVideoValidation($data)
+	{	
+		$validator = Validator::make($data, [
+			'id' 	=> 'required|exists:videos',
+		]);
+
+		return $validator;
+	}
 }

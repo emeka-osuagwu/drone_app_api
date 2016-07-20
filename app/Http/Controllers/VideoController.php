@@ -14,6 +14,36 @@ class VideoController extends Controller
 		return $this->videoRepo->getAllVideo();
 	}
 
+	public function getVideo($id)
+	{
+		return $this->videoRepo->getVideoWhere("id", $id);
+	}
+
+	public function delete($id)
+	{
+		$validator = $this->validator->deleteVideoValidation(["id" => $id]);
+
+		if ($validator->fails())
+		{
+		    $response =   [
+		        "status"    =>"501",
+		        "message"   => $validator->errors()
+		    ];
+		}
+		else
+		{
+			
+			$this->videoRepo->deleteVideo($id);
+		    
+		    $response =  [
+		        "status"    =>"200",
+		        "message"   => "Video successful uploaded",
+		    ];
+		}
+
+		return response()->json($response);
+	}
+
 	public function postUploadVideo(Request $request)
 	{
 	

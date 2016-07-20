@@ -13,6 +13,11 @@ class VideoRepo
 		return Video::all();
 	}
 
+	public function getVideoWhere($feild, $value)
+	{
+		return Video::where($feild, $value)->get();
+	}
+
 	public function uploadVideo($data)
 	{
 		$create = [
@@ -21,8 +26,13 @@ class VideoRepo
 			"user_id" 		=> $data['user_id'],
 			"description" 	=> $data['description'],
 		];
-		return $create;
+
 		Video::create($create);
+	}
+
+	public function deleteVideo($id)
+	{
+		Video::find($id)->delete();
 	}
 
 	// public function uploadVideo($file)

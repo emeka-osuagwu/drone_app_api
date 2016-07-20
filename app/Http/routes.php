@@ -46,6 +46,16 @@ Route::group(['prefix' => 'api/v1'], function () {
 			'uses' 	=> 'VideoController@postUploadVideo',
 			'as' 	=> 'api.v1.video.create'
 		]);	
+		
+		Route::get('{id}', [
+			'uses' 	=> 'VideoController@getVideo',
+			'as' 	=> 'api.v1.video.{id}'
+		]);
+
+		Route::get('{id}/delete', [
+			'uses' 	=> 'VideoController@delete',
+			'as' 	=> 'api.v1.video.{id}.delete'
+		]);	
 
 	});
 
