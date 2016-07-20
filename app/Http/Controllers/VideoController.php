@@ -9,8 +9,14 @@ use Illuminate\Http\Request;
 class VideoController extends Controller
 {
 
+	public function getAllVideo()
+	{
+		return $this->videoRepo->getAllVideo();
+	}
+
 	public function postUploadVideo(Request $request)
 	{
+	
 		$validator = $this->validator->uploadVideoValidation($request->all());
 
 		if ($validator->fails())
@@ -22,7 +28,10 @@ class VideoController extends Controller
 		}
 		else
 		{
+			$request['user_id'] = requestTokenUserData($request->header('token'))->id;
+			
 			$this->videoRepo->uploadVideo($request->all());
+		    
 		    $response =  [
 		        "status"    =>"200",
 		        "message"   => "Video successful uploaded",

@@ -31,6 +31,11 @@ Route::group(['prefix' => 'api/v1'], function () {
 		'as' 	=> 'api.v1.register'
 	]);
 
+	Route::get('videos', [
+		'uses' 	=> 'VideoController@getAllVideo',
+		'as' 	=> 'api.v1.videos'
+	]);
+
 	Route::group(['prefix' => 'video'], function () {
 
 		Route::get('create', function (){

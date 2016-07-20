@@ -8,15 +8,20 @@ use Illuminate\Contracts\Filesystem\Filesystem;
 
 class VideoRepo
 {
+	public function getAllVideo()
+	{
+		return Video::all();
+	}
 
 	public function uploadVideo($data)
 	{
 		$create = [
 			"url"			=> "https://www.youtube.com/watch?v=5uvxslq63k0",
 			"title" 		=> $data['title'],
+			"user_id" 		=> $data['user_id'],
 			"description" 	=> $data['description'],
 		];
-		
+		return $create;
 		Video::create($create);
 	}
 
