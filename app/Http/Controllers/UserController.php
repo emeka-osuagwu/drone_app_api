@@ -45,8 +45,26 @@ class UserController extends Controller
 	}
 
 	public function getUserVideo($id)
-	{
-		return $this->videoRepo->getVideoWhere('user_id', $id);
+	{	
+		$validator = $this->validator->getUserValidation(["id" => $id]);
+
+		if ($validator->fails())
+		{
+		    $response =   [
+		        "status"    =>"501",
+		        "message"   => $validator->errors()
+		    ];
+		}
+		else
+		{
+		    $response =  [
+		        "status"    => "200",
+		        "message"   => "user data",
+		    	"data"		=> $this->videoRepo->getVideoWhere('user_id', $id),
+		    ];
+		}
+		
+		return response()->json($response);
 	}
 
 }
