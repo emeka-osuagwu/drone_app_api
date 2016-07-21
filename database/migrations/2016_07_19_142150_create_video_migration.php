@@ -17,7 +17,7 @@ class CreateVideoMigration extends Migration
             $table->string('title');
             $table->string('url');
             $table->string('description');
-            $table->integer('user_id')->unsigned();
+            $table->integer('user_id');
             $table->timestamps();
         });
     }

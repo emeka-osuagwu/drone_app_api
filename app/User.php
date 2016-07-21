@@ -6,6 +6,9 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
+    protected $table        = 'users';
+    protected $primaryKey   = 'id';
+
     /**
      * The attributes that are mass assignable.
      *
@@ -32,9 +35,9 @@ class User extends Authenticatable
         $this->attributes['password'] = bcrypt($value);
     }
 
-    public function vidoes()
+    public function vidoe()
     {
-       return $this->hasMany('App\Model\Videos');
+       return $this->hasMany('App\Model\Video', 'id');
     }
 
     /*================================
