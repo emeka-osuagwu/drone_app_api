@@ -103,14 +103,6 @@ class VideoController extends Controller
 	}
 
 
-
-
-
-
-
-
-
-
 	// public function postUploadVideo(Request $request)
 	// {
 	// 	$destination_path 	= public_path();

@@ -11,7 +11,7 @@ class UserController extends Controller
 	{
 
 	    $response =   [
-	        "status"    =>"501",
+	        "status"    =>"200",
 	        "message"   => "all users",
 	    	"data"		=> $this->userRepo->getAllUser(), 
 	    ];
