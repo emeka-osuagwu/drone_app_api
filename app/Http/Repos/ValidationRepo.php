@@ -75,11 +75,10 @@ class ValidationRepo
 	/*=========================================
 	User Validation
 	==========================================*/
-	public function getAllUserValidation($data)
+	public function getUserValidation($data)
 	{	
 		$validator = Validator::make($data, [
-			'title' 		=> 'required|max:10|min:4|unique:videos',
-			'description' 	=> 'required|max:20|min:4|unique:videos',
+			'id' 	=> 'required|exists:users',
 		]);
 
 		return $validator;
