@@ -28,7 +28,11 @@ class ValidateRequestToken
             "api/v1/videos",
             "api/v1/video/1",
             
-            // "api/v1/video/create",
+            "api/v1/video/create",
+            
+            "api/v1/users",
+            "api/v1/user/1",
+            "api/v1/user/1/videos",
         ];
 
         /*======================================================================

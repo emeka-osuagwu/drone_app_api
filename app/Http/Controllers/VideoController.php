@@ -75,61 +75,54 @@ class VideoController extends Controller
 		return response()->json($response);
 	}
 
+	// public function postUploadVideo(Request $request)
+	// {
+	
+	// 	$validator = $this->validator->uploadVideoValidation($request->all());
+
+	// 	if ($validator->fails())
+	// 	{
+	// 	    $response =   [
+	// 	        "status"    =>"501",
+	// 	        "message"   => $validator->errors()
+	// 	    ];
+	// 	}
+	// 	else
+	// 	{
+	// 		$request['user_id'] = requestTokenUserData($request->header('token'))->id;
+			
+	// 		$this->videoRepo->uploadVideo($request->all());
+		    
+	// 	    $response =  [
+	// 	        "status"    =>"200",
+	// 	        "message"   => "Video successful uploaded",
+	// 	    ];
+	// 	}
+
+	// 	return response()->json($response);
+	// }
+
+
+
+
+
+
+
+
+
+
 	public function postUploadVideo(Request $request)
 	{
-	
-		$validator = $this->validator->uploadVideoValidation($request->all());
+		$destination_path 	= public_path();
 
-		if ($validator->fails())
-		{
-		    $response =   [
-		        "status"    =>"501",
-		        "message"   => $validator->errors()
-		    ];
-		}
-		else
-		{
-			$request['user_id'] = requestTokenUserData($request->header('token'))->id;
-			
-			$this->videoRepo->uploadVideo($request->all());
-		    
-		    $response =  [
-		        "status"    =>"200",
-		        "message"   => "Video successful uploaded",
-		    ];
-		}
+		$file 				= $request->file('video');
+		$file_size 			= $file->getClientSize();
+		$file_name 			= $file->getClientOriginalName();
+		$file_is_valid 		= $file->isValid();
+		$file_extension 	= $file->getExtension();
+		$file_error_message = $file->getErrorMessage();
 
-		return response()->json($response);
+		$file->move($destination_path, "emeka");
 	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	// public function postUpdateVideo(Request $request)
-	// {
-	// 	$destination_path = public_path();
-
-	// 	$file 				= $request->file('video');
-	// 	$file_size 			= $file->getClientSize();
-	// 	$file_name 			= $file->getClientOriginalName();
-	// 	$file_is_valid 		= $file->isValid();
-	// 	$file_extension 	= $file->getExtension();
-	// 	$file_error_message = $file->getErrorMessage();
-
-	// 	$file->move($destination_path, "emeka");
-	// }
 
 }

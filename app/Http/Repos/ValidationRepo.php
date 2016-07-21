@@ -36,7 +36,46 @@ class ValidationRepo
 		return $validator;
 	}
 
-	public function uploadVideoValidation($data)
+
+	/*=========================================
+	Video Validation
+	==========================================*/
+		public function uploadVideoValidation($data)
+		{	
+			$validator = Validator::make($data, [
+				'title' 		=> 'required|max:10|min:4|unique:videos',
+				'description' 	=> 'required|max:20|min:4|unique:videos',
+			]);
+
+			return $validator;
+		}
+
+		public function deleteVideoValidation($data)
+		{	
+			$validator = Validator::make($data, [
+				'id' 	=> 'required|exists:videos',
+			]);
+
+			return $validator;
+		}
+		
+		public function getSingleVideoValidation($data)
+		{	
+			$validator = Validator::make($data, [
+				'id' 	=> 'required|exists:videos',
+			]);
+
+			return $validator;
+		}
+	/*=========================================
+	Video Validation
+	==========================================*/
+
+
+	/*=========================================
+	User Validation
+	==========================================*/
+	public function getAllUserValidation($data)
 	{	
 		$validator = Validator::make($data, [
 			'title' 		=> 'required|max:10|min:4|unique:videos',
@@ -46,21 +85,7 @@ class ValidationRepo
 		return $validator;
 	}
 
-	public function deleteVideoValidation($data)
-	{	
-		$validator = Validator::make($data, [
-			'id' 	=> 'required|exists:videos',
-		]);
-
-		return $validator;
-	}
-	
-	public function getSingleVideoValidation($data)
-	{	
-		$validator = Validator::make($data, [
-			'id' 	=> 'required|exists:videos',
-		]);
-
-		return $validator;
-	}
+	/*=========================================
+	User Validation
+	==========================================*/
 }

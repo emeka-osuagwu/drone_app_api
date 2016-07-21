@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>Emoji Api</title>
+        <title>Drone API Documentation</title>
         <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/styles/default.min.css">
         <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/highlight.min.js"></script>
         <!-- Compiled and minified CSS -->
@@ -13,54 +13,59 @@
 <body>
  <div class="container">
   <h2>Usage</h2>
+  <br>
 
 
 
      <span>
+        <h5>Register</h5>
         Example POST request to the register route
         <pre>
           <code class="php">
-            POST https://sweetemoji.herokuapp.com/auth/register
+            POST https://drone-app.herokuapp.com/api/v1/register
 
             Request Body:
             {
-                'username' : 'johndoe',
-                'password' : 'password',
+                'email'     : 'johndoe',
+                'password'  : 'password',
             }
           </code>
         </pre>
      </span>
 
-
     <span>
-        Upon successful register, a Json object is return containing the
-        status code, the token generated, the token expiry and the success
-        message. A response header containing the 'Authorization' token is
-        is also set. This token is required, as an 'Authorization' header
-        to access all protected routes.
+        Upon successful or failed registration, a Json object is return containing the
+        status code and response message.
 
        <pre>
          <code class="php">
-            Response Body:
-                {
-                  "status": 200,
-                  "massage": "Registration Successful"
-                }
+            Successful Response Body:
+            {
+              "status"  : 200,
+              "massage" : "Registration Successful"
+            }
+
+            Failed Response Body:
+            {
+              "status"  : 500,
+              "massage" : "Registration Failed"
+            }
          </code>
        </pre>
     </span>
 
 
      <span>
+        <h5>Login</h5>
         Example POST request to the login route
         <pre>
           <code class="php">
-            POST https://sweetemoji.herokuapp.com/auth/login
+            POST https://drone-app.herokuapp.com/api/v1/login
 
             Request Body:
             {
-            'username' : 'johndoe',
-            'password' : 'password',
+                'email'     : 'johndoe',
+                'password'  : 'password',
             }
           </code>
         </pre>
@@ -69,80 +74,42 @@
 
     <span>
         Upon successful login, a Json object is return containing the
-        status code, the token generated, the token expiry and the success
-        message. A response header containing the 'Authorization' token is
-        is also set. This token is required, as an 'Authorization' header
+        status code, the token generated and the success message. A response header containing the 'Authorization'. This token is required, as an 'Authorization' header
         to access all protected routes.
 
        <pre>
-         <code class="php">
-            Response Body:
-            {
-                'token'  : 'SomeRandomToken'
-            }
-         </code>
+       <code class="php">
+          Successful Response Body:
+          {
+            "status"    : 200,
+            "massage"   : "Registration Successful"
+            "token"     : "SomeRandomToken"
+          }
+
+          Failed Response Body:
+          {
+            "status"  : 500,
+            "massage" : "the appropriate error message"
+          }
+       </code>
        </pre>
     </span>
 
 
-
     <span>
-      GET request to the logout route
-      <pre>
-        <code class="php">
-         GET https://sweetemoji.herokuapp.com/auth/logout
+       <h5>Login</h5>
+       Example POST request to the login route
+       <pre>
+         <code class="php">
+           POST https://drone-app.herokuapp.com/api/v1/login
 
-          Request Body:
-          {
-            'token' : 'SomeRandomToken'
-          }
+           Request Body:
+           {
+               'email'     : 'johndoe',
+               'password'  : 'password',
+           }
          </code>
-      </pre>
-    </span>
-
-
-
-    <span>
-     Upon successful fulfil of request, the token is unset and a json
-     object returned containing the message.
-
-     <pre>
-       <code class="php">
-        Response Body:
-        {
-            'status':  200,
-            'message': 'token unset'
-        }
-       </code>
-     </pre>
-    </span>
-
-    <span>
-     TO save an Emoji, a POST request has to be made to <pre><code class="html">https://sweetemoji.herokuapp.com/emojis</code></pre>
-     Like so:
-     <pre>
-        <code class="php">
-         POST https://sweetemoji.herokuapp.com/emojis
-         Request Body:
-         {
-            'tag'   : 'tags',
-            'title' : 'someName',
-            'image' : 'happyface.png',
-         }
-        </code>
-     </pre>
-    <pre><code class="php"> Note that the 'Authorization' header should contain the token</code></pre>
-    The response received from that request will be of this form
-
-    <pre>
-     <code class="php">
-        Response Body:
-        {
-            'status'  : 201,
-            'message' : 'Record created'
-        }
-     </code>
-    </pre>
+       </pre>
     </span>
 
     <span>

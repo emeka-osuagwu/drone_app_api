@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function (){
-	return "Hello world :), not that I care";
+	return view('index');
 });	
 
 Route::group(['prefix' => 'api/v1'], function () {
@@ -55,6 +55,25 @@ Route::group(['prefix' => 'api/v1'], function () {
 		Route::post('{id}/delete', [
 			'uses' 	=> 'VideoController@delete',
 			'as' 	=> 'api.v1.video.{id}.delete'
+		]);	
+
+	});
+
+	Route::get('users', [
+		'uses' 	=> 'UserController@getAllUser',
+		'as' 	=> 'api.v1.users'
+	]);
+
+	Route::group(['prefix' => 'user'], function () {
+
+		Route::get('{id}', [
+			'uses' 	=> 'UserController@getUser',
+			'as' 	=> 'api.v1.{id}'
+		]);	
+
+		Route::get('{id}/videos', [
+			'uses' 	=> 'UserController@getUserVideo',
+			'as' 	=> 'api.v1.{id}.videos'
 		]);	
 
 	});

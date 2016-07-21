@@ -6,7 +6,11 @@ use App\User;
 
 class UserRepo
 {
-	
+
+	public function getAllUser()
+	{
+		return User::all();
+	}	
 
 	/*=========================================
 	Get User where
