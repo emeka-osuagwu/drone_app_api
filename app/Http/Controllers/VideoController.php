@@ -36,7 +36,7 @@ class VideoController extends Controller
 		    $response =  [
 		        "status"    => "200",
 		        "message"   => "Video successful deleted",
-		    	"video"		=> $this->videoRepo->getVideoWhere("id", $id),
+		    	"data"		=> $this->videoRepo->getVideoWhere("id", $id),
 		    ];
 		}
 		
