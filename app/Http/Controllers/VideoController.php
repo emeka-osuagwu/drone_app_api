@@ -13,7 +13,7 @@ class VideoController extends Controller
 	{
 		$response =   [
 		    "status"    =>"200",
-			"videos"	=> $this->videoRepo->getAllVideo()
+			"data"	=> $this->videoRepo->getAllVideo()
 		];
 		
 		return response()->json($response);

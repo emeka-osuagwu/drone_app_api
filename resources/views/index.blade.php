@@ -113,6 +113,84 @@
 		Response Body:
 		{
 		  "status": "200",
+		  "message": "all users",
+		  "data": [
+		    {
+		      "id": 1,
+		      "email": "emeka@gmail.com",
+		      "created_at": "2016-07-21 09:59:10",
+		      "updated_at": "2016-07-21 09:59:10"
+		    }
+		  ]
+		}
+		</code>
+		</pre>
+	</span>
+</section>
+
+<section>
+	<span>
+		<h5>Edit User</h5>
+		To edit an user send a POST request to
+		<pre>
+		<code class="php">
+		https://drone-app.herokuapp.com/api/v1/user/{id}
+		</code>
+		</pre>
+
+		Example:
+		<pre>
+		<code class="php">
+		POST https://drone-app.herokuapp.com/api/v1/user/1
+
+		Request Body
+		{
+			'id'     : 1,
+			'name'   : "name",
+			'email'  ; 'email'
+		},
+		</code>
+		</pre>
+
+		All arguments, except the id, are optional.
+
+		<pre>
+		<code class="php">
+		Successful Response Body:
+
+		{
+			'status'  :  200,
+			'message' : 'Record modified'
+		}
+
+		Failed Response Body:
+
+		{
+			'status'  :  501,
+			'message' : 'appropriate error message '
+		}
+		</code>
+		</pre>
+	</span>
+</section>
+
+<section>
+	<span>
+		<h5>Videos</h5>
+		To get all videos, a GET request should be sent to
+		<pre>
+		<code class="php">
+		https://drone-app.herokuapp.com/api/v1/videos
+		</code>
+		</pre>
+		This route is not protected and does not need an authorization token.
+
+		<pre>
+		<code class="php">
+		Response Body:
+
+		{
+		  "status": "200",
 		  "data": [
 		    {
 		      "id": 1,
@@ -128,82 +206,44 @@
 		</code>
 		</pre>
 	</span>
+</section>
 
+<section>
 	<span>
-	<h5>Edit User</h5>
-	To edit an user send a POST request to
-	<pre>
-	<code class="php">
-	https://drone-app.herokuapp.com/api/v1/user/{id}
-	</code>
-	</pre>
+		<h5>Create Video</h5>
+		To get all videos, a GET request should be sent to
+		<pre>
+		<code class="php">
+		https://drone-app.herokuapp.com/api/v1/video/create
 
-	Example:
-	<pre>
-	<code class="php">
-	POST https://drone-app.herokuapp.com/api/v1/user/1
+		Request Body:
+		{
+			'title'     	: 'johndoe',
+			'description'  	: 'password',
+		}
+		</code>
+		</pre>
+		This route needs an authorization token.
 
-	Request Body
-	{
-	'id'     : 1,
-	'name'   : "name",
-	'email'  ; 'email'
-	},
-	</code>
-	</pre>
 
-	All arguments, except the id, are optional.
+		<pre>
+		<code class="php">
+		Response Body:
+		{
+		  "status": "200",
+		  "message": "Video successful uploaded"
+		}
 
-	<pre>
-	<code class="php">
-	Successful Response Body:
+		Failed Response Body:
 
-	{
-	'status'  :  200,
-	'message' : 'Record modified'
-	}
-
-	Failed Response Body:
-
-	{
-	'status'  :  501,
-	'message' : 'appropriate error message '
-	}
-	</code>
-	</pre>
+		{
+			'status'  :  501,
+			'message' : 'appropriate error message '
+		}
+		</code>
+		</pre>
 	</span>
 </section>
-<span>
-<h5>Videos</h5>
-To get all videos, a GET request should be sent to
-<pre>
-<code class="php">
-https://drone-app.herokuapp.com/api/v1/videos
-</code>
-</pre>
-This route is not protected and does not need an authorization token.
-
-<pre>
-<code class="php">
-Response Body:
-
-{
-"status"  : "500",
-"message" : "all users",
-"data": [
-{
-"id"          : 1,
-"email"       : "emeka@gmail.com",
-"created_at"  : "2016-07-21 09:59:10",
-"updated_at"  : "2016-07-21 09:59:10"
-}
-]
-}
-</code>
-</pre>
-</span>
-
-
 
 
 </div>
