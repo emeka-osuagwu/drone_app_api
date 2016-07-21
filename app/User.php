@@ -32,6 +32,11 @@ class User extends Authenticatable
         $this->attributes['password'] = bcrypt($value);
     }
 
+    public function vidoes()
+    {
+       return $this->hasMany('App\Model\Videos');
+    }
+
     /*================================
     # Create User
     # Fires UserCreated Event
