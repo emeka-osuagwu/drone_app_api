@@ -219,6 +219,7 @@
 		Request Body:
 		{
 			'title'     	: 'johndoe',
+			'video'     	:  fileObject,
 			'description'  	: 'password',
 		}
 		</code>
