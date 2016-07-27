@@ -19,31 +19,9 @@ class ValidateRequestToken
     public function handle($request, Closure $next, $guard = null)
     {
 
-        $pass_routes_with_out_token = [
-            "/",
-            "api/v1",
-            "api/v1/login",
-            "api/v1/register",
-
-            "api/v1/videos",
-            "api/v1/video/1",
+        if ($request->isMethod('get')) {
             
-            "api/v1/users",
-            "api/v1/user/1",
-            "api/v1/user/1/videos",
-            
-            "api/v1/posts",
-        ];
-
-        /*======================================================================
-        | Check if {$request->path()} is part of the pass_routes_with_out_token
-        =======================================================================*/
-        foreach ($pass_routes_with_out_token as $route) {
-            
-            if ($route === $request->path()) 
-            {
-                return $next($request);
-            }
+            return $next($request);
         }
 
         if ($request->header('token') != null && $request->header('token') != "") 
@@ -73,7 +51,3 @@ class ValidateRequestToken
 
 }
 
-
-// if ($request->isMethod('post')) {
-//     //
-// }
