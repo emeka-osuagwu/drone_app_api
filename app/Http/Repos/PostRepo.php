@@ -7,9 +7,9 @@ use App\Model\Post;
 class PostRepo
 {
 
-	public function getAllUser()
+	public function getAllPost()
 	{
-		return User::all();
+		return Post::with('video')->get();
 	}	
 
 	public function createPost($data)

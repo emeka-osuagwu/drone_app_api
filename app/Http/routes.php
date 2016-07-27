@@ -83,6 +83,11 @@ Route::group(['prefix' => 'api/v1'], function () {
 
 	});
 
+	Route::get('posts', [
+		'uses' 	=> 'PostController@getAllPost',
+		'as' 	=> 'api.v1.posts'
+	]);
+
 	Route::group(['prefix' => 'post'], function () {
 
 		Route::get('{id}', [

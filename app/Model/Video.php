@@ -23,4 +23,9 @@ class Video extends Model
 	   return $this->belongsTo('App\User', 'user_id');
 	}
 
+	public function post()
+	{
+	   return $this->belongsTo('App\Model\Post', 'post_id');
+	}
+
 }

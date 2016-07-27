@@ -31,6 +31,8 @@ class ValidateRequestToken
             "api/v1/users",
             "api/v1/user/1",
             "api/v1/user/1/videos",
+            
+            "api/v1/posts",
         ];
 
         /*======================================================================
@@ -70,3 +72,8 @@ class ValidateRequestToken
     }
 
 }
+
+
+// if ($request->isMethod('post')) {
+//     //
+// }
