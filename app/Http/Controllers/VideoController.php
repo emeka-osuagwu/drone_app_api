@@ -77,35 +77,52 @@ class VideoController extends Controller
 
 	public function postUploadVideo(Request $request)
 	{
-		$validator = $this->validator->uploadVideoValidation($request->all());
-
-		if ($validator->fails())
-		{
-		    $response =   [
-		        "status"    =>"501",
-		        "message"   => $validator->errors()
-		    ];
-		}
-		else
-		{
-			$request['user_id'] = requestTokenUserData($request->header('token'))->id;
-			
-			$this->videoRepo->uploadVideo($request->all(), $request->file('video'));
-		    
-		    $response =  [
-		        "status"    =>"200",
-		        "message"   => "Video successful uploaded",
-		    ];
-		}
-
+		$user_id 	= requestTokenUserData($request->header('token'))->id;
+		$video_data =  $this->videoRepo->uploadVideo($user_id, $request->file('file'), $this);
+		
+		$response =  [
+		    "status"    => "200",
+		    "message"   => "Video successful uploaded",
+		    "id"		=> $video_data['id'],
+		    "urls"		=> $video_data['urls'],
+		];
+		
 		return response()->json($response);
 	}
+
+	// public function postUploadVideo(Request $request)
+	// {
+		
+	// 	dd($request->file('file'));
+
+	// 	$validator = $this->validator->uploadVideoValidation($request->all());
+
+	// 	if ($validator->fails())
+	// 	{
+	// 	    $response =   [
+	// 	        "status"    =>"501",
+	// 	        "message"   => $validator->errors()
+	// 	    ];
+	// 	}
+	// 	else
+	// 	{
+	// 		// $request['user_id'] = requestTokenUserData($request->header('token'))->id;
+	// 		$request['user_id'] = 1;
+			
+	// 		$this->videoRepo->uploadVideo($request->all(), $request->file('video'));
+		    
+	// 	    $response =  [
+	// 	        "status"    =>"200",
+	// 	        "message"   => "Video successful uploaded",
+	// 	    ];
+	// 	}
+
+	// 	return response()->json($response);
+	// }
 
 
 	// public function postUploadVideo(Request $request)
 	// {
-
-
 	// 	$file 				= $request->file('video');
 
 	// 	return requestTokenUserData($request->header('token'));

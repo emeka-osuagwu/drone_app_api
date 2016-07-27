@@ -10,11 +10,13 @@ class Video extends Model
 	protected $primaryKey 	= 'id';
 
 	protected $fillable = [
-	    'url', 
-	    'title', 
+	    'urls', 
 	    'user_id', 
-	    'description', 
 	];
+
+	protected $casts = [
+        'urls' => 'json',
+    ];
 
 	public function user()
 	{
