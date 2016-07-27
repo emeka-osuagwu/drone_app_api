@@ -17,14 +17,14 @@ Route::get('/', function (){
 
 Route::group(['prefix' => 'api/v1'], function () {
 
-	// Route::get('/', function (){
-	// 	return "Hello world :), not that I care";
-	// });
+	Route::get('/', function (){
+		return "Hello world :), not that I care";
+	});
 
-	Route::get('/', function ()
-	{
-		return view('upload');
-	});		
+	// Route::get('/', function ()
+	// {
+	// 	return view('upload');
+	// });		
 
 	Route::post('login', [
 		'uses' 	=> 'Auth\AuthController@postLogin',
@@ -79,6 +79,25 @@ Route::group(['prefix' => 'api/v1'], function () {
 		Route::get('{id}/videos', [
 			'uses' 	=> 'UserController@getUserVideo',
 			'as' 	=> 'api.v1.{id}.videos'
+		]);	
+
+	});
+
+	Route::group(['prefix' => 'post'], function () {
+
+		Route::get('{id}', [
+			'uses' 	=> 'UserController@getUser',
+			'as' 	=> 'api.v1.{id}'
+		]);	
+
+		Route::get('{id}/videos', [
+			'uses' 	=> 'UserController@getUserVideo',
+			'as' 	=> 'api.v1.{id}.videos'
+		]);	
+
+		Route::post('create', [
+			'uses' 	=> 'PostController@postCreatePost',
+			'as' 	=> 'api.v1.post.create'
 		]);	
 
 	});
