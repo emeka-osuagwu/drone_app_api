@@ -12,7 +12,12 @@ class PostController extends Controller
 	{
 		return $this->postRepo->getAllPost();
 	}
-	
+
+	public function getUserPost($id)
+	{
+		return $this->postRepo->getPostWhere('id', $id);
+	}
+
 	public function postCreatePost(Request $request)
 	{
 		return $this->postRepo->createPost($request->all());

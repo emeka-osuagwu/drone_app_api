@@ -95,9 +95,9 @@ Route::group(['prefix' => 'api/v1'], function () {
 			'as' 	=> 'api.v1.{id}'
 		]);	
 
-		Route::get('{id}/videos', [
-			'uses' 	=> 'UserController@getUserVideo',
-			'as' 	=> 'api.v1.{id}.videos'
+		Route::get('{id}', [
+			'uses' 	=> 'PostController@getUserPost',
+			'as' 	=> 'api.v1.{id}'
 		]);	
 
 		Route::post('create', [
