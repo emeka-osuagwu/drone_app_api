@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Repos\UserRepo;
+use App\Http\Repos\PostRepo;
 use App\Http\Repos\TokenRepo;
 use App\Http\Repos\VideoRepo;
 use App\Http\Repos\ValidationRepo;
@@ -20,8 +21,9 @@ class Controller extends BaseController
     function __construct()
     {
     	$this->userRepo 	= new UserRepo;
-    	$this->validator 	= new ValidationRepo;
-    	$this->tokenRepo 	= new TokenRepo;
+    	$this->postRepo 	= new PostRepo;
     	$this->videoRepo 	= new VideoRepo;
+    	$this->tokenRepo 	= new TokenRepo;
+    	$this->validator 	= new ValidationRepo;
     }
 }

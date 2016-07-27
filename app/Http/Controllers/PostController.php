@@ -9,6 +9,6 @@ class PostController extends Controller
 {
 	public function postCreatePost(Request $request)
 	{
-		$this->postRepo->createPost($request->all());
+		return $this->postRepo->createPost($request->all());
 	}
 }
