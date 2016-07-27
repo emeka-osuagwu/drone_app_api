@@ -36,11 +36,11 @@ class VideoRepo
 	{
 		
 		$file 				= $file_data;
-		$file_size 			= $file->getClientSize();
+		// $file_size 			= $file->getClientSize();
 		$file_name 			= $file->getClientOriginalName();
-		$file_is_valid 		= $file->isValid();
-		$file_extension 	= $file->getExtension();
-		$file_error_message = $file->getErrorMessage();
+		// $file_is_valid 		= $file->isValid();
+		// $file_extension 	= $file->getExtension();
+		// $file_error_message = $file->getErrorMessage();
 		$destination_path 	= public_path() . "/upload/videos";
 
 		$file->move($destination_path, md5($file_name) . time());
