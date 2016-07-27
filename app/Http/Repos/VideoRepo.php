@@ -34,7 +34,7 @@ class VideoRepo
 
 	public function uploadVideo($data, $file_data)
 	{
-		
+		dd($file_data);
 		$file 				= $file_data;
 		// $file_size 			= $file->getClientSize();
 		$file_name 			= $file->getClientOriginalName();
