@@ -17,14 +17,14 @@ Route::get('/', function (){
 
 Route::group(['prefix' => 'api/v1'], function () {
 
-	// Route::get('/', function (){
-	// 	return "Hello world :), not that I care";
-	// });
+	Route::get('/', function (){
+		return "Hello world :), not that I care";
+	});
 
-	Route::get('/', function ()
-	{
-		return view('upload');
-	});		
+	// Route::get('/', function ()
+	// {
+	// 	return view('upload');
+	// });		
 
 	Route::post('login', [
 		'uses' 	=> 'Auth\AuthController@postLogin',

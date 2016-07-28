@@ -1,6 +1,6 @@
 <video width="320" height="240" controls>
-  <source src="http://drone.dev/upload/videos/c4ca4238a0b923820dcc509a6f75849b1469713885file.mp4" type="video/mp4">
-  <source src="http://drone.dev/upload/videos/c4ca4238a0b923820dcc509a6f75849b1469713885file.mp4" type="video/ogg">
+  <source src="http://drone.dev/upload/videos/c4ca4238a0b923820dcc509a6f75849b1469714451Edge.of.Tomorrow.2014.BDRip.x264-SPARKS.mkv.mp4.mp4" type="video/mp4">
+  <source src="http://drone.dev/upload/videos/c4ca4238a0b923820dcc509a6f75849b1469714451Edge.of.Tomorrow.2014.BDRip.x264-SPARKS.mkv.mp4.mp4" type="video/ogg">
   Your browser does not support the video tag.
 </video>
 
