@@ -34,7 +34,7 @@ class VideoRepo
 
 	public function uploadVideo($user_id, $file_data)
 	{
-		
+		// dd($file_data);	
 		$file 				= $file_data;
 		$file_size 			= $file->getClientSize();
 		$file_name 			= $file->getClientOriginalName();
@@ -43,12 +43,12 @@ class VideoRepo
 		$file_error_message = $file->getErrorMessage();
 		$destination_path 	= public_path() . "/upload/videos";
 
-		$file->move($destination_path, md5($file_name) . time());
+		$file->move($destination_path, md5($user_id) . time() . $file_name);
 
 
 		$urls	= [
-			"original-url"		=> url('public/upload/videos' . md5($file_name) . time()),
-			"watermaker-url"	=> url('public/upload/videos' . md5($file_name) . time()),
+			"original-url"		=> url('upload/videos/' . md5($user_id) . time() . $file_name),
+			"watermaker-url"	=> url('upload/videos/' . md5($user_id) . time() . $file_name),
 		];
 		
 		$create = [
