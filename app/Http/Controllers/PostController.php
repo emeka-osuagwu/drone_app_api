@@ -20,6 +20,26 @@ class PostController extends Controller
 
 	public function postCreatePost(Request $request)
 	{
-		return $this->postRepo->createPost($request->all());
+		
+		$validator 	= $this->validator->createPostValidation($request->all());
+
+		if ($validator->fails())
+		{
+		    $response =   [
+		        "status"    =>"501",
+		        "message"   => $validator->errors()
+		    ];
+		}
+		else
+		{
+			$this->postRepo->createPost($request->all());
+			
+			$response =  [
+			    "status"    => "200",
+			    "message"   => "Post successful uploaded",
+			];
+		}
+
+		return response()->json($response);
 	}
 }

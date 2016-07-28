@@ -50,16 +50,6 @@ class ValidationRepo
 			return $validator;
 		}
 
-		// public function uploadVideoValidation($data)
-		// {	
-		// 	$validator = Validator::make($data, [
-		// 		'title' 		=> 'required|max:10|min:4|unique:videos',
-		// 		'description' 	=> 'required|max:20|min:4|unique:videos',
-		// 	]);
-
-		// 	return $validator;
-		// }
-
 		public function deleteVideoValidation($data)
 		{	
 			$validator = Validator::make($data, [
@@ -97,4 +87,20 @@ class ValidationRepo
 	/*=========================================
 	User Validation
 	==========================================*/
+
+	/*=========================================
+	Post Validation
+	==========================================*/
+
+		public function createPostValidation($data)
+		{	
+			$validator = Validator::make($data, [
+				'title' 		=> 'required|max:10|min:4|unique:posts',
+				'description' 	=> 'required|max:20|min:4|unique:posts',
+				'video_id' 		=> 'required|exists:posts|numeric',
+				'user_id' 		=> 'required|exists:posts|numeric',
+			]);
+
+			return $validator;
+		}
 }

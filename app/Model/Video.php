@@ -27,5 +27,4 @@ class Video extends Model
 	{
 	   return $this->belongsTo('App\Model\Post', 'post_id');
 	}
-
 }
