@@ -77,16 +77,30 @@ class VideoController extends Controller
 
 	public function postUploadVideo(Request $request)
 	{
-		$user_id 	= requestTokenUserData($request->header('token'))->id;
-		$video_data =  $this->videoRepo->uploadVideo($user_id, $request->file('file'), $this);
+		$request['id'] = requestTokenUserData($request->header('token'))->id;
 		
-		$response =  [
-		    "status"    => "200",
-		    "message"   => "Video successful uploaded",
-		    "id"		=> $video_data['id'],
-		    "urls"		=> $video_data['urls'],
-		];
-		
+		$validator 	= $this->validator->uploadVideoValidation($request->all());
+
+		if ($validator->fails())
+		{
+		    $response =   [
+		        "status"    =>"501",
+		        "message"   => $validator->errors()
+		    ];
+		}
+		else
+		{
+			$user_id 	= requestTokenUserData($request->header('token'))->id;
+			$video_data =  $this->videoRepo->uploadVideo($user_id, $request->file('file'));
+			
+			$response =  [
+			    "status"    => "200",
+			    "message"   => "Video successful uploaded",
+			    "id"		=> $video_data['id'],
+			    "urls"		=> $video_data['urls'],
+			];
+		}
+
 		return response()->json($response);
 	}
 
