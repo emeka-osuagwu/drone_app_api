@@ -6,9 +6,6 @@
 
 
 
-
-
-
 <html>
    
 <script src="{{ asset('ng/ng.js') }}"></script>
