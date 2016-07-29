@@ -6,7 +6,7 @@
 
 
 
-<html>
+<!-- <html>
    
 <script src="{{ asset('ng/ng.js') }}"></script>
 <script src="{{ asset('ng/ng-file-upload.js') }}"></script>
@@ -73,4 +73,12 @@
       </script>
       
    </body>
-</html>
+</html> -->
+
+
+<form action="{{ url('api/v1/video/create') }}" method="post">
+   
+
+   <input name="file" type="file">
+   <button>Submit</button> 
+</form>

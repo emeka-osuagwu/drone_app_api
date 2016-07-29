@@ -19,7 +19,7 @@ class ValidateRequestToken
     public function handle($request, Closure $next, $guard = null)
     {
 
-        if ($request->isMethod('get') || $request->path('api/v1/login') ) {
+        if ($request->isMethod('get') || $request->path() == "api/v1/login" ) {
             
             return $next($request);
         }
