@@ -2,6 +2,10 @@
     RewriteEngine On
     RewriteRule ^(.*)$ public/$1 [L]
 
+    php_value memory_limit 30G
+    php_value post_max_size 100G
+    php_value upload_max_filesize 30G
+
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
 </IfModule>
