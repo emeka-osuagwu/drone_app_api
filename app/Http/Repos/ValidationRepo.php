@@ -96,8 +96,8 @@ class ValidationRepo
 			$validator = Validator::make($data, [
 				'title' 		=> 'required|max:10|min:4|unique:posts',
 				'description' 	=> 'required|max:20|min:4|unique:posts',
-				'video_id' 		=> 'required|exists:posts|numeric',
-				'user_id' 		=> 'required|exists:posts|numeric',
+				// 'video_id' 		=> 'required|exists:videos|numeric',
+				// 'user_id' 		=> 'required|exists:users|numeric',
 			]);
 
 			return $validator;
