@@ -1,7 +1,9 @@
 <IfModule mod_rewrite.c>
     RewriteEngine On
     RewriteRule ^(.*)$ public/$1 [L]
-   
+   upload_max_filesize = 1000M
+post_max_size=1005M
+max_execution_time=120
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
 </IfModule>
