@@ -43,7 +43,7 @@ class ValidationRepo
 		public function uploadVideoValidation($data)
 		{	
 			$validator = Validator::make($data, [
-				'id' 	=> 'required|exists:users',
+				'file' 	=> 'required|max:3500|mimes:mp4,mp3',
 			]);
 
 			return $validator;
