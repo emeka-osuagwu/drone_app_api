@@ -79,7 +79,7 @@ class VideoController extends Controller
 	public function postUploadVideo(Request $request)
 	{
 		$request['id'] = requestTokenUserData($request->header('token'))->id;
-		dd(['file' => $request->file('file') ]);
+		
 		$validator 	= $this->validator->uploadVideoValidation(['file' => $request->file('file') ]);
 
 		if ($validator->fails())
