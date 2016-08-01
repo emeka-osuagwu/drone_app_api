@@ -107,4 +107,9 @@ Route::group(['prefix' => 'api/v1'], function () {
 
 	});
 
+	Route::get('search', [
+		'uses' 	=> 'SearchController@search',
+		'as' 	=> 'api.v1.search'
+	]);
+
 });

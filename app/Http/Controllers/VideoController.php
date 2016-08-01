@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests;
 use transloadit\Transloadit;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 
 class VideoController extends Controller
 {
@@ -31,8 +32,7 @@ class VideoController extends Controller
 		    ];
 		}
 		else
-		{
-		    
+		{   
 		    $response =  [
 		        "status"    => "200",
 		        "message"   => "Video successful deleted",
@@ -79,7 +79,7 @@ class VideoController extends Controller
 	{
 		$request['id'] = requestTokenUserData($request->header('token'))->id;
 		
-		$validator 	= $this->validator->uploadVideoValidation($request->all());
+		$validator 	= $this->validator->uploadVideoValidation(['file' => $request->file('file') ]);
 
 		if ($validator->fails())
 		{
