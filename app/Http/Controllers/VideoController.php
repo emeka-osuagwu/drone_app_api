@@ -32,8 +32,7 @@ class VideoController extends Controller
 		    ];
 		}
 		else
-		{
-		    
+		{   
 		    $response =  [
 		        "status"    => "200",
 		        "message"   => "Video successful deleted",
