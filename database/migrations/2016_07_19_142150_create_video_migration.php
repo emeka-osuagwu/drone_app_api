@@ -14,8 +14,8 @@ class CreateVideoMigration extends Migration
     {
         Schema::create('videos', function (Blueprint $table) {
             $table->increments('id');
-            $table->jsonb('urls')->nullable();
-            $table->integer('user_id')->nullable();
+            $table->text('urls');
+            $table->integer('user_id');
             $table->timestamps();
         });
     }
