@@ -81,6 +81,11 @@ Route::group(['prefix' => 'api/v1'], function () {
 			'as' 	=> 'api.v1.{id}.videos'
 		]);	
 
+		Route::get('{id}/posts', [
+			'uses' 	=> 'UserController@getUserPost',
+			'as' 	=> 'api.v1.{id}.videos'
+		]);	
+
 	});
 
 	Route::get('posts', [
@@ -107,7 +112,7 @@ Route::group(['prefix' => 'api/v1'], function () {
 
 	});
 
-	Route::get('search', [
+	Route::get('search{}', [
 		'uses' 	=> 'SearchController@search',
 		'as' 	=> 'api.v1.search'
 	]);

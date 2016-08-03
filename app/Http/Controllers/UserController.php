@@ -67,4 +67,27 @@ class UserController extends Controller
 		return response()->json($response);
 	}
 
+	public function getUserPost($id)
+	{
+		$validator = $this->validator->getUserPostValidation(["id" => $id]);
+
+		if ($validator->fails())
+		{
+		    $response =   [
+		        "status"    =>"501",
+		        "message"   => $validator->errors()
+		    ];
+		}
+		else
+		{
+		    $response =  [
+		        "status"    => "200",
+		        "message"   => "user data",
+		    	"data"		=> $this->postRepo->getPostWhere('user_id', $id)->get(),
+		    ];
+		}
+		
+		return response()->json($response);
+	}
+
 }
