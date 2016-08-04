@@ -22,4 +22,11 @@ class PostRepo
 		Post::create($data);
 	}
 
+	public function increaseLikes($post_id)
+	{
+		$post 			= Post::find($post_id);
+		$post->likes 	= $post->likes + 1;
+		$post->save(); 
+	}
+
 }

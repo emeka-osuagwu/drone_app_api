@@ -42,4 +42,10 @@ class PostController extends Controller
 
 		return response()->json($response);
 	}
+
+	public function postLikePost(Request $request)
+	{
+		$this->likeRepo->likePost($request->all());
+		$this->postRepo->increaseLikes($request['post_id']);
+	}
 }

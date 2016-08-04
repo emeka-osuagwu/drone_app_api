@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Repos\UserRepo;
+use App\Http\Repos\LikeRepo;
 use App\Http\Repos\PostRepo;
 use App\Http\Repos\TokenRepo;
 use App\Http\Repos\VideoRepo;
@@ -22,6 +23,7 @@ class Controller extends BaseController
     {
     	$this->userRepo 	= new UserRepo;
     	$this->postRepo 	= new PostRepo;
+    	$this->likeRepo 	= new LikeRepo;
     	$this->videoRepo 	= new VideoRepo;
     	$this->tokenRepo 	= new TokenRepo;
     	$this->validator 	= new ValidationRepo;

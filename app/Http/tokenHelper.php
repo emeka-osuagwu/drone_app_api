@@ -12,5 +12,8 @@ function requestTokenUserData($token)
 
 function checkRequestTokenUserExist($token)
 {
-   	return User::where('email', requestTokenUserData($token)->email)->count();
+   	return User::where([
+   				['email', '=', requestTokenUserData($token)->email],
+   				['id', '=', requestTokenUserData($token)->id],
+   		])->count();
 }
