@@ -10,13 +10,9 @@ class Like extends Model
 	protected $primaryKey 	= 'id';
 
 	protected $fillable = [
-	    'urls', 
+	    'post_id', 
 	    'user_id', 
 	];
-
-	protected $casts = [
-        'urls' => 'json',
-    ];
 
 	public function user()
 	{

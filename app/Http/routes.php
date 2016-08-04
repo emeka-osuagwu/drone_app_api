@@ -108,6 +108,11 @@ Route::group(['prefix' => 'api/v1'], function () {
 		Route::post('create', [
 			'uses' 	=> 'PostController@postCreatePost',
 			'as' 	=> 'api.v1.post.create'
+		]);
+
+		Route::post('like', [
+			'uses' 	=> 'PostController@postLikePost',
+			'as' 	=> 'api.v1.post.like'
 		]);	
 
 	});
