@@ -123,4 +123,17 @@ class ValidationRepo
 
 			return $validator;
 		}
+
+		public function postCommentValidation($data)
+		{	
+			$data['id'] = $data['post_id'];
+
+			$validator = Validator::make($data, [
+				'id' 		=> 'required|exists:posts',
+				'user_id' 	=> 'required|exists:posts',
+				'comment' 	=> 'required|max:30',
+			]);
+
+			return $validator;
+		}
 }

@@ -114,12 +114,12 @@ class PostController extends Controller
 		}
 		else
 		{
-			$this->likeRepo->commentOnPost($request->all());
+			$this->commentRepo->commentOnPost($request->all());
 			$this->postRepo->increaseComment($request['post_id']);
 			
 			$response =  [
 			    "status"    => "200",
-			    "message"   => "Post disliked",
+			    "message"   => "Comment Created",
 			];
 		}
 
