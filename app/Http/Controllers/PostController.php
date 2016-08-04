@@ -126,7 +126,7 @@ class PostController extends Controller
 		return response()->json($response);
 	}
 
-	public function postomment(Request $request)
+	public function postDeleteComment(Request $request)
 	{
 		$validator 	= $this->validator->postDeleteCommentValidation($request->all());
 
@@ -139,8 +139,8 @@ class PostController extends Controller
 		}
 		else
 		{
-			$this->commentRepo->commentOnPost($request->all());
-			$this->postRepo->increaseComment($request['post_id']);
+			$this->commentRepo->deleteComment($request->all());
+			$this->postRepo->decreaseComment($request['post_id']);
 			
 			$response =  [
 			    "status"    => "200",
