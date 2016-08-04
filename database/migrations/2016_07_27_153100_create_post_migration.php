@@ -19,6 +19,7 @@ class CreatePostMigration extends Migration
             $table->string('title');
             $table->string('description');
             $table->integer('likes')->default(0);
+            $table->integer('comments')->default(0);
             $table->timestamps();
         });
     }
