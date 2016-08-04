@@ -100,4 +100,29 @@ class PostController extends Controller
 
 		return response()->json($response);
 	}
+
+	public function postComment(Request $request)
+	{
+		$validator 	= $this->validator->likePostValidation($request->all());
+
+		if ($validator->fails())
+		{
+		    $response =   [
+		        "status"    =>"501",
+		        "message"   => $validator->errors()
+		    ];
+		}
+		else
+		{
+			$this->likeRepo->commentOnPost($request->all());
+			$this->postRepo->increaseComment($request['post_id']);
+			
+			$response =  [
+			    "status"    => "200",
+			    "message"   => "Post disliked",
+			];
+		}
+
+		return response()->json($response);
+	}
 }

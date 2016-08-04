@@ -7,6 +7,7 @@ use App\Http\Repos\LikeRepo;
 use App\Http\Repos\PostRepo;
 use App\Http\Repos\TokenRepo;
 use App\Http\Repos\VideoRepo;
+use App\Http\Repos\CommentRepo;
 use App\Http\Repos\ValidationRepo;
 
 use Illuminate\Foundation\Bus\DispatchesJobs;
@@ -24,8 +25,9 @@ class Controller extends BaseController
     	$this->userRepo 	= new UserRepo;
     	$this->postRepo 	= new PostRepo;
     	$this->likeRepo 	= new LikeRepo;
+        $this->validator    = new ValidationRepo;
+        $this->tokenRepo    = new TokenRepo;
     	$this->videoRepo 	= new VideoRepo;
-    	$this->tokenRepo 	= new TokenRepo;
-    	$this->validator 	= new ValidationRepo;
+    	$this->commentRepo 	= new CommentRepo;
     }
 }

@@ -2,9 +2,9 @@
 
 namespace App\Http\Repos;
 
-use App\User;
+use App\Model\Comment;
 
-class UserRepo
+class CommentRepo
 {
 
 	public function getAllUser()
@@ -12,19 +12,14 @@ class UserRepo
 		return User::all();
 	}	
 
-	/*=========================================
-	Get User where
-	==========================================*/
-	public function getUserWhere($field, $value)
+	public function commentOnPost($data)
 	{
-		return User::where($field, $value)->get();
-	}
+		$create = [
+			"user_id" 	=> $data['user_id'],
+			"post_id"	=> $data['post_id'],
+			"comment"	=> $data['comment'],
+		];
 
-	/*=========================================
-	Create save user object into the database
-	==========================================*/
-	public function createUser($data)
-	{
-		User::create($data);
+		Comment::create($create);
 	}
 }
