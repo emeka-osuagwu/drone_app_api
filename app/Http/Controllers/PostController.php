@@ -144,7 +144,7 @@ class PostController extends Controller
 			
 			$response =  [
 			    "status"    => "200",
-			    "message"   => "Comment Created",
+			    "message"   => "Comment Deleted",
 			];
 		}
 
