@@ -43,4 +43,11 @@ class PostRepo
 		$post->save(); 
 	}
 
+	public function decreaseComment($post_id)
+	{
+		$post 				= Post::find($post_id);
+		$post->comments 	= $post->comments - 1;
+		$post->save(); 
+	}
+
 }
