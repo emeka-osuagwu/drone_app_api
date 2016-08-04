@@ -125,6 +125,11 @@ Route::group(['prefix' => 'api/v1'], function () {
 			'as' 	=> 'api.v1.post.comment'
 		]);	
 
+		Route::post('comment/delete', [
+			'uses' 	=> 'PostController@postDeleteComment',
+			'as' 	=> 'api.v1.post.comment.delete'
+		]);	
+
 	});
 
 	Route::get('search', [

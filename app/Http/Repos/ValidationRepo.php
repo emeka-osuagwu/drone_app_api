@@ -136,4 +136,16 @@ class ValidationRepo
 
 			return $validator;
 		}
+
+		public function postDeleteCommentValidation($data)
+		{	
+			$data['id'] = $data['post_id'];
+
+			$validator = Validator::make($data, [
+				'id' 		=> 'required|exists:posts',
+				'user_id' 	=> 'required|exists:posts',
+			]);
+
+			return $validator;
+		}
 }
