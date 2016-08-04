@@ -20,17 +20,18 @@ class LikeRepo
 		];
 
 		Like::create($create);
-	}	
+	}
 
-	public function likePost($data)
+
+	public function dislikePost($data)
 	{
 		Like::where([
-				['user_id', '=', $user_id],
-				['post_id', '=', $post_id],
+				['user_id', '=', $data['user_id']],
+				['post_id', '=', $data['post_id']],
 		])->delete();
 	}
 
-	public function checkUserDislikePost($user_id, $post_id)
+	public function checkUserLikePost($user_id, $post_id)
 	{
 		return Like::where([
 					['user_id', '=', $user_id],

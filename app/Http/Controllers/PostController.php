@@ -76,7 +76,7 @@ class PostController extends Controller
 		return response()->json($response);
 	}
 
-	public function checkUserDislikePost(Request $request)
+	public function postDisLikePost(Request $request)
 	{
 		$validator 	= $this->validator->likePostValidation($request->all());
 
