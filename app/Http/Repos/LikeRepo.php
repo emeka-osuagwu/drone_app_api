@@ -21,4 +21,12 @@ class LikeRepo
 
 		Like::create($create);
 	}
+
+	public function checkUserLikePost($user_id, $post_id)
+	{
+		return Like::where([
+					['user_id', '=', $user_id],
+					['post_id', '=', $post_id],
+				]);
+	}
 }

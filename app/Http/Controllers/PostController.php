@@ -45,7 +45,34 @@ class PostController extends Controller
 
 	public function postLikePost(Request $request)
 	{
-		$this->likeRepo->likePost($request->all());
-		$this->postRepo->increaseLikes($request['post_id']);
+		$validator 	= $this->validator->likePostValidation($request->all());
+
+		if ($this->likeRepo->checkUserLikePost($request['user_id'], $request['post_id'])->count() > 0) 
+		{
+			return [
+			    "status"    => "501",
+			    "message"   => "user can like post more then once :("
+			];
+		}
+
+		if ($validator->fails())
+		{
+		    $response =   [
+		        "status"    =>"501",
+		        "message"   => $validator->errors()
+		    ];
+		}
+		else
+		{
+			$this->likeRepo->likePost($request->all());
+			$this->postRepo->increaseLikes($request['post_id']);
+			
+			$response =  [
+			    "status"    => "200",
+			    "message"   => "Post liked",
+			];
+		}
+
+		return response()->json($response);
 	}
 }
