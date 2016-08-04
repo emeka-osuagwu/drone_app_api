@@ -75,4 +75,29 @@ class PostController extends Controller
 
 		return response()->json($response);
 	}
+
+	public function checkUserDislikePost(Request $request)
+	{
+		$validator 	= $this->validator->likePostValidation($request->all());
+
+		if ($validator->fails())
+		{
+		    $response =   [
+		        "status"    =>"501",
+		        "message"   => $validator->errors()
+		    ];
+		}
+		else
+		{
+			$this->likeRepo->dislikePost($request->all());
+			$this->postRepo->decreaseLikes($request['post_id']);
+			
+			$response =  [
+			    "status"    => "200",
+			    "message"   => "Post disliked",
+			];
+		}
+
+		return response()->json($response);
+	}
 }

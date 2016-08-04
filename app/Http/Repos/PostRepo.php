@@ -29,4 +29,12 @@ class PostRepo
 		$post->save(); 
 	}
 
+	public function decreaseLikes($post_id)
+	{
+		$post 			= Post::find($post_id);
+		$post->likes 	= $post->likes - 1;
+		$post->save(); 
+	}
+
+
 }
