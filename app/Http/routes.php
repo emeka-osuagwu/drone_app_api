@@ -120,6 +120,11 @@ Route::group(['prefix' => 'api/v1'], function () {
 			'as' 	=> 'api.v1.post.dislike'
 		]);	
 
+		Route::post('comment', [
+			'uses' 	=> 'PostController@postComment',
+			'as' 	=> 'api.v1.post.comment'
+		]);	
+
 	});
 
 	Route::get('search', [
