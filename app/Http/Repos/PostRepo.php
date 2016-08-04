@@ -14,7 +14,7 @@ class PostRepo
 
 	public function getPostWhere($field, $value)
 	{
-		return Post::with('video', 'user')->where($field, $value)->get();
+		return Post::with('video', 'user')->where($field, $value);
 	}
 
 	public function createPost($data)

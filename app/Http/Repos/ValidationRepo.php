@@ -81,6 +81,15 @@ class ValidationRepo
 		]);
 
 		return $validator;
+	}	
+
+	public function getUserPostValidation($data)
+	{	
+		$validator = Validator::make($data, [
+			'id' => 'required|exists:users',
+		]);
+
+		return $validator;
 	}
 
 	/*=========================================
