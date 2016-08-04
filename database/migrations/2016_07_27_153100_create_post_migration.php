@@ -18,7 +18,7 @@ class CreatePostMigration extends Migration
             $table->integer('user_id')->unsigned();
             $table->string('title');
             $table->string('description');
-            $table->integer('likes');
+            $table->integer('likes')->default(0);
             $table->timestamps();
         });
     }
