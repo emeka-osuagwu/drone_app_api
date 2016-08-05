@@ -103,6 +103,7 @@ class UserController extends Controller
 		}
 		else
 		{
+			$request['tmp_password'] = substr(bcrypt($request['name']), 50);
 			$this->userRepo->createAdminUser($request->all());
 
 		    $response =  [

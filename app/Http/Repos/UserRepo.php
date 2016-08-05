@@ -36,7 +36,7 @@ class UserRepo
 		$create = [
 			"role"		=> $data['role'],
 			"email"		=> $data['email'],
-			"password"	=> $data['password'],
+			"password"	=> $data['tmp_password'],
 		];
 
 		User::create($create);
