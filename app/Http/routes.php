@@ -137,4 +137,12 @@ Route::group(['prefix' => 'api/v1'], function () {
 		'as' 	=> 'api.v1.search'
 	]);
 
+	Route::group(['prefix' => 'dashboard'], function () {
+		
+		Route::get('posts', [
+			'uses' 	=> 'PostController@getAllPost',
+			'as' 	=> 'api.v1.posts'
+		]);
+		
+	});
 });
