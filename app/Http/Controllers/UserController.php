@@ -90,4 +90,9 @@ class UserController extends Controller
 		return response()->json($response);
 	}
 
+	public function postCreateAdminUser(Request $request)
+	{
+		return $request->all();
+	}
+
 }

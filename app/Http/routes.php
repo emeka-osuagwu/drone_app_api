@@ -137,12 +137,12 @@ Route::group(['prefix' => 'api/v1'], function () {
 		'as' 	=> 'api.v1.search'
 	]);
 
-	Route::group(['prefix' => 'dashboard'], function () {
-		
-		Route::get('posts', [
+	Route::group(['prefix' => 'admin'], function () {
+
+		Route::post('create', [
 			'uses' 	=> 'PostController@getAllPost',
 			'as' 	=> 'api.v1.posts'
 		]);
-		
+
 	});
 });
