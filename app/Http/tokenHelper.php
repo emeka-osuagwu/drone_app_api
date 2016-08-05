@@ -20,8 +20,14 @@ function checkRequestTokenUserExist($token)
 
 function checkRequestTokenUserIsAdmin($token)
 {
-   	return User::where([
-   				['email', '=', requestTokenUserData($token)->email],
-   				['id', '=', requestTokenUserData($token)->id],
-   		])->count();
+	$user = User::find(requestTokenUserData($token)->id);
+	
+	if ( (int) $user->role == 1) 
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
 }

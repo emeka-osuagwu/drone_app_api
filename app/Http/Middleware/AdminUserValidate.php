@@ -18,21 +18,19 @@ class AdminUserValidate
      */
     public function handle($request, Closure $next, $guard = null)
     {
-        dd(checkRequestTokenUserIsAdmin($request->header('token')));
-        // if () 
-        // {
-            
-        //     return $next($request);
-        // }
-        // else
-        // {
-        //     $response =  [
-        //         "status"    =>"500",
-        //         "message"   => "Request token not set error",
-        //     ];
+        if (checkRequestTokenUserIsAdmin($request->header('token'))) 
+        {
+            return $next($request);
+        }
+        else
+        {
+            $response =  [
+                "status"    =>"500",
+                "message"   => "The Routes is restricted to site admin only",
+            ];
 
-        //     return response()->json($response);
-        // }
+            return response()->json($response);
+        }
     }
 
 }
