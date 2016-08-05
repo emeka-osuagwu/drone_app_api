@@ -16,6 +16,17 @@ class ValidationRepo
 		return $validator;
 	}
 
+	public function createAdminUserValidation($data)
+	{	
+		$validator = Validator::make($data, [
+			'role'			=> 'required|int',
+			'email' 		=> 'required|unique:users|email',
+			'password' 		=> 'required|max:20|min:4',
+		]);
+
+		return $validator;
+	}
+
 	public function loginUserValidation($data)
 	{	
 		$validator = Validator::make($data, [

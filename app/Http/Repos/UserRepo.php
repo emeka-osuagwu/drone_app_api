@@ -27,4 +27,18 @@ class UserRepo
 	{
 		User::create($data);
 	}
+
+	/*=========================================
+	Create admin user
+	==========================================*/
+	public function createAdminUser($data)
+	{
+		$create = [
+			"role"		=> $data['role'],
+			"email"		=> $data['email'],
+			"password"	=> $data['password'],
+		];
+
+		User::create($create);
+	}
 }

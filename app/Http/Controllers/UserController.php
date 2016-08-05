@@ -92,7 +92,26 @@ class UserController extends Controller
 
 	public function postCreateAdminUser(Request $request)
 	{
-		return $request->all();
+		$validator = $this->validator->createAdminUserValidation($request->all());
+
+		if ($validator->fails())
+		{
+		    $response =   [
+		        "status"    =>"501",
+		        "message"   => $validator->errors()
+		    ];
+		}
+		else
+		{
+			$this->userRepo->createAdminUser($request->all());
+
+		    $response =  [
+		        "status"    => "200",
+		        "message"   => "admin user create",
+		    ];
+		}
+		
+		return response()->json($response);
 	}
 
 }

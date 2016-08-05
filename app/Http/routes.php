@@ -140,7 +140,7 @@ Route::group(['prefix' => 'api/v1'], function () {
 	Route::group(['prefix' => 'admin', 'middleware' => ['isAdmin']], function () {
 
 		Route::post('create', [
-			'uses' 	=> 'PostController@getAllPost',
+			'uses' 	=> 'UserController@postCreateAdminUser',
 			'as' 	=> 'api.v1.posts'
 		]);
 
