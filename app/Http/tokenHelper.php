@@ -17,3 +17,11 @@ function checkRequestTokenUserExist($token)
    				['id', '=', requestTokenUserData($token)->id],
    		])->count();
 }
+
+function checkRequestTokenUserIsAdmin($token)
+{
+   	return User::where([
+   				['email', '=', requestTokenUserData($token)->email],
+   				['id', '=', requestTokenUserData($token)->id],
+   		])->count();
+}
