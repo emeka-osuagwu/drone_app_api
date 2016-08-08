@@ -15,7 +15,7 @@ class PostController extends Controller
 
 	public function getUserPost($id)
 	{
-		return $this->postRepo->getPostWhere('id', $id);
+		return $this->postRepo->getPostWhere('id', $id)->get();
 	}
 
 	public function postCreatePost(Request $request)
