@@ -44,8 +44,8 @@ class VideoRepo
 		$file->move($destination_path, md5($user_id) . time() . $file_name);
 
 		$urls	= [
-			"original-url"		=> url('upload/videos/' . md5($user_id) . time() . $file_name),
-			"watermaker-url"	=> url('upload/videos/' . md5($user_id) . time() . $file_name),
+			"original"		=> url('upload/videos/' . md5($user_id) . time() . $file_name),
+			"watermaker"	=> url('upload/videos/' . md5($user_id) . time() . $file_name),
 		];
 		
 		$create = [
