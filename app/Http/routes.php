@@ -13,7 +13,7 @@
 
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, PUT, DELETE');
-
+header( 'Content-Type, Accept, Authorization, X-Requested-With, token' );
 
 Route::get('/', function (){
 	return view('index');
