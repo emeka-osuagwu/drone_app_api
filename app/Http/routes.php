@@ -15,7 +15,7 @@ Route::get('/', function (){
 	return view('index');
 });	
 
-Route::group(['prefix' => 'api/v1'], function () {
+Route::group(['prefix' => 'api/v1', ['middleware' => ['web']]], function () {
 
 	Route::get('/', function (){
 		return "Hello world :), not that I care";
