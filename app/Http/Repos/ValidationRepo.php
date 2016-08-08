@@ -6,47 +6,6 @@ use Validator;
 
 class ValidationRepo
 {
-	public function createUserValidation($data)
-	{	
-		$validator = Validator::make($data, [
-			'email' 		=> 'required|unique:users|email',
-			'password' 		=> 'required|max:20|min:4',
-		]);
-
-		return $validator;
-	}
-
-	public function createAdminUserValidation($data)
-	{	
-		$validator = Validator::make($data, [
-			'role'			=> 'required|int',
-			'email' 		=> 'required|unique:users|email',
-			'password' 		=> 'required|max:20|min:4',
-		]);
-
-		return $validator;
-	}
-
-	public function loginUserValidation($data)
-	{	
-		$validator = Validator::make($data, [
-			'email' 		=> 'required|exists:users|email',
-			'password' 		=> 'required',
-		]);
-
-		return $validator;
-	}
-
-	public function loginAdminValidation($data)
-	{	
-		$validator = Validator::make($data, [
-			'email' 		=> 'required|exists:admins|email',
-			'password' 		=> 'required|max:20|min:4',
-		]);
-
-		return $validator;
-	}
-
 
 	/*=========================================
 	Video Validation
@@ -85,23 +44,64 @@ class ValidationRepo
 	/*=========================================
 	User Validation
 	==========================================*/
-	public function getUserValidation($data)
-	{	
-		$validator = Validator::make($data, [
-			'id' 	=> 'required|exists:users',
-		]);
+		public function createUserValidation($data)
+		{	
+			$validator = Validator::make($data, [
+				'email' 		=> 'required|unique:users|email',
+				'password' 		=> 'required|max:20|min:4',
+			]);
 
-		return $validator;
-	}	
+			return $validator;
+		}
 
-	public function getUserPostValidation($data)
-	{	
-		$validator = Validator::make($data, [
-			'id' => 'required|exists:users',
-		]);
+		public function createAdminUserValidation($data)
+		{	
+			$validator = Validator::make($data, [
+				'role'			=> 'required|int',
+				'email' 		=> 'required|unique:users|email',
+				'password' 		=> 'required|max:20|min:4',
+			]);
 
-		return $validator;
-	}
+			return $validator;
+		}
+
+		public function loginUserValidation($data)
+		{	
+			$validator = Validator::make($data, [
+				'email' 		=> 'required|exists:users|email',
+				'password' 		=> 'required',
+			]);
+
+			return $validator;
+		}
+
+		public function loginAdminValidation($data)
+		{	
+			$validator = Validator::make($data, [
+				'email' 		=> 'required|exists:admins|email',
+				'password' 		=> 'required|max:20|min:4',
+			]);
+
+			return $validator;
+		}
+
+		public function getUserValidation($data)
+		{	
+			$validator = Validator::make($data, [
+				'id' 	=> 'required|exists:users',
+			]);
+
+			return $validator;
+		}	
+
+		public function getUserPostValidation($data)
+		{	
+			$validator = Validator::make($data, [
+				'id' => 'required|exists:users',
+			]);
+
+			return $validator;
+		}
 
 	/*=========================================
 	User Validation
@@ -114,10 +114,8 @@ class ValidationRepo
 		public function createPostValidation($data)
 		{	
 			$validator = Validator::make($data, [
-				'title' 		=> 'required|max:10|min:4|unique:posts',
-				'description' 	=> 'required|max:20|min:4|unique:posts',
-				// 'video_id' 		=> 'required|exists:videos|numeric',
-				// 'user_id' 		=> 'required|exists:users|numeric',
+				'title' 		=> 'required|max:30|min:4|unique:posts',
+				'description' 	=> 'required|max:50|min:4|unique:posts',
 			]);
 
 			return $validator;

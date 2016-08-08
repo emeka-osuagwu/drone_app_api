@@ -11,15 +11,11 @@
 |
 */
 
-header('Access-Control-Allow-Origin: *');
-header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, PUT, DELETE');
-header( 'Content-Type, Accept, Authorization, X-Requested-With, token' );
-
 Route::get('/', function (){
 	return view('index');
 });	
 
-Route::group(['prefix' => 'api/v1', ['middleware' => ['web']]], function () {
+Route::group(['prefix' => 'api/v1'], function () {
 
 	Route::get('/', function (){
 		return "Hello world :), not that I care";
