@@ -94,10 +94,11 @@ class VideoController extends Controller
 			$video_data =  $this->videoRepo->uploadVideo($user_id, $request->file('file'));
 			
 			$response =  [
-			    "status"    => "200",
-			    "message"   => "Video successful uploaded",
-			    "id"		=> $video_data['id'],
-			    "urls"		=> $video_data['urls'],
+			    "status"    		=> "200",
+			    "message"   		=> "Video successful uploaded",
+			    "id"				=> $video_data['id'],
+			    "original_url"		=> $video_data['original_url'],
+			    "watermark_url"		=> $video_data['watermark_url'],
 			];
 		}
 

@@ -10,14 +10,10 @@ class Video extends Model
 	protected $primaryKey 	= 'id';
 
 	protected $fillable = [
-	    'urls', 
-	    'user_id', 
+	    'original_url', 
+	    'watermark_url', 
 	];
-
-	protected $casts = [
-        'urls' => 'json',
-    ];
-
+	
 	public function user()
 	{
 	   return $this->belongsTo('App\User', 'user_id');

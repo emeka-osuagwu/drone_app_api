@@ -14,7 +14,8 @@ class CreateVideoMigration extends Migration
     {
         Schema::create('videos', function (Blueprint $table) {
             $table->increments('id');
-            $table->text('urls');
+            $table->string('original_url');
+            $table->string('watermark_url');
             $table->integer('user_id');
             $table->timestamps();
         });

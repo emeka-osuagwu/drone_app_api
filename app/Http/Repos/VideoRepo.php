@@ -42,22 +42,14 @@ class VideoRepo
 		$destination_path 	= public_path() . "/upload/videos";
 		
 		$file->move($destination_path, md5($user_id) . time() . $file_name);
-
-		$urls	= [
-			"original"		=> url('upload/videos/' . md5($user_id) . time() . $file_name),
-			"watermaker"	=> url('upload/videos/' . md5($user_id) . time() . $file_name),
-		];
 		
 		$create = [
-			"urls" 		=> json_encode($urls),
-			"user_id" 	=> $user_id,
+			"user_id" 			=> $user_id,
+			"original_url" 		=> url('upload/videos/' . md5($user_id) . time() . $file_name),
+			"watermark_url" 	=> url('upload/videos/' . md5($user_id) . time() . $file_name),
 		];
 
-		$video 			= Video::create($create);
-		$video['urls'] 	= $urls;
-
-
-		return $video;
+		return Video::create($create);
 	}
 
 	public function deleteVideo($id)
