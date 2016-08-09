@@ -17,4 +17,9 @@ class PagesController extends Controller
    	{
    		return view('app.pages.login');
    	}
+
+   	public function adminIndex()
+   	{
+   		return view('dashboard.pages.index');
+   	}
 }

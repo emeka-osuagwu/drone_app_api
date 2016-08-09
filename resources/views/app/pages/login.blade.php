@@ -55,6 +55,6 @@
             </form>
 
         </div>
-        <p>Not a user?<a ui-sref="signup">Sign up</a></p>
+        <p>Not a user?<a href="{{ Url('register') }}">Sign up</a></p>
     </section>
 @endsection

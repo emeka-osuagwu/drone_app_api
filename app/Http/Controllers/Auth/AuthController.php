@@ -57,24 +57,16 @@ class AuthController extends Controller
 
         if ($validator->fails())
         {
-        
-            $response =   [
-                "status"    =>"501",
-                "message"   => $validator->errors()
-            ];
+            return back()->withErrors($validator)->withInput($request->all());
         }
         else
         {
             $this->userRepo->createUser($request->all());
             $this->dispatch(new SendNewUserWelcomeEmail($request['email']));
 
-            $response =  [
-                "status"    =>"200",
-                "message"   => "User Successful created",
-            ];
+            session()->flash('message', 'good');
+            return redirect('login');
         }
-
-        return response()->json($response);
     }
 
     /*=========================================

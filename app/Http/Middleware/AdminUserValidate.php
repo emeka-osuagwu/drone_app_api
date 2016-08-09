@@ -18,7 +18,7 @@ class AdminUserValidate
      */
     public function handle($request, Closure $next, $guard = null)
     {
-        if (checkRequestTokenUserIsAdmin($request->header('token'))) 
+        if ( (int) Auth::user()->role == 1) 
         {
             return $next($request);
         }

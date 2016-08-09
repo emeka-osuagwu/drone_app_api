@@ -5,8 +5,6 @@
 
 @section('content')
 
-
-
 <section class="introduction vid">
     <div class="vid-fill">
         <video autoplay="true" loop="true" src="video/bannervid.mp4" height="550"></video>
@@ -30,7 +28,7 @@
     </div>
 </section>
 
-<div >
+<div>
     <section class="howitworks container">
         <div class="howitworks_header">
             <h3>How it works</h3>
@@ -251,6 +249,6 @@
             </div>
         </div>
     </section>
-    
 </div>
+
 @endsection

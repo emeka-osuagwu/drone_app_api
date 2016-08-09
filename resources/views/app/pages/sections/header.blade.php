@@ -24,14 +24,17 @@
             <li><a href="allvideos">Videos</a></li>
             @if(Auth::check())
               <li><a href="{{ Url('/') }}">My Account</a></li>
+              @if( (int) Auth::user()->role == 1 )
+              <li><a href="{{ Url('dashboard') }}">DashBoard</a></li>
               <li><a href="{{ Url('logout') }}">Logout</a></li>
+              @endif
             @else
               <li><a href="{{ Url('login') }}">Login</a></li>
               <li><a href="{{ Url('register') }}">Sign Up</a></li>
             @endif
           </ul>
 
-        </div><!-- /.navbar-collapse -->
-      </div><!-- /.container-fluid -->
+        </div>
+      </div>
     </nav>
 </header>
