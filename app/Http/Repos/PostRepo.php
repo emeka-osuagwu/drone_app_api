@@ -50,4 +50,14 @@ class PostRepo
 		$post->save(); 
 	}
 
+
+	public function updatePost($data)
+	{
+		$update = [
+			"title" => $data['title'], 
+			"description" => $data['description'], 
+		];
+
+		Post::where('id', $data['post_id'])->update($update);
+	}
 }

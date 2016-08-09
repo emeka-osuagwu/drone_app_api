@@ -41,13 +41,6 @@
 	]);
 
 
-
-	Route::get('videos', [
-		'uses' 	=> 'VideoController@getAllVideo',
-		'as' 	=> 'api.v1.videos'
-	]);
-
-
 	Route::get('users', [
 		'uses' 	=> 'UserController@getAllUser',
 		'as' 	=> 'api.v1.users'
@@ -130,12 +123,22 @@
 		]);
 
 
+		Route::get('videos', [
+			'uses' 	=> 'VideoController@getAllVideo',
+			'as' 	=> 'api.v1.videos'
+		]);
+
 		Route::group(['prefix' => 'video'], function () {
 
 			Route::get('create', function (){
 				return view('upload');
 			});	
 			
+			Route::get('create', [
+				'uses' 	=> 'PagesController@createVideo',
+				'as' 	=> 'api.v1.video.create'
+			]);	
+
 			Route::post('create', [
 				'uses' 	=> 'VideoController@postUploadVideo',
 				'as' 	=> 'api.v1.video.create'
@@ -148,6 +151,11 @@
 
 			Route::post('{id}/delete', [
 				'uses' 	=> 'VideoController@delete',
+				'as' 	=> 'api.v1.video.{id}.delete'
+			]);	
+
+			Route::post('update', [
+				'uses' 	=> 'PostController@postUpdatePost',
 				'as' 	=> 'api.v1.video.{id}.delete'
 			]);	
 

@@ -150,4 +150,10 @@ class PostController extends Controller
 
 		return response()->json($response);
 	}
+
+	public function postUpdatePost(Request $request)
+	{
+		$this->postRepo->updatePost($request->all());
+		return back();
+	}
 }

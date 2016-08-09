@@ -22,4 +22,9 @@ class PagesController extends Controller
    	{
    		return view('dashboard.pages.index');
    	}
+
+   	public function createVideo()
+   	{
+   		return view('dashboard.pages.create_video');
+   	}
 }
