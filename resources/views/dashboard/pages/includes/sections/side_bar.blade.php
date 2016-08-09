@@ -30,10 +30,10 @@
 		  <div id="sidebar-menu">
 			  	<ul>
 					<li>
-						<a href="{{ Url('/') }}" class="waves-effect waves-light active"><i class="md md-home"></i><span> Dashboard </span></a>
+						<a href="{{ Url('dashboard') }}" class="waves-effect waves-light active"><i class="md md-home"></i><span> Dashboard </span></a>
 				  	</li>
 
-				  	<li class="has_sub">
+<!-- 				  	<li class="has_sub">
 						<a href="#" class="waves-effect waves-light">
 							<i class="md md-mail"></i>
 							<span>User</span>
@@ -73,7 +73,7 @@
 							<li><a href="{{ Url('rents') }}">Rents</a></li>
 							<li><a href="{{ Url('rent/create') }}">Add Rent</a></li>
 						</ul>
-				  	</li>
+				  	</li> -->
 
 				  	<li class="has_sub">
 						<a href="#" class="waves-effect waves-light">
