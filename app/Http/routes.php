@@ -11,30 +11,36 @@
 |
 */
 
-Route::get('/', function (){
-	return view('index');
-});	
-
-Route::group(['prefix' => 'api/v1'], function () {
-
 	Route::get('/', function (){
-		return "Hello world :), not that I care";
+		return view('app.pages.index');
 	});
 
-	// Route::get('/', function ()
-	// {
-	// 	return view('upload');
-	// });		
+	Route::get('logout', [
+		'uses' 	=> 'Auth\AuthController@logout',
+		'as' 	=> 'api.v1.login'
+	]);
 
 	Route::post('login', [
 		'uses' 	=> 'Auth\AuthController@postLogin',
 		'as' 	=> 'api.v1.login'
 	]);
 
+	Route::get('login', [
+		'uses' 	=> 'PagesController@login',
+		'as' 	=> 'api.v1.login'
+	]);
+
+	Route::get('register', [
+		'uses' 	=> 'PagesController@register',
+		'as' 	=> ''
+	]);
+
 	Route::post('register', [
 		'uses' 	=> 'Auth\AuthController@postRegister',
 		'as' 	=> 'api.v1.register'
 	]);
+
+
 
 	Route::get('videos', [
 		'uses' 	=> 'VideoController@getAllVideo',
@@ -145,4 +151,4 @@ Route::group(['prefix' => 'api/v1'], function () {
 		]);
 
 	});
-});
+

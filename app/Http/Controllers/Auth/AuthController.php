@@ -89,34 +89,21 @@ class AuthController extends Controller
 
         if ($validator->fails())
         {
-            $response =   [
-               "status"    =>"501",
-               "message"   => $validator->errors()
-            ]; 
-            
+            return back()->withErrors($validator)->withInput($request->all());
         }
         else
         {
-            if (Auth::once(["email" => $request['email'], "password" => $request['password']])) 
+            if (Auth::attempt(["email" => $request['email'], "password" => $request['password']])) 
             {
-                $user   = $this->userRepo->getUserWhere('email', $request['email'])->first();
-                $token  =  $this->tokenRepo->loginToken($user);
-
-                $response =   [
-                   "message"   => "login Successful",
-                   "status"    => "200",
-                   "token"     => $token,
-                ];
-            }
-            else
-            {
-                $response =   [
-                   "message"   => ["message" => ["invalid Email or Password"]],
-                   "status"    => "500",
-                ]; 
+                session()->flash('message', 'good');
+                return back();
             }
         }
+    }
 
-        return response()->json($response);
+    public function logout()
+    {
+        Auth::logout();
+        return redirect('/'); 
     }
 }

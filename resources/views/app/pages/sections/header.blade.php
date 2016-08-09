@@ -1,0 +1,37 @@
+<header>
+    <nav class="navbar navbar-default othernavbar">
+      <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+
+          <a class="navbar-brand" href="/">
+               <img src="img/anaklevm.png" class="logo" alt="Anakle Logo">
+          </a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+         
+          
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="requestvideo"></a></li>
+            <li><a href="allvideos">Videos</a></li>
+            @if(Auth::check())
+              <li><a href="{{ Url('/') }}">My Account</a></li>
+              <li><a href="{{ Url('logout') }}">Logout</a></li>
+            @else
+              <li><a href="{{ Url('login') }}">Login</a></li>
+              <li><a href="{{ Url('register') }}">Sign Up</a></li>
+            @endif
+          </ul>
+
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+</header>

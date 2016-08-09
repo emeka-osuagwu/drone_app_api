@@ -23,6 +23,7 @@
             "database"
         ],
         "files":[
+            "app/Http/helper.php",
             "app/Http/tokenHelper.php"
         ],
         "psr-4": {
