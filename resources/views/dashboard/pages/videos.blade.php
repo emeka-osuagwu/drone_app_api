@@ -34,6 +34,7 @@
                                             <th>Title</th>
                                             <th>Description</th>
                                             <th>Create By</th>
+                                            <th>Create At</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -44,6 +45,7 @@
                                             <td>{{$video->title}}</td>
                                             <td>{{$video->description}}</td>
                                             <td>{{$video->user['email']}}</td>
+                                            <td>{{$video->created_at->diffForHumans()}}</td>
                                             <td class="actions">
                                                 <a href="{{ Url('dashboard/video/' . $video->id) }}" class="on-default edit-row"><i class="fa fa-eye"></i></a>
                                                 <a href="" class="on-default edit-row"><i class="fa fa-trash-o"></i></a>

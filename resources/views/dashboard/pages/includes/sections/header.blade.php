@@ -3,7 +3,7 @@
     <!-- LOGO -->
     <div class="topbar-left">
         <div class="text-center">
-            <a href="index.html" class="logo"><i class="md md-terrain"></i> <span>Oyster </span></a>
+            <a href="{{ Url('dashboard') }}" class="logo"><i class="md md-terrain"></i> <span>Anakle UV </span></a>
         </div>
     </div>
     <!-- Button mobile view to collapse sidebar menu -->

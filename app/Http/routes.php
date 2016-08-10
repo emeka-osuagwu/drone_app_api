@@ -17,6 +17,11 @@ Route::get('/', function (){
 	return view('app.pages.index');
 });
 
+Route::get('logout', [
+	'uses' 	=> 'Auth\AuthController@logout',
+	'as' 	=> 'api.v1.login'
+]);
+
 Route::post('login', [
 	'uses' 	=> 'Auth\AuthController@postLogin',
 	'as' 	=> 'api.v1.login'
@@ -85,12 +90,14 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['isAdmin']], function ()
 
 	});
 
+	Route::group(['prefix' => 'user'], function () {
+		
+		Route::get('create', [
+			'uses' 	=> 'UserController@getCreateUser',
+			'as' 	=> 'dashboard.user.create'
+		]);
 
 
-
-	Route::post('create', [
-		'uses' 	=> 'UserController@postCreateAdminUser',
-		'as' 	=> 'api.v1.posts'
-	]);
+	});
 
 });

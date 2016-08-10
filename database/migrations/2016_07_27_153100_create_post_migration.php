@@ -16,8 +16,11 @@ class CreatePostMigration extends Migration
             $table->increments('id');
             $table->integer('video_id')->unsigned();
             $table->integer('user_id')->unsigned();
+           
             $table->string('title');
             $table->string('description');
+            $table->string('tags');
+            $table->string('price');
             $table->integer('likes')->default(0);
             $table->integer('comments')->default(0);
             $table->timestamps();

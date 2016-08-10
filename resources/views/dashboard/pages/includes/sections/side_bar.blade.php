@@ -4,6 +4,7 @@
 			  <div class="pull-left">
 				  <img src="{{ asset('assets/images/users/avatar-1.jpg') }}" alt="" class="thumb-md img-circle">
 			  </div>
+
 			  <div class="user-info">
 				  <div class="dropdown">
 					  <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">{{Auth::user()->first_name}}<span class="caret"></span></a>
@@ -42,36 +43,22 @@
 						  	</span>
 						</a>
 						<ul class="list-unstyled">
-							<li><a href="{{ Url('users') }}">Users</a></li>
-							<li><a href="{{ Url('user/create') }}">Add User</a></li>
+							<li><a href="{{ Url('dashboard/users') }}">Users</a></li>
+							<li><a href="{{ Url('dashboard/user/create') }}">Add User</a></li>
 						</ul>
 				  	</li>
 
 				  	<li class="has_sub">
 						<a href="#" class="waves-effect waves-light">
 							<i class="md md-mail"></i>
-							<span>Property</span>
+							<span>Videos</span>
 							<span class="pull-right">
 						  		<i class="md md-add"></i>
 						  	</span>
 						</a>
 						<ul class="list-unstyled">
-							<li><a href="{{ Url('properties') }}">Properties</a></li>
-							<li><a href="{{ Url('property/create') }}">Add Properties</a></li>
-						</ul>
-				  	</li>
-
-				  	<li class="has_sub">
-						<a href="#" class="waves-effect waves-light">
-							<i class="md md-mail"></i>
-							<span>Add Rent</span>
-							<span class="pull-right">
-						  		<i class="md md-add"></i>
-						  	</span>
-						</a>
-						<ul class="list-unstyled">
-							<li><a href="{{ Url('rents') }}">Rents</a></li>
-							<li><a href="{{ Url('rent/create') }}">Add Rent</a></li>
+							<li><a href="{{ Url('dashboard/videos') }}">Videos</a></li>
+							<li><a href="{{ Url('dashboard/video/create') }}">Add Videos</a></li>
 						</ul>
 				  	</li>
 

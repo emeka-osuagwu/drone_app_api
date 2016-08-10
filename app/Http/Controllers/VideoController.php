@@ -57,10 +57,11 @@ class VideoController extends Controller
 
 	public function postUploadVideo(Request $request)
 	{
+	
 		$request['id'] 		= Auth::user()->id;
 		$request['user_id'] = Auth::user()->id;
 		
-		$validator 	= $this->validator->uploadVideoValidation(['file' => $request->file('file') ]);
+		$validator 	= $this->validator->uploadVideoValidation($request->all());
 
 		if ($validator->fails())
 		{
@@ -71,8 +72,11 @@ class VideoController extends Controller
 			$user_id 				= Auth::user()->id;
 			$video_data 			= $this->videoRepo->uploadVideo($user_id, $request->file('file'));
 			$request['video_id'] 	= $video_data['id'];
+			
 			$this->postRepo->createPost($request->all());
-			return redirect('/dashboard/videos');
+			session()->flash('message', 'good');
+			
+			return back();
 		}
 	}
 

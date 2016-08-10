@@ -81,6 +81,12 @@ class ValidationRepo
 		{	
 			$validator = Validator::make($data, [
 				'file' 	=> 'required|max:3500|mimes:mp4,mp3',
+
+				'title' 		=> 'required|max:30|min:4|unique:posts',
+				'tags' 			=> 'required',
+				'price' 		=> 'required|int',
+				'category' 		=> 'required|int',
+				'description' 	=> 'required|max:50|min:4|unique:posts',
 			]);
 
 			return $validator;

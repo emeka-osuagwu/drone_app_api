@@ -33,8 +33,10 @@ class Controller extends BaseController
     	$this->postCategoriesRepo = new PostCategoriesRepo;
 
         $this->middleware('auth', ['except' => [
-            'loginPage',
-            'registerPage',
+            'login',
+            'postLogin',
+            'register',
+            'postRegister',
         ]]);
     }
 }
