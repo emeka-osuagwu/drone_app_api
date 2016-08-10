@@ -25,6 +25,7 @@ class PagesController extends Controller
 
    	public function createVideo()
    	{
-   		return view('dashboard.pages.create_video');
+         $categories = $this->postCategoriesRepo->getAllPostCategories();
+   		return view('dashboard.pages.create_video', compact('categories'));
    	}
 }

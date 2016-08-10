@@ -40,32 +40,26 @@
                                         <div class="form-group">
                                             <label>Category</label>
                                             <select multiple="multiple" name="category" class="form-control">
-                                                <option>Category 1</option>
-                                                <option>Category 2</option>
-                                                <option>Category 3</option>
-                                                <option>Category 4</option>
-                                                <option>Category 5</option>
+                                                @foreach($categories as $category)
+                                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                                @endforeach
                                             </select>
                                         </div> 
 
                                         <div class="form-group">
                                             <label>Tags <br> (separate tags with comma e.g bird, sky)</label>
-                                            <input type="text" placeholder="bird, sky" class="form-control">
+                                            <input type="text" placeholder="bird, sky" class="form-control" name="tags" required>
                                         </div> 
                                         
                                         <div class="form-group">
                                             <label>Description</label>
-                                            <textarea class=" form-control" rows="4" placeholder="Description" value="This is a short description of the uploaded video and can be edited by clicking here."></textarea>
+                                            <textarea class=" form-control" rows="4" placeholder="Description" name="description"></textarea>
                                         </div>
 
                                         <div class="form-group">
                                             <label>Pricing</label>
-                                            <select class="form-control">
-                                                <option>N30,000</option>
-                                                <option>N25,000</option>
-                                                <option>N20,000</option>
-                                                <option>N15,000</option>
-                                                <option>N10,000</option>
+                                            <select name="price" class="form-control">
+                                                <option value="30000">N30,000</option>
                                             </select>
                                         </div> 
                                         
