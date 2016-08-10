@@ -44,9 +44,9 @@
 	                    <div class="panel panel-default p-0 m-t-20">
 	                        <div class="panel-body p-0">
 	                            <div class="list-group mail-list">
-	                              <a href="{{ Url('users') }}" class="list-group-item no-border "><i class="fa fa-download m-r-5"></i> Users <b>({{$all_users->count()}})</b></a>
-	                              <a href="{{ Url('users/?admins=true') }}" class="list-group-item no-border"><i class="fa fa-download m-r-5"></i>Admins <b>({{$admins->count()}})</b></a>
-	                              <a href="{{ Url('users/?tenant=true') }}" class="list-group-item no-border"><i class="fa fa-download m-r-5"></i>Regular Users <b>({{$regular_users->count()}})</b></a>
+	                              <a href="{{ Url('dashboard/users') }}" class="list-group-item no-border "><i class="fa fa-download m-r-5"></i> Users <b>({{$all_users->count()}})</b></a>
+	                              <a href="{{ Url('dashboard/users/?admins=true') }}" class="list-group-item no-border"><i class="fa fa-download m-r-5"></i>Admins <b>({{$admins->count()}})</b></a>
+	                              <a href="{{ Url('dashboard/users/?tenant=true') }}" class="list-group-item no-border"><i class="fa fa-download m-r-5"></i>Regular Users <b>({{$regular_users->count()}})</b></a>
 	                            </div>
 	                        </div>
 	                    </div>
