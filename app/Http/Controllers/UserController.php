@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -106,6 +107,14 @@ class UserController extends Controller
 			session()->flash('message', 'good');
 			return back();
 		}
+	}
+
+	public function postUpdateUser(Request $request)
+	{
+		$request['user_id'] = Auth::user()->id;
+		$this->userRepo->updateUser($request->all());
+		session()->flash('message', 'good');
+		return back();
 	}
 
 }

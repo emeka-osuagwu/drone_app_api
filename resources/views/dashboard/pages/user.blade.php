@@ -5,170 +5,370 @@
 	
 	@include('dashboard.pages.includes.sections.side_bar')
 
+	@if(Auth::user()->profile_status == 0)
+		<script>
+			swal("Opps you need to update your profile under settings!")
+		</script>
+	@endif
+
+	@if (Session::has('message'))
+	<script>
+		swal("Profile updated!")
+	</script>
+	@endif
+
 	<div class="content-page">
 	    <!-- Start content -->
 	    <div class="content">
-	        <div class="container">
+	        
+		    <div class="wraper container-fluid">
+		        <div class="row">
+		            <div class="col-sm-12">
+		                <div class="bg-picture text-center" style="background-image:url({{ asset('assets/images/big/bg.jpg')  }})">
+		                    <div class="bg-picture-overlay"></div>
+		                    <div class="profile-info-name">
+		                        <img src="{{ asset('assets/images/users/avatar-1.jpg') }}" class="thumb-lg img-circle img-thumbnail" alt="profile-image">
+		                        <h3 class="text-white">{{$user->first()->first_name}} {{$user->first()->last_name}} </h3>
+		                    </div>
+		                </div>
+		                <!--/ meta -->
+		            </div>
+		        </div>
 
-	            <!-- Page-Title -->
-	            <div class="row">
-	                <div class="col-sm-12">
-	                    <h4 class="pull-left page-title">Users</h4>
-	                </div>
-	            </div>
+		        <div class="row user-tabs">
+		            <div class="col-lg-6 col-md-9 col-sm-9">
+		                <ul class="nav nav-tabs tabs">
+		                <li class="active tab">
+		                    <a href="#home-2" data-toggle="tab" aria-expanded="false" class=""> 
+		                        <span class="visible-xs"><i class="fa fa-home"></i></span> 
+		                        <span class="hidden-xs">About Me</span> 
+		                    </a> 
+		                </li> 
+		                <li class="tab"> 
+		                    <a href="#profile-2" data-toggle="tab" aria-expanded="false"> 
+		                        <span class="visible-xs"><i class="fa fa-user"></i></span> 
+		                        <span class="hidden-xs">Activities</span> 
+		                    </a> 
+		                </li> 
+		                <li class="tab"> 
+		                    <a href="#messages-2" data-toggle="tab" aria-expanded="true"> 
+		                        <span class="visible-xs"><i class="fa fa-envelope-o"></i></span> 
+		                        <span class="hidden-xs">Projects</span> 
+		                    </a> 
+		                </li> 
+		                @if(Auth::user()->id == $user->first()->id)
+		                <li class="tab"> 
+		                    <a href="#settings-2" data-toggle="tab" aria-expanded="false" class=""> 
+		                        <span class="visible-xs"><i class="fa fa-cog"></i></span> 
+		                        <span class="hidden-xs">Settings</span> 
+		                    </a> 
+		                </li> 
+		                @endif
+		            <div class="indicator"></div></ul> 
+		            </div>
+		        </div>
+		        
+		        <div class="row">
+		            <div class="col-lg-12"> 
+		            
+		            <div class="tab-content profile-tab-content"> 
+		               
+		                <div class="tab-pane active" id="home-2"> 
+		                    <div class="row">
+		                        <div class="col-md-4">
+		                            <!-- Personal-Information -->
+		                            <div class="panel panel-default panel-fill">
+		                                <div class="panel-heading"> 
+		                                    <h3 class="panel-title">Personal Information</h3> 
+		                                </div> 
+		                                <div class="panel-body"> 
+		                                    <div class="about-info-p">
+		                                        <strong>Full Name</strong>
+		                                        <br>
+		                                        <p class="text-muted">{{$user->first()->first_name}} {{$user->first()->last_name}}</p>
+		                                    </div>
+		                                    <div class="about-info-p">
+		                                        <strong>Mobile</strong>
+		                                        <br>
+		                                        <p class="text-muted">{{$user->first()->phone}}</p>
+		                                    </div>
+		                                    <div class="about-info-p">
+		                                        <strong>Email</strong>
+		                                        <br>
+		                                        <p class="text-muted">{{$user->first()->email}}</p>
+		                                    </div>
+		                                    <div class="about-info-p m-b-0">
+		                                        <strong>Location</strong>
+		                                        <br>
+		                                        <p class="text-muted">{{$user->first()->city}}</p>
+		                                    </div>
+		                                </div> 
+		                            </div>
+		                            <!-- Personal-Information -->
 
-	            <div class="row">
-	            
-	                <!-- Left sidebar -->
-	                <div class="col-lg-3 col-md-4">
-	                    <a href="{{ Url('dashboard/user/create') }}" class="btn btn-danger waves-effect waves-light btn-block">Add User</a>
-	                    <div class="panel panel-default p-0 m-t-20">
-	                        <div class="panel-body p-0">
-	                            <div class="list-group mail-list">
-	                              <a href="{{ Url('dashboard/users') }}" class="list-group-item no-border "><i class="fa fa-download m-r-5"></i> Users <b>({{$all_users->count()}})</b></a>
-	                              <a href="{{ Url('dashboard/users/?admins=true') }}" class="list-group-item no-border"><i class="fa fa-download m-r-5"></i>Admins <b>({{$admins->count()}})</b></a>
-	                              <a href="{{ Url('dashboard/users/?regular_users=true') }}" class="list-group-item no-border"><i class="fa fa-download m-r-5"></i>Regular Users <b>({{$regular_users->count()}})</b></a>	
-	                            </div>
-	                        </div>
-	                    </div>
-
-	                </div>
-	                <!-- End Left sidebar -->
-	            
-	                <!-- Right Sidebar -->
-	                <div class="col-lg-9 col-md-8">
-
-	                    <div class="panel panel-default m-t-20">
-	                        <div class="panel-body">
-	                            <div class="table-responsive">
-	                                <table class="table table-hover mails">
-	                                    <tbody>
-	                                    	@if($users->count() > 0)
-		                                    	@foreach($users as $user)
-		                                        <tr>
-		                                            <td class="mail-select">
-		                                                <div class="checkbox checkbox-primary">
-		                                                    <input id="checkbox1" type="checkbox" checked="checked">
-		                                                    <label for="checkbox1"></label>
-		                                                </div>
-		                                            </td>
-		                                            <td>
-		                                                <a href="{{ Url('dashboard/user/' . $user->id) }}">{{ $user->first()->name ? $user->first()->name : "Name Unknown" }}</a>
-		                                            </td>
-		                                            <td>
-		                                                <a href="{{ Url('dashboard/user/' . $user->id) }}">
-		                                                	@if($user->role == 1)
-		                                                		Admin
-		                                                	@elseif($user->role == 2)
-		                                                		Property Owner
-		                                                	@elseif($user->role == 3)
-		                                                		Tenant
-		                                                	@endif
-		                                                </a>
-		                                            </td>
-		                                            <td class="text-right">
-		                                                <div class="btn-group col-md-5">
-															<button type="button" class="btn btn-primary waves-effect waves-light dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
-															
-															<span class="ion-gear-b"></span>
-															</button>
-															<ul class="dropdown-menu">
-																<li><a href="{{ Url('dashboard/user/' . $user->id) }}">View Profile</a></li>
-																<li><a href="#fakelink">Delete</a></li>
-																<li><a href="#fakelink" data-toggle="modal" data-target="#con-close-modal{{$user->id}}">Send Message</a></li>
-															</ul>
-														</div>
-													</td>
-		                                            <td class="text-right">
-		                                                {{$user->first()->created_at->diffForHumans()}}
-		                                            </td>
-		                                        </tr>
-	                                        	@endforeach
-
-		                                        @foreach($users as $user)
-		                                        	<div id="con-close-modal{{$user->id}}" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none">
-		                                        	   <form action="{{ Url('user/sendmessage') }}" method="post">
-			                                        	    <div class="modal-dialog"> 
-			                                        	        <div class="modal-content"> 
-			                                        	            <div class="modal-header"> 
-			                                        	                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button> 
-			                                        	                <h4 class="modal-title">Modal Content is Responsive</h4> 
-			                                        	            </div> 
-			                                        	            <div class="modal-body"> 
-			                                        	                <div class="row"> 
-			                                        	                    <div class="col-md-6"> 
-			                                        	                        <div class="form-group"> 
-			                                        	                            <label for="field-1" class="control-label">From</label> 
-			                                        	                            <input type="text" class="form-control" id="field-1" placeholder="" name="sender" value="{{ Auth::user()->email }}"> 
-			                                        	                        </div> 
-			                                        	                    </div> 
-			                                        	                    <div class="col-md-6"> 
-			                                        	                        <div class="form-group"> 
-			                                        	                            <label for="field-2" class="control-label">To</label> 
-			                                        	                            <input type="text" class="form-control" id="field-2" placeholder="" name="receiver" value="{{$user->email}}"> 
-			                                        	                        </div> 
-			                                        	                    </div> 
-			                                        	                </div> 
-			                                        	                <div class="row"> 
-			                                        	                    <div class="col-md-12"> 
-			                                        	                        <div class="form-group"> 
-			                                        	                            <label for="field-3" class="control-label">Subject</label> 
-			                                        	                            <input type="text" class="form-control" id="field-3" name="subject" placeholder="Subject"> 
-			                                        	                        </div> 
-			                                        	                    </div> 
-			                                        	                </div> 
-			                                        	                <div class="row"> 
-			                                        	                    <div class="col-md-12"> 
-			                                        	                        <div class="form-group no-margin"> 
-			                                        	                            <label for="field-7" class="control-label">Message</label> 
-			                                        	                            <textarea name="message" class="form-control autogrow" id="field-7" placeholder="Write your message here" style="overflow: hidden; word-wrap: break-word; resize: horizontal; height: 104px"></textarea> 
-			                                        	                        </div> 
-			                                        	                    </div> 
-			                                        	                </div> 
-			                                        	            </div> 
-			                                        	            <div class="modal-footer"> 
-			                                        	            <br>
-			                                        	                <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button> 
-			                                        	                <button type="submit" class="btn btn-info waves-effect waves-light">Save changes</button> 
-			                                        	            </div> 
-			                                        	        </div> 
-			                                        	    </div>
-		                                        		</form>
-		                                        	</div>
-		                                        @endforeach
-		                                    @else
-		                                    	<div class="alert alert-info alert-dismissable">
-		                                    	    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-		                                    	    Opps we currently don't have any User under this category to show at the moment. <a href="{{ Url('dashboard/user/create') }}" class="alert-link">Why don't you add some?</a>
-		                                    	</div>
-		                                    @endif
-
-	                                    </tbody>
-	                                </table>
-	                            </div>
-	                            
-	                            <hr>
-	                            
-	             <!--                <div class="row">
-	                                <div class="col-xs-5">
-	                                    <div class="btn-group pull-right">
-	                                      <button type="button" class="btn btn-default waves-effect"><i class="fa fa-chevron-left"></i></button>
-	                                      <button type="button" class="btn btn-default waves-effect"><i class="fa fa-chevron-right"></i></button>
-	                                    </div>
-	                                </div>
-	                            </div> -->
-	                        
-	                        </div> <!-- panel body -->
-	                    </div> <!-- panel -->
-	                </div> <!-- end Col-9 -->
-	            
-	            </div><!-- End row -->
+		                            <!-- Languages -->
+		                            <div class="panel panel-default panel-fill">
+		                                <div class="panel-heading"> 
+		                                    <h3 class="panel-title">Languages</h3> 
+		                                </div> 
+		                                <div class="panel-body"> 
+		                                    <ul>
+		                                        <li>English</li>
+		                                        <li>Franch</li>
+		                                        <li>Greek</li>
+		                                    </ul>
+		                                </div> 
+		                            </div>
+		                            <!-- Languages -->
+		                        </div>
 
 
+		                        <div class="col-md-8">
+		                            <!-- Personal-Information -->
+		                            <div class="panel panel-default panel-fill">
+		                                <div class="panel-heading"> 
+		                                    <h3 class="panel-title">Biography</h3> 
+		                                </div> 
+		                                <div class="panel-body"> 
+		                                    <p>{{$user->first()->description}}</p>
+		                                </div> 
+		                            </div>
+		                            <!-- Personal-Information -->
 
-	        </div> <!-- container -->
+		                            <div class="panel panel-default panel-fill">
+		                                <div class="panel-heading"> 
+		                                    <h3 class="panel-title">Skills</h3> 
+		                                </div> 
+		                                <div class="panel-body"> 
+		                                    <div class="m-b-15">
+		                                        <h5>Angular Js <span class="pull-right">60%</span></h5>
+		                                        <div class="progress">
+		                                            <div class="progress-bar progress-bar-primary wow animated progress-animated" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+		                                                <span class="sr-only">60% Complete</span>
+		                                            </div>
+		                                        </div>
+		                                    </div>
+
+		                                    <div class="m-b-15">
+		                                        <h5>Javascript <span class="pull-right">90%</span></h5>
+		                                        <div class="progress">
+		                                            <div class="progress-bar progress-bar-pink wow animated progress-animated" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 90%">
+		                                                <span class="sr-only">90% Complete</span>
+		                                            </div>
+		                                        </div>
+		                                    </div>
+
+		                                    <div class="m-b-15">
+		                                        <h5>Wordpress <span class="pull-right">80%</span></h5>
+		                                        <div class="progress">
+		                                            <div class="progress-bar progress-bar-purple wow animated progress-animated" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
+		                                                <span class="sr-only">80% Complete</span>
+		                                            </div>
+		                                        </div>
+		                                    </div>
+
+		                                    <div class="m-b-0">
+		                                        <h5>HTML5 &amp; CSS3 <span class="pull-right">95%</span></h5>
+		                                        <div class="progress">
+		                                            <div class="progress-bar progress-bar-info wow animated progress-animated" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" style="width: 95%">
+		                                                <span class="sr-only">95% Complete</span>
+		                                            </div>
+		                                        </div>
+		                                    </div>
+
+		                                </div> 
+		                            </div>
+
+		                        </div>
+
+		                    </div>
+		                </div> 
+
+		                <div class="tab-pane" id="profile-2">
+		                    <!-- Personal-Information -->
+		                    <div class="panel panel-default panel-fill">
+		                        
+		                        <div class="panel-body"> 
+		                            <div class="timeline-2">
+		                            <div class="time-item">
+		                                <div class="item-info">
+		                                    <div class="text-muted">5 minutes ago</div>
+		                                    <p><strong><a href="#" class="text-info">John Doe</a></strong> Uploaded a photo <strong>"DSC000586.jpg"</strong></p>
+		                                </div>
+		                            </div>
+
+		                            <div class="time-item">
+		                                <div class="item-info">
+		                                    <div class="text-muted">30 minutes ago</div>
+		                                    <p><a href="#" class="text-info">Lorem</a> commented your post.</p>
+		                                    <p><em>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam laoreet tellus ut tincidunt euismod. "</em></p>
+		                                </div>
+		                            </div>
+
+		                            <div class="time-item">
+		                                <div class="item-info">
+		                                    <div class="text-muted">59 minutes ago</div>
+		                                    <p><a href="#" class="text-info">Jessi</a> attended a meeting with<a href="#" class="text-success">John Doe</a>.</p>
+		                                    <p><em>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam laoreet tellus ut tincidunt euismod. "</em></p>
+		                                </div>
+		                            </div>
+
+		                            <div class="time-item">
+		                                <div class="item-info">
+		                                    <div class="text-muted">5 minutes ago</div>
+		                                    <p><strong><a href="#" class="text-info">John Doe</a></strong>Uploaded 2 new photos</p>
+		                                </div>
+		                            </div>
+
+		                            <div class="time-item">
+		                                <div class="item-info">
+		                                    <div class="text-muted">30 minutes ago</div>
+		                                    <p><a href="#" class="text-info">Lorem</a> commented your post.</p>
+		                                    <p><em>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam laoreet tellus ut tincidunt euismod. "</em></p>
+		                                </div>
+		                            </div>
+
+		                            <div class="time-item">
+		                                <div class="item-info">
+		                                    <div class="text-muted">59 minutes ago</div>
+		                                    <p><a href="#" class="text-info">Jessi</a> attended a meeting with<a href="#" class="text-success">John Doe</a>.</p>
+		                                    <p></p>
+		                                </div>
+		                            </div>
+		                        </div>
+
+		                        </div> 
+		                    </div>
+		                    <!-- Personal-Information -->
+		                </div> 
+
+		                <div class="tab-pane" id="messages-2">
+		                    <!-- Personal-Information -->
+		                    <div class="panel panel-default panel-fill">
+		                        <div class="panel-heading"> 
+		                            <h3 class="panel-title">My Projects</h3> 
+		                        </div> 
+		                        <div class="panel-body"> 
+		                            <div class="table-responsive">
+		                                                <table class="table">
+		                                                    <thead>
+		                                                        <tr>
+		                                                            <th>#</th>
+		                                                            <th>Project Name</th>
+		                                                            <th>Start Date</th>
+		                                                            <th>Due Date</th>
+		                                                            <th>Status</th>
+		                                                            <th>Assign</th>
+		                                                        </tr>
+		                                                    </thead>
+		                                                    <tbody>
+		                                                        <tr>
+		                                                            <td>1</td>
+		                                                            <td>Moltran Admin</td>
+		                                                            <td>01/01/2015</td>
+		                                                            <td>07/05/2015</td>
+		                                                            <td><span class="label label-info">Work in Progress</span></td>
+		                                                            <td>Coderthemes</td>
+		                                                        </tr>
+		                                                        <tr>
+		                                                            <td>2</td>
+		                                                            <td>Moltran Frontend</td>
+		                                                            <td>01/01/2015</td>
+		                                                            <td>07/05/2015</td>
+		                                                            <td><span class="label label-success">Pending</span></td>
+		                                                            <td>Coderthemes</td>
+		                                                        </tr>
+		                                                        <tr>
+		                                                            <td>3</td>
+		                                                            <td>Moltran Admin</td>
+		                                                            <td>01/01/2015</td>
+		                                                            <td>07/05/2015</td>
+		                                                            <td><span class="label label-pink">Done</span></td>
+		                                                            <td>Coderthemes</td>
+		                                                        </tr>
+		                                                        <tr>
+		                                                            <td>4</td>
+		                                                            <td>Moltran Frontend</td>
+		                                                            <td>01/01/2015</td>
+		                                                            <td>07/05/2015</td>
+		                                                            <td><span class="label label-purple">Work in Progress</span></td>
+		                                                            <td>Coderthemes</td>
+		                                                        </tr>
+		                                                        <tr>
+		                                                            <td>5</td>
+		                                                            <td>Moltran Admin</td>
+		                                                            <td>01/01/2015</td>
+		                                                            <td>07/05/2015</td>
+		                                                            <td><span class="label label-warning">Coming soon</span></td>
+		                                                            <td>Coderthemes</td>
+		                                                        </tr>
+		                                                        
+		                                                    </tbody>
+		                                                </table>
+		                                            </div>
+
+		                        </div> 
+		                    </div>
+		                    <!-- Personal-Information -->
+		                </div> 
+
+		                @if(Auth::user()->id == $user->first()->id)
+		                <div class="tab-pane" id="settings-2">
+		                    <form action="{{ Url('dashboard/user/update') }}" method="post">
+			                    <div class="panel panel-default panel-fill">
+			                        <div class="panel-heading"> 
+			                            <h3 class="panel-title">Edit Profile</h3> 
+			                        </div> 
+			                        <div class="panel-body"> 
+			                            <form role="form">
+			                                <div class="form-group">
+			                                    <label for="FullName">First Name</label>
+			                                    <input type="text" value="{{$user->first()->first_name}}" id="FullName" name="first_name" class="form-control" required>
+			                                </div>
+			                                <div class="form-group">
+			                                    <label for="FullName">Last Name</label>
+			                                    <input type="text" value="{{$user->first()->last_name}}" name="last_name" id="FullName" class="form-control" required>
+			                                </div>
+			                                <div class="form-group">
+			                                    <label for="Email">Email</label>
+			                                    <input type="email" name="email" value="{{$user->first()->email}}" id="Email" class="form-control" required>
+			                                </div>
+			                                <div class="form-group">
+			                                    <label for="Username">Image</label>
+			                                    <input type="file" id="Username" class="form-control">
+			                                </div>
+											<div class="form-group">
+			                                    <label for="Password">Mobile Number</label>
+			                                    <input type="tel" placeholder="090 *** *** **" class="form-control" name="phone" value="{{ old('phone') }}" required>
+			                                </div>
+											<div class="form-group">
+			                                    <label for="Password">Location</label>
+			                                    <input type="text" placeholder="Your Location" class="form-control" name="city" value="{{ old('location') }}" required>
+			                                </div>
+											<!-- 		                                
+			                                <div class="form-group">
+			                                    <label for="RePassword">Re-Password</label>
+			                                    <input type="password" placeholder="6 - 15 Characters" id="RePassword" class="form-control">
+			                                </div> -->
+			                                <div class="form-group">
+			                                    <label for="AboutMe">About Me</label>
+			                                    <textarea style="height: 125px" id="AboutMe" name="description" class="form-control" required>{{ old('description') }}</textarea>
+			                                </div>
+			                                <button class="btn btn-primary waves-effect waves-light w-md" type="submit">Save</button>
+			                            </form>
+
+			                        </div> 
+			                    </div>
+		        			</form>
+		                </div>
+		                @endif
+
+		            </div> 
+		        </div>
+		        </div>
+		    </div>
 	                   
-	    </div> <!-- content -->
+	    </div>
 
 	    <footer class="footer text-right">
 	        2015 © Moltran.

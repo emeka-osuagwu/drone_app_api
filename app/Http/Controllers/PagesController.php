@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 
@@ -55,5 +56,17 @@ class PagesController extends Controller
          }
 
          return view('dashboard.pages.users', compact( 'users', 'all_users', 'admins', 'regular_users'));
+      }
+
+      public function getUser()
+      {
+         $user = $this->userRepo->getUserWhere('id', Auth::user()->id)->get();
+         return view('dashboard.pages.user', compact('user'));
+      }
+
+      public function getUserProfile($id)
+      {
+         $user = $this->userRepo->getUserWhere('id', $id)->get();
+         return view('dashboard.pages.user', compact('user'));
       }
 }

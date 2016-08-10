@@ -31,6 +31,7 @@ class Kernel extends HttpKernel
             // \App\Http\Middleware\ValidateRequestToken::class,
             \App\Http\Middleware\CORS::class,
             // \App\Http\Middleware\VerifyCsrfToken::class,
+            \App\Http\Middleware\CheckUserProfileValidation::class,
         ],
 
         'api' => [
