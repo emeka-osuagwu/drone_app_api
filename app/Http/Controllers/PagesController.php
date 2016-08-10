@@ -36,4 +36,24 @@ class PagesController extends Controller
          $regular_users    = $this->userRepo->getUserWhere('role', 0)->get();
          return view('dashboard.pages.create_user', compact('all_users', 'admins', 'regular_users'));
       }
+
+      public function usersPage(Request $request)
+      {
+         $users            = $this->userRepo->getAllUser();
+         $admins           = $this->userRepo->getUserWhere('role', 1)->get();
+         $all_users        = $this->userRepo->getAllUser();
+         $regular_users    = $this->userRepo->getUserWhere('role', 0)->get();  
+         
+         if ($request->has('admins')) 
+         {
+            $users = $admins;
+         }
+
+         if ($request->has('regular_users')) 
+         {
+            $users = $regular_users;
+         }
+
+         return view('dashboard.pages.users', compact( 'users', 'all_users', 'admins', 'regular_users'));
+      }
 }
