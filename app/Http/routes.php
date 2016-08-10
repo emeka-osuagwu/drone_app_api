@@ -11,163 +11,28 @@
 |
 */
 
-	Route::get('/', function (){
-		return view('app.pages.index');
-	});
-
-	Route::get('logout', [
-		'uses' 	=> 'Auth\AuthController@logout',
-		'as' 	=> 'api.v1.login'
-	]);
-
-	Route::post('login', [
-		'uses' 	=> 'Auth\AuthController@postLogin',
-		'as' 	=> 'api.v1.login'
-	]);
-
-	Route::get('login', [
-		'uses' 	=> 'PagesController@login',
-		'as' 	=> 'api.v1.login'
-	]);
-
-	Route::get('register', [
-		'uses' 	=> 'PagesController@register',
-		'as' 	=> ''
-	]);
-
-	Route::post('register', [
-		'uses' 	=> 'Auth\AuthController@postRegister',
-		'as' 	=> 'api.v1.register'
-	]);
 
 
-	Route::get('users', [
-		'uses' 	=> 'UserController@getAllUser',
-		'as' 	=> 'api.v1.users'
-	]);
+Route::get('/', function (){
+	return view('app.pages.index');
+});
 
-	Route::group(['prefix' => 'user'], function () {
+Route::post('login', [
+	'uses' 	=> 'Auth\AuthController@postLogin',
+	'as' 	=> 'api.v1.login'
+]);
 
-		Route::get('{id}', [
-			'uses' 	=> 'UserController@getUser',
-			'as' 	=> 'api.v1.{id}'
-		]);	
+Route::get('login', [
+	'uses' 	=> 'PagesController@login',
+	'as' 	=> 'api.v1.login'
+]);
 
-		Route::get('{id}/videos', [
-			'uses' 	=> 'UserController@getUserVideo',
-			'as' 	=> 'api.v1.{id}.videos'
-		]);	
+Route::get('register', [
+	'uses' 	=> 'PagesController@register',
+	'as' 	=> ''
+]);
 
-		Route::get('{id}/posts', [
-			'uses' 	=> 'UserController@getUserPost',
-			'as' 	=> 'api.v1.{id}.videos'
-		]);	
-
-	});
-
-	Route::get('posts', [
-		'uses' 	=> 'PostController@getAllPost',
-		'as' 	=> 'api.v1.posts'
-	]);
-
-	Route::group(['prefix' => 'post'], function () {
-
-		Route::get('{id}', [
-			'uses' 	=> 'UserController@getUser',
-			'as' 	=> 'api.v1.{id}'
-		]);	
-
-		Route::get('{id}', [
-			'uses' 	=> 'PostController@getUserPost',
-			'as' 	=> 'api.v1.{id}'
-		]);	
-
-		Route::post('create', [
-			'uses' 	=> 'PostController@postCreatePost',
-			'as' 	=> 'api.v1.post.create'
-		]);
-
-		Route::post('like', [
-			'uses' 	=> 'PostController@postLikePost',
-			'as' 	=> 'api.v1.post.like'
-		]);	
-
-		Route::post('dislike', [
-			'uses' 	=> 'PostController@postDisLikePost',
-			'as' 	=> 'api.v1.post.dislike'
-		]);	
-
-		Route::post('comment', [
-			'uses' 	=> 'PostController@postComment',
-			'as' 	=> 'api.v1.post.comment'
-		]);	
-
-		Route::post('comment/delete', [
-			'uses' 	=> 'PostController@postDeleteComment',
-			'as' 	=> 'api.v1.post.comment.delete'
-		]);	
-
-	});
-
-	Route::get('search', [
-		'uses' 	=> 'SearchController@search',
-		'as' 	=> 'api.v1.search'
-	]);
-
-	Route::group(['prefix' => 'dashboard', 'middleware' => ['isAdmin']], function () {
-
-		
-		Route::get('/', [
-			'uses' 	=> 'PagesController@adminIndex',
-			'as' 	=> 'dashboard'
-		]);
-
-
-		Route::get('videos', [
-			'uses' 	=> 'VideoController@getAllVideo',
-			'as' 	=> 'api.v1.videos'
-		]);
-
-		Route::group(['prefix' => 'video'], function () {
-
-			Route::get('create', function (){
-				return view('upload');
-			});	
-			
-			Route::get('create', [
-				'uses' 	=> 'PagesController@createVideo',
-				'as' 	=> 'api.v1.video.create'
-			]);	
-
-			Route::post('create', [
-				'uses' 	=> 'VideoController@postUploadVideo',
-				'as' 	=> 'api.v1.video.create'
-			]);	
-			
-			Route::get('{id}', [
-				'uses' 	=> 'VideoController@getVideo',
-				'as' 	=> 'api.v1.video.{id}'
-			]);
-
-			Route::post('{id}/delete', [
-				'uses' 	=> 'VideoController@delete',
-				'as' 	=> 'api.v1.video.{id}.delete'
-			]);	
-
-			Route::post('update', [
-				'uses' 	=> 'PostController@postUpdatePost',
-				'as' 	=> 'api.v1.video.{id}.delete'
-			]);	
-
-		});
-
-
-
-
-		Route::post('create', [
-			'uses' 	=> 'UserController@postCreateAdminUser',
-			'as' 	=> 'api.v1.posts'
-		]);
-
-	});
-
+Route::post('register', [
+	'uses' 	=> 'Auth\AuthController@postRegister',
+	'as' 	=> 'api.v1.register'
+]);
