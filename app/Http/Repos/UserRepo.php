@@ -17,7 +17,7 @@ class UserRepo
 	==========================================*/
 	public function getUserWhere($field, $value)
 	{
-		return User::where($field, $value)->get();
+		return User::where($field, $value);
 	}
 
 	/*=========================================

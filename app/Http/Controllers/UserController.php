@@ -96,23 +96,16 @@ class UserController extends Controller
 
 		if ($validator->fails())
 		{
-		    $response =   [
-		        "status"    =>"501",
-		        "message"   => $validator->errors()
-		    ];
+			return back()->withErrors($validator)->withInput($request->all());
 		}
 		else
 		{
 			$request['tmp_password'] = substr(bcrypt($request['name']), 50);
+			
 			$this->userRepo->createAdminUser($request->all());
-
-		    $response =  [
-		        "status"    => "200",
-		        "message"   => "admin user create",
-		    ];
+			session()->flash('message', 'good');
+			return back();
 		}
-		
-		return response()->json($response);
 	}
 
 }

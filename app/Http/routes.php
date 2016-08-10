@@ -93,10 +93,14 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['isAdmin']], function ()
 	Route::group(['prefix' => 'user'], function () {
 		
 		Route::get('create', [
-			'uses' 	=> 'UserController@getCreateUser',
+			'uses' 	=> 'PagesController@getCreateUser',
+			'as' 	=> 'dashboard.user.create'
+		]);	
+
+		Route::post('create', [
+			'uses' 	=> 'UserController@postCreateAdminUser',
 			'as' 	=> 'dashboard.user.create'
 		]);
-
 
 	});
 
