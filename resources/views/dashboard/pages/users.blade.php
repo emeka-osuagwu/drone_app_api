@@ -53,11 +53,11 @@
 		                                                </div>
 		                                            </td>
 		                                            <td>
-		                                                <a href="{{ Url('dashboard/user/' . $user->id) }}">{{ $user->first()->name ? $user->first()->name : "Name Unknown" }}</a>
+		                                                <a href="{{ Url('dashboard/user/' . $user->id) }}">{{ $user->first()->first_name ? $user->first()->first_name . " " .$user->first()->last_name : "Name Unknown" }}</a>
 		                                            </td>
 		                                            <td>
 		                                                <a href="{{ Url('dashboard/user/' . $user->id) }}">
-		                                                	@if($user->role == 1)
+		                                                	@if( (int) $user->role == 1)
 		                                                		Admin
 		                                                	@elseif($user->role == 2)
 		                                                		Property Owner
