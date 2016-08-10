@@ -90,6 +90,11 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['isAdmin']], function ()
 
 	});
 
+	Route::get('users', [
+		'uses' 	=> 'PagesController@usersPage',
+		'as' 	=> 'dashboard.users'
+	]);
+
 	Route::group(['prefix' => 'user'], function () {
 		
 		Route::get('create', [
