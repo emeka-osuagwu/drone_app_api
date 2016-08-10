@@ -36,3 +36,61 @@ Route::post('register', [
 	'uses' 	=> 'Auth\AuthController@postRegister',
 	'as' 	=> 'api.v1.register'
 ]);
+
+
+Route::group(['prefix' => 'dashboard', 'middleware' => ['isAdmin']], function () {
+
+	
+	Route::get('/', [
+		'uses' 	=> 'PagesController@adminIndex',
+		'as' 	=> 'dashboard'
+	]);
+
+
+	Route::get('videos', [
+		'uses' 	=> 'VideoController@getAllVideo',
+		'as' 	=> 'api.v1.videos'
+	]);
+
+	Route::group(['prefix' => 'video'], function () {
+
+		Route::get('create', function (){
+			return view('upload');
+		});	
+		
+		Route::get('create', [
+			'uses' 	=> 'PagesController@createVideo',
+			'as' 	=> 'api.v1.video.create'
+		]);	
+
+		Route::post('create', [
+			'uses' 	=> 'VideoController@postUploadVideo',
+			'as' 	=> 'api.v1.video.create'
+		]);	
+		
+		Route::get('{id}', [
+			'uses' 	=> 'VideoController@getVideo',
+			'as' 	=> 'api.v1.video.{id}'
+		]);
+
+		Route::post('{id}/delete', [
+			'uses' 	=> 'VideoController@delete',
+			'as' 	=> 'api.v1.video.{id}.delete'
+		]);	
+
+		Route::post('update', [
+			'uses' 	=> 'PostController@postUpdatePost',
+			'as' 	=> 'api.v1.video.{id}.delete'
+		]);	
+
+	});
+
+
+
+
+	Route::post('create', [
+		'uses' 	=> 'UserController@postCreateAdminUser',
+		'as' 	=> 'api.v1.posts'
+	]);
+
+});

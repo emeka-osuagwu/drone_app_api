@@ -29,5 +29,10 @@ class Controller extends BaseController
         $this->tokenRepo    = new TokenRepo;
     	$this->videoRepo 	= new VideoRepo;
     	$this->commentRepo 	= new CommentRepo;
+
+        $this->middleware('auth', ['except' => [
+            'loginPage',
+            'registerPage',
+        ]]);
     }
 }

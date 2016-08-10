@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
+	function __construct($foo = null)
+	{
+		parent::__construct();
+	}
 
 	public function getALlPost()
 	{
