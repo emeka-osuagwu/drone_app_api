@@ -11,7 +11,7 @@
           </button>
 
           <a class="navbar-brand" href="/">
-               <img src="img/anaklevm.png" class="logo" alt="Anakle Logo">
+               <img src="{{ asset('img/anaklevm.png') }}" class="logo" alt="Anakle Logo">
           </a>
         </div>
 

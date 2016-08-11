@@ -72,7 +72,6 @@
 						</a>
 						<ul class="list-unstyled">
 							<li><a href="{{ Url('dashboard/categories') }}">Categories</a></li>
-							<li><a href="{{ Url('dashboard/category/create') }}">Add Category</a></li>
 						</ul>
 				  	</li>
 

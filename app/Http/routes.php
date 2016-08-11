@@ -48,6 +48,12 @@ Route::get('invalid_admin', function ()
 });
 
 
+Route::get('request/video', function ()
+{
+	return view('app.pages.request_video');
+});
+
+
 Route::group(['prefix' => 'dashboard'], function () {
 
 	
