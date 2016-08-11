@@ -14,6 +14,7 @@ class CheckUserProfileValidation
             "login",
             "dashboard/user",
             "logout",
+            "invalid_admin",
             "dashboard/user/update",
         ];
 

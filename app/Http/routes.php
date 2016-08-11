@@ -48,7 +48,7 @@ Route::get('invalid_admin', function ()
 });
 
 
-Route::group(['prefix' => 'dashboard', 'middleware' => ['isAdmin']], function () {
+Route::group(['prefix' => 'dashboard'], function () {
 
 	
 	Route::get('/', [
@@ -71,7 +71,7 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['isAdmin']], function ()
 		Route::get('create', [
 			'uses' 	=> 'PagesController@createVideo',
 			'as' 	=> 'api.v1.video.create'
-		]);	
+		])->middleware('isAdmin');	
 
 		Route::post('create', [
 			'uses' 	=> 'VideoController@postUploadVideo',
@@ -125,6 +125,25 @@ Route::group(['prefix' => 'dashboard', 'middleware' => ['isAdmin']], function ()
 		Route::post('update', [
 			'uses' 	=> 'UserController@postUpdateUser',
 			'as' 	=> 'dashboard.user.create'
+		]);
+
+	});
+
+	Route::get('categories', [
+		'uses' 	=> 'CategoriesController@getCategoriesPage',
+		'as' 	=> 'dashboard.users'
+	]);
+
+	Route::group(['prefix' => 'category'], function () {
+
+		Route::post('create', [
+			'uses' 	=> 'CategoriesController@postCreateCategory',
+			'as' 	=> 'dashboard.category.create'
+		]);
+
+		Route::get('{id}/delete', [
+			'uses' 	=> 'CategoriesController@deleteCategory',
+			'as' 	=> 'api.v1.video.{id}'
 		]);
 
 	});

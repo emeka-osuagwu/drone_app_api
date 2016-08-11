@@ -162,4 +162,20 @@ class ValidationRepo
 
 			return $validator;
 		}
+
+
+
+	/*=========================================
+	Category Validation
+	==========================================*/
+		public function createCategoryValidation($data)
+		{	
+			$validator = Validator::make($data, [
+				'name' 			=> 'required|max:30|min:5|unique:post_categories',
+				'description' 	=> 'required|max:50|min:5',
+			]);
+
+			return $validator;
+		}
+
 }

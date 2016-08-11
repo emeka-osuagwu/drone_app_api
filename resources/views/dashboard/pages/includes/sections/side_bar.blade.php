@@ -62,6 +62,20 @@
 						</ul>
 				  	</li>
 
+				  	<li class="has_sub">
+						<a href="#" class="waves-effect waves-light">
+							<i class="md md-mail"></i>
+							<span>Categories</span>
+							<span class="pull-right">
+						  		<i class="md md-add"></i>
+						  	</span>
+						</a>
+						<ul class="list-unstyled">
+							<li><a href="{{ Url('dashboard/categories') }}">Categories</a></li>
+							<li><a href="{{ Url('dashboard/category/create') }}">Add Category</a></li>
+						</ul>
+				  	</li>
+
 			  </ul>
 			  <div class="clearfix"></div>
 		  </div>

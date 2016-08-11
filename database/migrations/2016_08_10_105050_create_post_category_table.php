@@ -15,6 +15,7 @@ class CreatePostCategoryTable extends Migration
         Schema::create('post_categories', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->string('image');
             $table->string('description');
             $table->timestamps();
         });
