@@ -42,6 +42,11 @@ Route::post('register', [
 	'as' 	=> 'api.v1.register'
 ]);
 
+Route::get('invalid_admin', function ()
+{
+	return view('errors.not_admin_user_error');
+});
+
 
 Route::group(['prefix' => 'dashboard', 'middleware' => ['isAdmin']], function () {
 

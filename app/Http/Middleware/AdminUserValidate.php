@@ -18,20 +18,14 @@ class AdminUserValidate
      */
     public function handle($request, Closure $next, $guard = null)
     {
-        // if ( (int) Auth::user()->role == 1) 
-        // {
-        //     return $next($request);
-        // }
-        // else
-        // {
-        //     $response =  [
-        //         "status"    =>"500",
-        //         "message"   => "The Routes is restricted to site admin only",
-        //     ];
-
-        //     return response()->json($response);
-        // }
-        return $next($request);
+        if ( (int) Auth::user()->role == 1) 
+        {
+            return $next($request);
+        }
+        else
+        {
+            return redirect('invalid_admin');
+        }
     }
 
 }
