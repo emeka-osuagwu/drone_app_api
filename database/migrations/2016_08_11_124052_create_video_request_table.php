@@ -16,6 +16,7 @@ class CreateVideoRequestTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->string('description');
+            $table->integer('user_id');
             $table->string('video_lenght');
             $table->string('budget');
             $table->date('date');

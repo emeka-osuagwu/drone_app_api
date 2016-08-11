@@ -9,6 +9,7 @@ use App\Http\Repos\TokenRepo;
 use App\Http\Repos\VideoRepo;
 use App\Http\Repos\CommentRepo;
 use App\Http\Repos\ValidationRepo;
+use App\Http\Repos\VideoRequestRepo;
 use App\Http\Repos\PostCategoriesRepo;
 
 use Illuminate\Foundation\Bus\DispatchesJobs;
@@ -30,6 +31,7 @@ class Controller extends BaseController
         $this->tokenRepo    = new TokenRepo;
     	$this->videoRepo 	= new VideoRepo;
         $this->commentRepo  = new CommentRepo;
+        $this->videoRequestRepo  = new VideoRequestRepo;
     	$this->postCategoriesRepo = new PostCategoriesRepo;
 
         $this->middleware('auth', ['except' => [

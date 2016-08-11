@@ -178,4 +178,22 @@ class ValidationRepo
 			return $validator;
 		}
 
+
+	/*=========================================
+	Category Validation
+	==========================================*/
+		public function createVideoRequestValidation($data)
+		{	
+			$validator = Validator::make($data, [
+				'date' 			=> 'required|date',
+				'title' 		=> 'required|max:30|min:5|unique:video_request',
+				'budget' 		=> 'required|int',
+				'length' 		=> 'required',
+				'address' 		=> 'required',
+				'description' 	=> 'required|max:50|min:5',
+			]);
+
+			return $validator;
+		}
+
 }

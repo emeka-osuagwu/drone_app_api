@@ -47,11 +47,16 @@ Route::get('invalid_admin', function ()
 	return view('errors.not_admin_user_error');
 });
 
+Route::get('video/request', [
+	'uses' 	=> 'VideoRequestController@getCreateVideoRequest',
+	'as' 	=> 'api.v1.register'
+]);
 
-Route::get('request/video', function ()
-{
-	return view('app.pages.request_video');
-});
+Route::post('video/request/create', [
+	'uses' 	=> 'VideoRequestController@postCreateVideoRequest',
+	'as' 	=> 'api.v1.register'
+]);
+
 
 
 Route::group(['prefix' => 'dashboard'], function () {

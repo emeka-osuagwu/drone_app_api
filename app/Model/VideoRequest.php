@@ -13,6 +13,7 @@ class VideoRequest extends Model
 	    'date', 
 	    'title', 
 	    'budget', 
+	    'user_id', 
 	    'address', 
 	    'description', 
 	    'category_id', 

@@ -33,7 +33,7 @@ class CategoriesController extends Controller
 	public function deleteCategory($id)
 	{
 		$this->postCategoriesRepo->deleteCategory($id);
-		session()->flash('message', 'good');
+		session()->flash('category_deleted', 'good');
 		return back();
 	}
 }
