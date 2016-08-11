@@ -14,9 +14,13 @@ class CreateVideoRequestTable extends Migration
     {
         Schema::create('video_request', function (Blueprint $table) {
             $table->increments('id');
-            
-            $table->increments('id');
-            
+            $table->string('title');
+            $table->string('description');
+            $table->string('video_lenght');
+            $table->string('budget');
+            $table->date('date');
+            $table->date('address');
+            $table->integer('category_id');
             $table->timestamps();
         });
     }
