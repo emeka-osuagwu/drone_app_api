@@ -71,7 +71,7 @@
 
                                         <div class="form-group">
                                             <label>Category</label>
-                                            <select multiple="multiple" name="category" class="form-control" required>
+                                            <select multiple="multiple" name="category_id" class="form-control" required>
                                                 <option>Select Category</option>
                                                 @foreach($categories as $category)
                                                     <option value="{{ $category->id }}">{{ $category->name }}</option>

@@ -15,6 +15,7 @@ class Post extends Model
 	    'price', 
 	    'user_id', 
 	    'video_id', 
+	    'category_id', 
 	    'description', 
 	];
 
@@ -31,6 +32,11 @@ class Post extends Model
 	public function video()
 	{
 	   return $this->belongsTo('App\Model\Video', 'video_id');
+	}
+
+	public function category()
+	{
+	   return $this->belongsTo('App\Model\PostCategories');
 	}
 
 }

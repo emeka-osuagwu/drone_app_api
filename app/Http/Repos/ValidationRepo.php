@@ -84,7 +84,7 @@ class ValidationRepo
 				'title' 		=> 'required|max:30|min:4|unique:posts',
 				'tags' 			=> 'required',
 				'price' 		=> 'required|int',
-				'category' 		=> 'required|int',
+				'category_id' 	=> 'required|int',
 				'description' 	=> 'required|max:50|min:4|unique:posts',
 			]);
 

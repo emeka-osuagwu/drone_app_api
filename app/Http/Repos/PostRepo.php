@@ -9,7 +9,7 @@ class PostRepo
 
 	public function getAllPost()
 	{
-		return Post::with('video', 'user')->get();
+		return Post::with('video', 'user', 'category')->get();
 	}	
 
 	public function getPostWhere($field, $value)

@@ -20,6 +20,7 @@ class CreatePostMigration extends Migration
             $table->string('title');
             $table->string('description');
             $table->string('tags');
+            $table->integer('category_id');
             $table->string('price');
             $table->integer('likes')->default(0);
             $table->integer('comments')->default(0);
