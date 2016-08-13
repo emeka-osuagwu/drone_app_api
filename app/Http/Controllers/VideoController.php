@@ -19,8 +19,9 @@ class VideoController extends Controller
 
 	public function getVideo($id)
 	{
-		$video = $this->postRepo->getPostWhere("id", $id)->get()->first();
-		return view('dashboard.pages.video', compact('video'));
+		$post 		= $this->postRepo->getPostWhere("id", $id)->get()->first();
+		$categories = $this->postCategoriesRepo->getAllPostCategories();
+		return view('dashboard.pages.video', compact('post', 'categories'));
 	}
 
 	public function delete(Request $request, $id)

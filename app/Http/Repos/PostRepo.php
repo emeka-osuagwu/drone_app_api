@@ -14,7 +14,7 @@ class PostRepo
 
 	public function getPostWhere($field, $value)
 	{
-		return Post::with('video', 'user', 'likes')->where($field, $value);
+		return Post::with('video', 'user', 'likes', 'category')->where($field, $value);
 	}
 
 	public function createPost($data)
@@ -54,8 +54,11 @@ class PostRepo
 	public function updatePost($data)
 	{
 		$update = [
-			"title" => $data['title'], 
-			"description" => $data['description'], 
+			"title" 		=> $data['title'], 
+			"tags" 			=> $data['tags'], 
+			"price" 		=> $data['price'], 
+			"category_id" 	=> $data['category_id'], 
+			"description" 	=> $data['description'], 
 		];
 
 		Post::where('id', $data['post_id'])->update($update);
