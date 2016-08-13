@@ -47,13 +47,7 @@
 		                <li class="tab"> 
 		                    <a href="#profile-2" data-toggle="tab" aria-expanded="false"> 
 		                        <span class="visible-xs"><i class="fa fa-user"></i></span> 
-		                        <span class="hidden-xs">Activities</span> 
-		                    </a> 
-		                </li> 
-		                <li class="tab"> 
-		                    <a href="#messages-2" data-toggle="tab" aria-expanded="true"> 
-		                        <span class="visible-xs"><i class="fa fa-envelope-o"></i></span> 
-		                        <span class="hidden-xs">Projects</span> 
+		                        <span class="hidden-xs">ORDER HISTORY</span> 
 		                    </a> 
 		                </li> 
 		                @if(Auth::user()->id == $user->first()->id)
@@ -104,22 +98,6 @@
 		                                    </div>
 		                                </div> 
 		                            </div>
-		                            <!-- Personal-Information -->
-
-		                            <!-- Languages -->
-		                            <div class="panel panel-default panel-fill">
-		                                <div class="panel-heading"> 
-		                                    <h3 class="panel-title">Languages</h3> 
-		                                </div> 
-		                                <div class="panel-body"> 
-		                                    <ul>
-		                                        <li>English</li>
-		                                        <li>Franch</li>
-		                                        <li>Greek</li>
-		                                    </ul>
-		                                </div> 
-		                            </div>
-		                            <!-- Languages -->
 		                        </div>
 
 
@@ -133,183 +111,39 @@
 		                                    <p>{{$user->first()->description}}</p>
 		                                </div> 
 		                            </div>
-		                            <!-- Personal-Information -->
-
-		                            <div class="panel panel-default panel-fill">
-		                                <div class="panel-heading"> 
-		                                    <h3 class="panel-title">Skills</h3> 
-		                                </div> 
-		                                <div class="panel-body"> 
-		                                    <div class="m-b-15">
-		                                        <h5>Angular Js <span class="pull-right">60%</span></h5>
-		                                        <div class="progress">
-		                                            <div class="progress-bar progress-bar-primary wow animated progress-animated" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
-		                                                <span class="sr-only">60% Complete</span>
-		                                            </div>
-		                                        </div>
-		                                    </div>
-
-		                                    <div class="m-b-15">
-		                                        <h5>Javascript <span class="pull-right">90%</span></h5>
-		                                        <div class="progress">
-		                                            <div class="progress-bar progress-bar-pink wow animated progress-animated" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 90%">
-		                                                <span class="sr-only">90% Complete</span>
-		                                            </div>
-		                                        </div>
-		                                    </div>
-
-		                                    <div class="m-b-15">
-		                                        <h5>Wordpress <span class="pull-right">80%</span></h5>
-		                                        <div class="progress">
-		                                            <div class="progress-bar progress-bar-purple wow animated progress-animated" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
-		                                                <span class="sr-only">80% Complete</span>
-		                                            </div>
-		                                        </div>
-		                                    </div>
-
-		                                    <div class="m-b-0">
-		                                        <h5>HTML5 &amp; CSS3 <span class="pull-right">95%</span></h5>
-		                                        <div class="progress">
-		                                            <div class="progress-bar progress-bar-info wow animated progress-animated" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" style="width: 95%">
-		                                                <span class="sr-only">95% Complete</span>
-		                                            </div>
-		                                        </div>
-		                                    </div>
-
-		                                </div> 
-		                            </div>
-
 		                        </div>
 
 		                    </div>
 		                </div> 
 
 		                <div class="tab-pane" id="profile-2">
-		                    <!-- Personal-Information -->
-		                    <div class="panel panel-default panel-fill">
-		                        
-		                        <div class="panel-body"> 
-		                            <div class="timeline-2">
-		                            <div class="time-item">
-		                                <div class="item-info">
-		                                    <div class="text-muted">5 minutes ago</div>
-		                                    <p><strong><a href="#" class="text-info">John Doe</a></strong> Uploaded a photo <strong>"DSC000586.jpg"</strong></p>
-		                                </div>
-		                            </div>
+		           			<div class="panel panel-default panel-fill">
+                                <div class="panel-heading"> 
+                                    <h3 class="panel-title">Edit Profile</h3> 
+                                </div>
 
-		                            <div class="time-item">
-		                                <div class="item-info">
-		                                    <div class="text-muted">30 minutes ago</div>
-		                                    <p><a href="#" class="text-info">Lorem</a> commented your post.</p>
-		                                    <p><em>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam laoreet tellus ut tincidunt euismod. "</em></p>
-		                                </div>
-		                            </div>
+                                <div class="panel-body"> 
+                                    <table class="table table-responsive" id="sortable-table">
 
-		                            <div class="time-item">
-		                                <div class="item-info">
-		                                    <div class="text-muted">59 minutes ago</div>
-		                                    <p><a href="#" class="text-info">Jessi</a> attended a meeting with<a href="#" class="text-success">John Doe</a>.</p>
-		                                    <p><em>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam laoreet tellus ut tincidunt euismod. "</em></p>
-		                                </div>
-		                            </div>
-
-		                            <div class="time-item">
-		                                <div class="item-info">
-		                                    <div class="text-muted">5 minutes ago</div>
-		                                    <p><strong><a href="#" class="text-info">John Doe</a></strong>Uploaded 2 new photos</p>
-		                                </div>
-		                            </div>
-
-		                            <div class="time-item">
-		                                <div class="item-info">
-		                                    <div class="text-muted">30 minutes ago</div>
-		                                    <p><a href="#" class="text-info">Lorem</a> commented your post.</p>
-		                                    <p><em>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam laoreet tellus ut tincidunt euismod. "</em></p>
-		                                </div>
-		                            </div>
-
-		                            <div class="time-item">
-		                                <div class="item-info">
-		                                    <div class="text-muted">59 minutes ago</div>
-		                                    <p><a href="#" class="text-info">Jessi</a> attended a meeting with<a href="#" class="text-success">John Doe</a>.</p>
-		                                    <p></p>
-		                                </div>
-		                            </div>
-		                        </div>
-
-		                        </div> 
-		                    </div>
-		                    <!-- Personal-Information -->
-		                </div> 
-
-		                <div class="tab-pane" id="messages-2">
-		                    <!-- Personal-Information -->
-		                    <div class="panel panel-default panel-fill">
-		                        <div class="panel-heading"> 
-		                            <h3 class="panel-title">My Projects</h3> 
-		                        </div> 
-		                        <div class="panel-body"> 
-		                            <div class="table-responsive">
-		                                                <table class="table">
-		                                                    <thead>
-		                                                        <tr>
-		                                                            <th>#</th>
-		                                                            <th>Project Name</th>
-		                                                            <th>Start Date</th>
-		                                                            <th>Due Date</th>
-		                                                            <th>Status</th>
-		                                                            <th>Assign</th>
-		                                                        </tr>
-		                                                    </thead>
-		                                                    <tbody>
-		                                                        <tr>
-		                                                            <td>1</td>
-		                                                            <td>Moltran Admin</td>
-		                                                            <td>01/01/2015</td>
-		                                                            <td>07/05/2015</td>
-		                                                            <td><span class="label label-info">Work in Progress</span></td>
-		                                                            <td>Coderthemes</td>
-		                                                        </tr>
-		                                                        <tr>
-		                                                            <td>2</td>
-		                                                            <td>Moltran Frontend</td>
-		                                                            <td>01/01/2015</td>
-		                                                            <td>07/05/2015</td>
-		                                                            <td><span class="label label-success">Pending</span></td>
-		                                                            <td>Coderthemes</td>
-		                                                        </tr>
-		                                                        <tr>
-		                                                            <td>3</td>
-		                                                            <td>Moltran Admin</td>
-		                                                            <td>01/01/2015</td>
-		                                                            <td>07/05/2015</td>
-		                                                            <td><span class="label label-pink">Done</span></td>
-		                                                            <td>Coderthemes</td>
-		                                                        </tr>
-		                                                        <tr>
-		                                                            <td>4</td>
-		                                                            <td>Moltran Frontend</td>
-		                                                            <td>01/01/2015</td>
-		                                                            <td>07/05/2015</td>
-		                                                            <td><span class="label label-purple">Work in Progress</span></td>
-		                                                            <td>Coderthemes</td>
-		                                                        </tr>
-		                                                        <tr>
-		                                                            <td>5</td>
-		                                                            <td>Moltran Admin</td>
-		                                                            <td>01/01/2015</td>
-		                                                            <td>07/05/2015</td>
-		                                                            <td><span class="label label-warning">Coming soon</span></td>
-		                                                            <td>Coderthemes</td>
-		                                                        </tr>
-		                                                        
-		                                                    </tbody>
-		                                                </table>
-		                                            </div>
-
-		                        </div> 
-		                    </div>
-		                    <!-- Personal-Information -->
+                                        <thead>
+                                        <tr>
+                                            <th>Status</th>
+                                            <th>File Name</th>
+                                            <th>Date</th>
+                                            <th>Price (₦)</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td><a href="" class="orderhistory_downloadbtn btn btn-success">Download</a></td>
+                                            <td>Aerial Footage of Fuel Queue</td>
+                                            <td>March 26, 2016</td>
+                                            <td>5000</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
 		                </div> 
 
 		                @if(Auth::user()->id == $user->first()->id)

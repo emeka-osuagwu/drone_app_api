@@ -7,7 +7,7 @@
 
 <section class="introduction vid">
     <div class="vid-fill">
-        <video autoplay="true" loop="true" src="video/bannervid.mp4" height="550"></video>
+        <video autoplay="true" loop="true" src="{{ asset('video/bannervid.mp4') }}" height="550"></video>
     </div>
 
     <div class="container">
