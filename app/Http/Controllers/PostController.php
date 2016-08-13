@@ -160,4 +160,10 @@ class PostController extends Controller
 		$this->postRepo->updatePost($request->all());
 		return back();
 	}
+
+	public function getVideoRequest()
+	{
+		$video_requests = $this->videoRequestRepo->getAllVideoRequest();
+		return view('dashboard.pages.video_request', compact('video_requests'));
+	}
 }

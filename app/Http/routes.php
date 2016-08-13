@@ -78,6 +78,11 @@ Route::group(['prefix' => 'dashboard'], function () {
 		Route::get('create', function (){
 			return view('upload');
 		});	
+
+		Route::get('request', [
+			'uses' 	=> 'PostController@getVideoRequest',
+			'as' 	=> 'api.v1.video.request'
+		]);	
 		
 		Route::get('create', [
 			'uses' 	=> 'PagesController@createVideo',

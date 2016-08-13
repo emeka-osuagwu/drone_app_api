@@ -20,10 +20,10 @@ class VideoRequest extends Model
 	    'video_lenght', 
 	];
 
-	// public function user()
-	// {
-	//    return $this->belongsTo('App\User', 'user_id');
-	// }
+	public function category()
+	{
+	   return $this->belongsTo('App\Model\PostCategories');
+	}
 
 	// public function post()
 	// {

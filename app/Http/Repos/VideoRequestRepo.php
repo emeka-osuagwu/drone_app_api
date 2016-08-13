@@ -6,9 +6,9 @@ use App\Model\VideoRequest;
 
 class VideoRequestRepo
 {
-	public function getAllPostCategories()
+	public function getAllVideoRequest()
 	{
-		return PostCategories::all();
+		return VideoRequest::with('category')->get();
 	}
 
 	public function createVideoRequest($data)

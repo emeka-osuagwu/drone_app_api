@@ -59,6 +59,7 @@
 						<ul class="list-unstyled">
 							<li><a href="{{ Url('dashboard/videos') }}">Videos</a></li>
 							<li><a href="{{ Url('dashboard/video/create') }}">Add Videos</a></li>
+							<li><a href="{{ Url('dashboard/video/requests') }}">Requests</a></li>
 						</ul>
 				  	</li>
 
