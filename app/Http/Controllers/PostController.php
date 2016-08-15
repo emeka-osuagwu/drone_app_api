@@ -166,4 +166,9 @@ class PostController extends Controller
 		$video_requests = $this->videoRequestRepo->getAllVideoRequest();
 		return view('dashboard.pages.video_request', compact('video_requests'));
 	}
+
+	public function previewVideo($id)
+	{
+		return view('app.pages.preview');
+	}
 }
