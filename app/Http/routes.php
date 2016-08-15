@@ -62,6 +62,11 @@ Route::get('search', [
 	'as' 	=> 'api.v1.register'
 ]);
 
+Route::get('preview/{id}', [
+	'uses' 	=> 'PostController@previewVideo',
+	'as' 	=> 'api.v1.register'
+]);
+
 Route::group(['prefix' => 'dashboard'], function () {
 
 	
