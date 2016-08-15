@@ -41,7 +41,7 @@
                                     <div class="row">
                                         <div class="col-md-4">
                                             <div class="addcategory">
-                                                <form class="addcategory_form" action="{{ Url('dashboard/category/create') }}" method="post">
+                                                <form class="addcategory_form" action="{{ Url('dashboard/category/create') }}" enctype="multipart/form-data" method="post">
                                                     
                                                 	@if (count($errors) > 0)
                                                 	    @foreach ($errors->all() as $error)
@@ -60,7 +60,7 @@
                                                     </div>
 
                                                     <div class="form-group">
-                                                        <input class="form-control" type="text" placeholder="Category Name" name="name" required="">
+                                                        <input class="form-control" type="text" placeholder="Category Name" name="name" required="" value="{{ old('title') }}">
                                                     </div>
                                                     
                                                     <div class="form-group">

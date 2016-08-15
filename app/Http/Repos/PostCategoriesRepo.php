@@ -14,16 +14,17 @@ class PostCategoriesRepo extends CloudderRepo
 
 	public function createCategory($data)
 	{
-		$create = [
-			"name" 			=> $data['name'],
-			"description" 	=> $data['description'],
-			"image" 		=> $this->getImageUrl(),
-		];
 
-		if ( ! isset($data['image']) ||$data['image'] != '' ) 
+		if ( ! isset($data['image']) || $data['image'] != '' ) 
 		{
 			$create['image'] = "http://placehold.it/200x100"; 	
 		}
+
+		$create = [
+			"name" 			=> $data['name'],
+			"image" 		=> $this->getImageUrl(),
+			"description" 	=> $data['description'],
+		];
 
 		PostCategories::create($create);
 	}
