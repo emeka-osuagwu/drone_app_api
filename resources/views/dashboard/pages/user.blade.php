@@ -27,7 +27,7 @@
 		                <div class="bg-picture text-center" style="background-image:url({{ asset('assets/images/big/bg.jpg')  }})">
 		                    <div class="bg-picture-overlay"></div>
 		                    <div class="profile-info-name">
-		                        <img src="{{ asset('assets/images/users/avatar-1.jpg') }}" class="thumb-lg img-circle img-thumbnail" alt="profile-image">
+		                        <img src="{{ ($user->first()->image)? $user->first()->image : asset('assets/images/users/avatar-1.jpg') }}" class="thumb-lg img-circle img-thumbnail" alt="profile-image">
 		                        <h3 class="text-white">{{$user->first()->first_name}} {{$user->first()->last_name}} </h3>
 		                    </div>
 		                </div>
@@ -148,7 +148,7 @@
 
 		                @if(Auth::user()->id == $user->first()->id)
 		                <div class="tab-pane" id="settings-2">
-		                    <form action="{{ Url('dashboard/user/update') }}" method="post">
+		                    <form action="{{ Url('dashboard/user/update') }}" method="post" enctype="multipart/form-data">
 			                    <div class="panel panel-default panel-fill">
 			                        <div class="panel-heading"> 
 			                            <h3 class="panel-title">Edit Profile</h3> 
@@ -169,7 +169,7 @@
 			                                </div>
 			                                <div class="form-group">
 			                                    <label for="Username">Image</label>
-			                                    <input type="file" id="Username" class="form-control">
+			                                    <input type="file" id="Username" name="image" class="form-control">
 			                                </div>
 											<div class="form-group">
 			                                    <label for="Password">Mobile Number</label>

@@ -60,7 +60,7 @@ class UserRepo extends CloudderRepo
 
 	    if (isset($data['image'])  && isset($data['image']) != '' ) 
 	    {
-	    	$data['image'] = $this->getImageUrl();
+	    	$update['image'] = $this->getImageUrl();
 	    }
 
 	    User::where('id', $data['user_id'])->update($update);
