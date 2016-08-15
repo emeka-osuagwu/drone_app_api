@@ -8,6 +8,7 @@ use App\Http\Repos\PostRepo;
 use App\Http\Repos\TokenRepo;
 use App\Http\Repos\VideoRepo;
 use App\Http\Repos\CommentRepo;
+use App\Http\Repos\CloudderRepo;
 use App\Http\Repos\ValidationRepo;
 use App\Http\Repos\VideoRequestRepo;
 use App\Http\Repos\PostCategoriesRepo;
@@ -31,8 +32,9 @@ class Controller extends BaseController
         $this->tokenRepo    = new TokenRepo;
     	$this->videoRepo 	= new VideoRepo;
         $this->commentRepo  = new CommentRepo;
-        $this->videoRequestRepo  = new VideoRequestRepo;
-    	$this->postCategoriesRepo = new PostCategoriesRepo;
+        $this->cloudderRepo         = new CloudderRepo;
+        $this->videoRequestRepo     = new VideoRequestRepo;
+    	$this->postCategoriesRepo   = new PostCategoriesRepo;
 
         $this->middleware('auth', ['except' => [
             'login',

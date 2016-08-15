@@ -19,6 +19,7 @@ class User extends Authenticatable
         'email', 
         'city', 
         'role', 
+        'image', 
         'password',
         'last_name', 
         'first_name', 

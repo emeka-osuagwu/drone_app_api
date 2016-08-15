@@ -27,7 +27,6 @@
                                 <table class="table table-hover table-responsive" id="sortable-table">
                                     <thead>
                                     <tr>
-                                        
                                         <th>Title</th>
                                         <th>Category</th>
                                         <th>Location</th>

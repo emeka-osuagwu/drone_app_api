@@ -173,11 +173,11 @@
 			                                </div>
 											<div class="form-group">
 			                                    <label for="Password">Mobile Number</label>
-			                                    <input type="tel" placeholder="090 *** *** **" class="form-control" name="phone" value="{{ old('phone') }}" required>
+			                                    <input type="tel" placeholder="090 *** *** **" class="form-control" name="phone" value="{{ $user->first()->phone }}" required>
 			                                </div>
 											<div class="form-group">
 			                                    <label for="Password">Location</label>
-			                                    <input type="text" placeholder="Your Location" class="form-control" name="city" value="{{ old('location') }}" required>
+			                                    <input type="text" placeholder="Your Location" class="form-control" name="city" value="{{ $user->first()->city }}" required>
 			                                </div>
 											<!-- 		                                
 			                                <div class="form-group">
@@ -186,7 +186,7 @@
 			                                </div> -->
 			                                <div class="form-group">
 			                                    <label for="AboutMe">About Me</label>
-			                                    <textarea style="height: 125px" id="AboutMe" name="description" class="form-control" required>{{ old('description') }}</textarea>
+			                                    <textarea style="height: 125px" id="AboutMe" name="description" class="form-control" required>{{ $user->first()->description }}</textarea>
 			                                </div>
 			                                <button class="btn btn-primary waves-effect waves-light w-md" type="submit">Save</button>
 			                            </form>

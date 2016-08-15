@@ -7,7 +7,7 @@
 
 			  <div class="user-info">
 				  <div class="dropdown">
-					  <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">{{Auth::user()->first_name}} <span class="caret"></span></a>
+					  <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">{{Auth::user()->first_name}} {{Auth::user()->last_name}}<span class="caret"></span></a>
 					  <ul class="dropdown-menu">
 						  <li><a href="{{ Url('dashboard/user') }}"><i class="md md-face-unlock"></i> Profile<div class="ripple-wrapper"></div></a></li>
 						 <!--  <li><a href="javascript:void(0)"><i class="md md-settings"></i> Settings</a></li>
@@ -59,7 +59,7 @@
 						<ul class="list-unstyled">
 							<li><a href="{{ Url('dashboard/videos') }}">Videos</a></li>
 							<li><a href="{{ Url('dashboard/video/create') }}">Add Videos</a></li>
-							<li><a href="{{ Url('dashboard/video/requests') }}">Requests</a></li>
+							<li><a href="{{ Url('dashboard/video/request') }}">Requests</a></li>
 						</ul>
 				  	</li>
 

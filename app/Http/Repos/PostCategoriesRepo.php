@@ -3,8 +3,9 @@
 namespace App\Http\Repos;
 
 use App\Model\PostCategories;
+use App\Http\Repos\CloudderRepo as CloudderRepo;
 
-class PostCategoriesRepo
+class PostCategoriesRepo extends CloudderRepo
 {
 	public function getAllPostCategories()
 	{
@@ -16,7 +17,7 @@ class PostCategoriesRepo
 		$create = [
 			"name" 			=> $data['name'],
 			"description" 	=> $data['description'],
-			"image" 		=> $data['image'],
+			"image" 		=> $this->getImageUrl(),
 		];
 
 		if ( ! isset($data['image']) ||$data['image'] != '' ) 

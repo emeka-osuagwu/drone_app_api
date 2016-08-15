@@ -3,8 +3,9 @@
 namespace App\Http\Repos;
 
 use App\User;
+use App\Http\Repos\CloudderRepo as CloudderRepo;
 
-class UserRepo
+class UserRepo extends CloudderRepo
 {
 
 	public function getAllUser()
@@ -25,6 +26,9 @@ class UserRepo
 	==========================================*/
 	public function createUser($data)
 	{
+
+		// $data['image'] = $this->getImageUrl();
+
 		User::create($data);
 	}
 
@@ -53,6 +57,11 @@ class UserRepo
 	        "description"       => $data['description'],
 	        "profile_status"    => 1,
 	    ];
+
+	    if (isset($data['image'])  && isset($data['image']) != '' ) 
+	    {
+	    	$data['image'] = $this->getImageUrl();
+	    }
 
 	    User::where('id', $data['user_id'])->update($update);
 	}

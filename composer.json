@@ -9,7 +9,8 @@
         "laravel/framework": "5.2.*",
          "firebase/php-jwt": "dev-master",
          "transloadit/php-sdk": "dev-master",
-         "linkthrow/ffmpeg": "dev-master"
+         "linkthrow/ffmpeg": "dev-master",
+         "jrm2k6/cloudder": "0.2.2"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
