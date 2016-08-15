@@ -69,4 +69,9 @@ class PagesController extends Controller
          $user = $this->userRepo->getUserWhere('id', $id)->get();
          return view('dashboard.pages.user', compact('user'));
       }
+
+      public function searchPage(Request $request)
+      {
+         return view('app.pages.search');
+      }
 }

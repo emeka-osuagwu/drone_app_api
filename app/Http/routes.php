@@ -57,7 +57,10 @@ Route::post('video/request/create', [
 	'as' 	=> 'api.v1.register'
 ]);
 
-
+Route::get('search', [
+	'uses' 	=> 'PagesController@searchPage',
+	'as' 	=> 'api.v1.register'
+]);
 
 Route::group(['prefix' => 'dashboard'], function () {
 
