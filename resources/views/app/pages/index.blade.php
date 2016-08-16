@@ -17,9 +17,9 @@
                     <p><strong>Browse Stock Drone Footages</strong></p>
 
                     <p>Find the perfect stock footage for your next project<br> from our collection of aerial footages</p>
-                    <form class="hero-unit-form">
+                    <form class="hero-unit-form" action="{{ Url('search') }}" method="get">
                         <div class="form-group">
-                            <input class="form-control" placeholder="Search drone footage.." type="text">
+                            <input class="form-control" placeholder="Search drone footage.." name="videos" type="text">
                         </div>
                     </form>
                 </div>

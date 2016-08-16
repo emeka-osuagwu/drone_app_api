@@ -38,8 +38,9 @@ class Controller extends BaseController
 
         $this->middleware('auth', ['except' => [
             'login',
-            'postLogin',
             'register',
+            'postLogin',
+            'searchPage',
             'postRegister',
         ]]);
     }
