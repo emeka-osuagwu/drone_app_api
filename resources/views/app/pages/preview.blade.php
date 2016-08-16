@@ -32,7 +32,7 @@
                 <div class="col-md-6">
                     <div class="singlevideo_preview">
                         <video width="100%" controls="">
-                            <source src="video/bannervid.mp4" type="video/mp4">
+                            <source src="{{ $video->video->watermark_url }}" type="video/mp4">
                         </video>
                     </div>
 
@@ -42,10 +42,10 @@
                     <div class="singlevideo_details">
                         <div class="singlevideo_header">
                             <div class="singlevideo_title">
-                                <h3>Aerial Footage of Fuel Queue in Lekki, Lagos Nigeria</h3>
+                                <h3>{{ $video->title }}</h3>
                             </div>
                             <div class="singlevideo_keywords">
-                                <h4><strong>Tags</strong>: Lagos, Drone, Fuel Queue, Nigeria, Aerial Footage</h4>
+                                <h4><strong>Tags</strong>: {{ $video->tags }}</h4>
                             </div>
                         </div>
 
@@ -54,14 +54,14 @@
                                 <div class="col-md-6">
                                     <div class="leftspecs">
                                         <p>Video Length: <span>0:15</span></p>
-                                        <p>Video ID: <span>12</span></p>
+                                        <p>Video ID: <span>{{ $video->id }}</span></p>
 
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="rightspecs">
                                         <p>Aspect Ratio: <span>16:9</span></p>
-                                        <p>Uploaded By: <span>Yomi Eluwande</span></p>
+                                        <p>Uploaded By: <span>{{ $video->user->first_name }} {{ $video->user->last_name }}</span></p>
                                     </div>
                                 </div>
                             </div>
