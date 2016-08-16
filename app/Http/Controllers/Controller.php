@@ -41,6 +41,7 @@ class Controller extends BaseController
             'register',
             'postLogin',
             'searchPage',
+            'previewVideo',
             'postRegister',
         ]]);
     }

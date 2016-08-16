@@ -72,7 +72,16 @@ class PagesController extends Controller
 
       public function searchPage(Request $request)
       {
-         // return $request->all();
-         return view('app.pages.search');
+         if ($request->has('videos')) 
+         {
+            return 1;
+         }
+         else
+         {
+            $videos = $this->postRepo->getAllPost();
+
+         }
+
+         return view('app.pages.search', compact('videos'));
       }
 }
