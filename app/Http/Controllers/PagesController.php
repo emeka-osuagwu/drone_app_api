@@ -72,6 +72,7 @@ class PagesController extends Controller
 
       public function searchPage(Request $request)
       {
+         // return $request->all();
          return view('app.pages.search');
       }
 }
