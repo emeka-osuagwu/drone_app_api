@@ -38,8 +38,6 @@
 
                 </div>
 
-
-
                 <div class="singlevideo_details_container col-md-6">
                     <div class="singlevideo_details">
                         <div class="singlevideo_header">
@@ -221,8 +219,4 @@
         </div>
     </section>
 
-    <footer class="p-t-xxl p-b-xxl">
-        <h3 class="text-center text-white m-b-none">Footer here</h3>
-    </footer>
-    
 @endsection

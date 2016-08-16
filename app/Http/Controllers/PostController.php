@@ -169,6 +169,7 @@ class PostController extends Controller
 
 	public function previewVideo($id)
 	{
-		return view('app.pages.preview');
+		$video = $this->postRepo->getPostWhere('id', $id)->get();
+		return view('app.pages.preview', compact('video'));
 	}
 }
