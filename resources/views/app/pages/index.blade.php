@@ -14,7 +14,7 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="hero-unit">
-                    <p><strong>Browse Stock Drone Footages</strong></p>
+                    <p><strong>Browse Stock Drone Footage</strong></p>
 
                     <p>Find the perfect stock footage for your next project<br> from our collection of aerial footages</p>
                     <form class="hero-unit-form" action="{{ Url('search') }}" method="get">

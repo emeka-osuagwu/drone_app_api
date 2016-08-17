@@ -61,6 +61,12 @@ class AuthController extends Controller
         }
         else
         {
+            if (!isset($request['agreement'])  && $request['agreement'] == '') 
+            {
+                session()->flash('agreement_error', 'good');
+                return back()->withInput($request->all());
+            }
+
             $this->userRepo->createUser($request->all());
             $this->dispatch(new SendNewUserWelcomeEmail($request['email']));
             session()->flash('register_success_message', 'good');

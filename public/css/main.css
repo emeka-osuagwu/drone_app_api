@@ -853,17 +853,16 @@ ul.nav.navbar-nav.navbar-right {
 /* Login Page */
 .login {
     background-color: #f7f7f7;
-    height: 100%;
     padding-bottom: 100px;
     padding-top: 100px;
 }
 .login_inner {
-    width: 700px;
+    padding-bottom: 20px;
     margin: 0 auto;
     border-radius: 6px;
-    background-color: white;
+    
 }
-.form_centered h2 {
+.form_centered h3 {
     text-align: center;
     margin-top: 20px;
     margin-bottom: 40px;
@@ -904,15 +903,14 @@ ul.nav.navbar-nav.navbar-right {
 /* Signup page */
 .signup {
     background-color: #f7f7f7;
-    height: 100%;
     padding-bottom: 40px;
     padding-top: 40px;
 }
 .signup_inner {
-    width: 700px;
+    padding-bottom: 100px;    
     margin: 0 auto;
     border-radius: 6px;
-    background-color: white;
+    
 }
 .signupbtn {
     float: right;
@@ -924,20 +922,21 @@ ul.nav.navbar-nav.navbar-right {
 /* Request video page */
 .request {
     background-color: #f7f7f7;
-    height: 100%;
+    height: 100vh;
     padding-bottom: 40px;
     padding-top: 40px;
 }
 .request_inner {
-    width: 700px;
+    padding-bottom: 100px;
     margin: 0 auto;
     border-radius: 6px;
-    background-color: white;
+    
 }
 .form_centered {
     display: block;
-    width: 100%;
-    max-width: 500px;
+    width: 600px;
+    max-width: 100%;
+    background-color: white;
     margin: 0 auto;
     text-align: left;
     padding: 25px;
@@ -954,6 +953,16 @@ ul.nav.navbar-nav.navbar-right {
     text-transform: uppercase;
     margin-right: 15px;
     border-radius: 1px;
+}
+.accept-terms {
+    margin-top: 40px;
+}
+.accept-terms p {
+    font-size: 14px;
+}
+.panel-body-sign {
+    border: 1px solid #ccc;
+    overflow: hidden;
 }
 
 
