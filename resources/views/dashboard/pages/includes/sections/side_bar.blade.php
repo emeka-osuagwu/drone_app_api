@@ -2,7 +2,7 @@
 	  <div class="sidebar-inner slimscrollleft">
 		  <div class="user-details">
 			  <div class="pull-left">
-				  <img src="{{ asset('assets/images/users/avatar-1.jpg') }}" alt="" class="thumb-md img-circle">
+				  <img src="{{ ($user->first()->image)? $user->first()->image : asset('assets/images/users/avatar-1.jpg') }}" alt="" class="thumb-md img-circle">
 			  </div>
 
 			  <div class="user-info">
