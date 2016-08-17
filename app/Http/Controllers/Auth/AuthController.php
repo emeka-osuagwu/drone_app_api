@@ -62,8 +62,8 @@ class AuthController extends Controller
         else
         {
             $this->userRepo->createUser($request->all());
-            // $this->dispatch(new SendNewUserWelcomeEmail($request['email']));
-            session()->flash('message', 'good');
+            $this->dispatch(new SendNewUserWelcomeEmail($request['email']));
+            session()->flash('register_success_message', 'good');
             return redirect('register');
         }
     }

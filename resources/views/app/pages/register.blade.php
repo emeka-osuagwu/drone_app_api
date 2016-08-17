@@ -5,7 +5,7 @@
 
 @section('content')
 
-    @if (Session::has('message'))
+    @if (Session::has('register_success_message'))
         <script>
             swal({
                 title: "Account Created",
