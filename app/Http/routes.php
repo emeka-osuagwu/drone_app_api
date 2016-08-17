@@ -12,7 +12,6 @@
 */
 
 
-
 Route::get('/', function (){
 	return view('app.pages.index');
 });
@@ -64,6 +63,11 @@ Route::get('search', [
 
 Route::get('preview/{id}', [
 	'uses' 	=> 'PostController@previewVideo',
+	'as' 	=> 'api.v1.register'
+]);
+
+Route::get('password/forgot', [
+	'uses' 	=> 'PagesController@forgotPasswordPage',
 	'as' 	=> 'api.v1.register'
 ]);
 

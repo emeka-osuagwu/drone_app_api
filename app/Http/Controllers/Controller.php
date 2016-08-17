@@ -43,6 +43,7 @@ class Controller extends BaseController
             'searchPage',
             'previewVideo',
             'postRegister',
+            'forgotPasswordPage',
         ]]);
     }
 }

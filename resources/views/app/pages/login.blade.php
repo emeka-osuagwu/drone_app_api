@@ -28,7 +28,7 @@
         <div class="login_inner">
 
             <form class="form_centered" action="{{ Url('login') }}" method="post">
-                <h2>Login</h2>
+                <h2 style="text-align:center" >Login</h2>
                 @if (count($errors) > 0)
                     @foreach ($errors->all() as $error)
                         <div class="static-notification bg-red-dark tap-dismiss">
@@ -51,7 +51,7 @@
                     <button type="submit" href="#" class="btn btn-success loginbtn">Login</button>
                 </div>
                 <div class="borderline"></div>
-                <div class="resetprompt"><a href="#">Reset Password?</a></div>
+                <div class="resetprompt"><a href="{{ Url('password/forgot') }}">Reset Password?</a></div>
             </form>
 
         </div>
