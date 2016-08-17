@@ -24,7 +24,6 @@
             <li><a href="allvideos">Videos</a></li>
             <li><a href="{{ url('video/request') }}">Request a video</a></li>
             @if(Auth::check())
-              <li><a href="{{ Url('/') }}">My Account</a></li>
               @if( (int) Auth::user()->role == 1 )
               <li><a href="{{ Url('dashboard') }}">DashBoard</a></li>
               @endif

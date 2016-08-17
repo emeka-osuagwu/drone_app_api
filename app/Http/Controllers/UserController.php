@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Auth;
 use Illuminate\Http\Request;
+use App\Jobs\SendAdminAccountInfo;
 
 class UserController extends Controller
 {
@@ -102,8 +103,8 @@ class UserController extends Controller
 		else
 		{
 			$request['tmp_password'] = substr(bcrypt($request['name']), 50);
-			
-			$this->userRepo->createAdminUser($request->all());
+			// $this->userRepo->createAdminUser($request->all());
+			$this->dispatch(new SendAdminAccountInfo($request->all()));
 			session()->flash('message', 'good');
 			return back();
 		}
