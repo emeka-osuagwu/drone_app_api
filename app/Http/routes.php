@@ -67,9 +67,26 @@ Route::get('preview/{id}', [
 ]);
 
 Route::get('password/forgot', [
-	'uses' 	=> 'PagesController@forgotPasswordPage',
+	'uses' 	=> 'Auth\PasswordController@forgotPasswordPage',
 	'as' 	=> 'api.v1.register'
 ]);
+
+Route::post('password/reset', [
+	'uses' 	=> 'Auth\PasswordController@resetPassword',
+	'as' 	=> 'api.v1.register'
+]);
+
+Route::get('password/update{token?}', [
+	'uses' 	=> 'Auth\PasswordController@resetPasswordPage',
+	'as' 	=> 'api.v1.register'
+])->middleware('resetToken');
+
+Route::post('password/change', [
+	'uses' 	=> 'Auth\PasswordController@reset',
+	'as' 	=> 'api.v1.register'
+]);
+
+
 
 Route::group(['prefix' => 'dashboard'], function () {
 

@@ -84,9 +84,4 @@ class PagesController extends Controller
 
          return view('app.pages.search', compact('videos'));
       }
-
-      public function forgotPasswordPage()
-      {
-         return view('app.pages.forget_password');
-      }
 }

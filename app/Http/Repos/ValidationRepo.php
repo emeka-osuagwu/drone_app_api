@@ -69,6 +69,15 @@ class ValidationRepo
 			return $validator;
 		}
 
+		public function resetPasswordValidation($data)
+		{	
+			$validator = Validator::make($data, [
+				'email' => 'required|unique:password_resets|exists:users',
+			]);
+
+			return $validator;
+		}
+
 	/*=========================================
 	User Validation
 	==========================================*/
