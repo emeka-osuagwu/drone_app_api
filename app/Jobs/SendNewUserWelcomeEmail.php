@@ -25,7 +25,7 @@ class SendNewUserWelcomeEmail extends Job
     {
         $email = $this->email;
 
-        Mail::send('emails.users.new_user_welcome_email', compact('email'), function ($message) use ($email) {
+        Mail::later(10, 'emails.users.new_user_welcome_email', compact('email'), function ($message) use ($email) {
             $message->from(env('ADMIN_EMAIL'), 'Registration Successful');
             $message->to($email)->subject("Welcome to Drone App");
         });
