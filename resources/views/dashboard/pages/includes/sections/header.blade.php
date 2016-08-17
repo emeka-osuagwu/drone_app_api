@@ -3,7 +3,7 @@
     <!-- LOGO -->
     <div class="topbar-left">
         <div class="text-center">
-            <a href="{{ Url('dashboard') }}" class="logo"><i class="md md-terrain"></i> <span>Anakle UV </span></a>
+            <a href="{{ Url('/') }}" class="logo"><i class="md md-terrain"></i> <span>Anakle UV </span></a>
         </div>
     </div>
     <!-- Button mobile view to collapse sidebar menu -->
@@ -88,7 +88,7 @@
                         <a href="#" class="right-bar-toggle waves-effect"><i class="md md-chat"></i></a>
                     </li>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle profile" data-toggle="dropdown" aria-expanded="true"><img src="{{ asset('assets/images/users/avatar-1.jpg') }}" alt="user-img" class="img-circle"> </a>
+                        <a href="#" class="dropdown-toggle profile" data-toggle="dropdown" aria-expanded="true"><img src="{{ (Auth::user()->image)? Auth::user()->image : asset('assets/images/users/avatar-1.jpg') }}" alt="user-img" class="img-circle"> </a>
                         <ul class="dropdown-menu">
                             <li><a href="javascript:void(0)"><i class="md md-face-unlock"></i> Profile</a></li>
                             <li><a href="javascript:void(0)"><i class="md md-settings"></i> Settings</a></li>
