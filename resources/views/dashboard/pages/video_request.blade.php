@@ -47,7 +47,15 @@
 	                                    </tr>
                                     @endforeach
                                     </tbody>
+
                                 </table>
+
+                                @if($video_requests->count() < 1 )
+                                <div class="alert alert-info alert-dismissable">
+                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                    Opps we currently don't have any Request info to show at the moment. <a href="{{ Url('video/request') }}" class="alert-link">Why don't you add some?</a>
+                                </div>
+                                @endif
 
                             </div>
                         </div>
