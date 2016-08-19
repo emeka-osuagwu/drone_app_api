@@ -76,6 +76,10 @@
 						</ul>
 				  	</li>
 
+			  		<li>
+			  			<a href="{{ Url('/') }}" class="waves-effect waves-light active"><i class="md md-home"></i><span> Payments </span></a>
+			  	  	</li>
+
 			  </ul>
 			  <div class="clearfix"></div>
 		  </div>
