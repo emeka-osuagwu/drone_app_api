@@ -193,4 +193,9 @@ Route::group(['prefix' => 'dashboard'], function () {
 
 	});
 
+	Route::get('purchases', [
+		'uses' 	=> 'PaymentController@getCategoriesPage',
+		'as' 	=> 'dashboard.users'
+	]);
+
 });
