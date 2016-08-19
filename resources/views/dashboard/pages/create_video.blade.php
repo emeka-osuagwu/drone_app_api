@@ -71,13 +71,13 @@
 
                                         <div class="form-group">
                                             <label>Category</label>
-                                            <select multiple="multiple" name="category_id" class="form-control" required>
+                                            <select  name="category_id" class="form-control" required>
                                                 <option>Select Category</option>
                                                 @foreach($categories as $category)
                                                     <option value="{{ $category->id }}">{{ $category->name }}</option>
                                                 @endforeach
                                             </select>
-                                        </div> 
+                                        </div>
 
                                         <div class="form-group">
                                             <label>Tags <br> (separate tags with comma e.g bird, sky)</label>

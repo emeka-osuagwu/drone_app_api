@@ -10,6 +10,7 @@ class Post extends Model
 	protected $primaryKey 	= 'id';
 
 	protected $fillable = [
+	    'tags',
 	    'price', 
 	    'title', 
 	    'price', 
