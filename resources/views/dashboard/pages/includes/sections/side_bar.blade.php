@@ -77,7 +77,7 @@
 				  	</li>
 
 			  		<li>
-			  			<a href="{{ Url('/') }}" class="waves-effect waves-light active"><i class="md md-home"></i><span> Payments </span></a>
+			  			<a href="{{ Url('dashboard/payments') }}" class="waves-effect waves-light"><i class="md md-home"></i><span> Payments </span></a>
 			  	  	</li>
 
 			  </ul>

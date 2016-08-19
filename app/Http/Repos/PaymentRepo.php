@@ -2,11 +2,10 @@
 
 namespace App\Http\Repos;
 
-use Payments;
+use App\Model\Payments;
 
 class PaymentRepo
 {
-
 	public function getAllPayment()
 	{
 		return Payments::all();

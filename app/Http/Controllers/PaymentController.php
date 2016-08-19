@@ -10,6 +10,6 @@ class PaymentController extends Controller
     
     public function getAllPayment()
     {
-    	return $this->paymentRepo->getAllPayment()->get();
+    	return $this->paymentRepo->getAllPayment();
     }
 }
