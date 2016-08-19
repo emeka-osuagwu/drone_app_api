@@ -17,6 +17,8 @@ class CreatePaymentTable extends Migration
             $table->integer('user_id');
             $table->integer('video_id');
             $table->integer('payment_status')->default(0);
+            $table->integer('card_id')->default(0);
+            $table->string('transaction_number');
             $table->string('narration')->nullable();
             $table->timestamps();
         });
