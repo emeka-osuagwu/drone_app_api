@@ -21,7 +21,7 @@
           
           <ul class="nav navbar-nav navbar-right">
             <li><a href="requestvideo"></a></li>
-            <li><a href="allvideos">Videos</a></li>
+            <li><a href="{{ Url('videos') }}">Videos</a></li>
             <li><a href="{{ url('video/request') }}">Request a video</a></li>
             @if(Auth::check())
               @if( (int) Auth::user()->role == 1 )

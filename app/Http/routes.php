@@ -56,6 +56,11 @@ Route::post('video/request/create', [
 	'as' 	=> 'api.v1.register'
 ]);
 
+Route::get('videos', [
+	'uses' 	=> 'PagesController@searchPage',
+	'as' 	=> 'api.v1.register'
+]);
+
 Route::get('search', [
 	'uses' 	=> 'PagesController@searchPage',
 	'as' 	=> 'api.v1.register'
@@ -87,6 +92,10 @@ Route::post('password/change', [
 ]);
 
 
+Route::post('/pay', [
+    'uses' => 'PaymentController@redirectToGateway',
+    'as' => 'pay'
+]);
 
 Route::group(['prefix' => 'dashboard'], function () {
 

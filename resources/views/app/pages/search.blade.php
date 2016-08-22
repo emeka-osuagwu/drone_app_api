@@ -103,7 +103,7 @@
                     <div class="col-xs-12 col-sm-3 fv-box">
                         <a href="{{ Url('preview/1') }}">
                             <video width="100%">
-                                <source src="video/bauchi.mp4" type="video/mp4">
+                                <source src="{{ $video->video->watermark_url }}" type="video/mp4">
                             </video>
                             <div>
                                 <p class="text-sm text-grey"><span>HD</span> 00:12</p>

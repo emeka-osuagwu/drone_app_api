@@ -31,7 +31,7 @@
 		  <div id="sidebar-menu">
 			  	<ul>
 					<li>
-						<a href="{{ Url('/') }}" class="waves-effect waves-light active"><i class="md md-home"></i><span> Dashboard </span></a>
+						<a href="{{ Url('/dashboard') }}" class="waves-effect waves-light active"><i class="md md-home"></i><span> Dashboard </span></a>
 				  	</li>
 
 				  	<li class="has_sub">
