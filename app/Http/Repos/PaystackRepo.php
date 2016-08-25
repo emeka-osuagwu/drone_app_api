@@ -14,7 +14,6 @@ class PaystackRepo
 
 	public function handleGatewayCallback()
 	{
-	    $paymentDetails = Paystack::getPaymentData();
-	    dd($paymentDetails);
+	    return Paystack::getPaymentData();
 	}
 }

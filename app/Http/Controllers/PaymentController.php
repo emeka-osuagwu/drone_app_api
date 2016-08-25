@@ -7,17 +7,31 @@ use Illuminate\Http\Request;
 
 class PaymentController extends Controller
 {
-    public function getAllPayment()
+    public function makePayment(Request $request)
     {
-    	$purchases =  $this->paymentRepo->getAllPayment();
-    	return view('dashboard.pages.purchases', compact('purchases'));
+        $time   =  time() + 3600;
+        $path   = '/';
+        $data   = json_encode($request->all());
+        $domain = env('host'); 
+
+        setcookie("__R_TOKEN", $data, $time, $path, $domain);
+       
+        return $this->paystackRepo->redirectToGateway();
     }
 
-    public function makePayment()
+    public function getPaymentResponse()
     {
-        return $this->paystackRepo->handleGatewayCallback();
+        $response           = $this->paystackRepo->handleGatewayCallback();
+        $request_data       = json_decode($_COOKIE['__R_TOKEN']);
+        $response_data      = $response['data'];
+
+        if ($response['data']['status'] === "success") 
+        {
+            $this->paymentRepo->savePaymentInfo($response, $request_data);
+        }
+        else
+        {
+            dd('something is wrong');
+        }
     }
-
-    
-
 }

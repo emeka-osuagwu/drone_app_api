@@ -97,7 +97,7 @@ Route::post('/pay', [
     'as' => 'pay'
 ]);
 
-Route::get('/payment/callback', 'PaymentController@handleGatewayCallback');
+Route::get('/payment/callback', 'PaymentController@getPaymentResponse');
 
 Route::group(['prefix' => 'dashboard'], function () {
 
