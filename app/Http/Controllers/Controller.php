@@ -8,11 +8,12 @@ use App\Http\Repos\PostRepo;
 use App\Http\Repos\TokenRepo;
 use App\Http\Repos\VideoRepo;
 use App\Http\Repos\CommentRepo;
+use App\Http\Repos\PaymentRepo;
+use App\Http\Repos\PaystackRepo;
 use App\Http\Repos\CloudderRepo;
 use App\Http\Repos\ValidationRepo;
 use App\Http\Repos\VideoRequestRepo;
 use App\Http\Repos\PostCategoriesRepo;
-use App\Http\Repos\PaymentRepo;
 
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
@@ -32,11 +33,12 @@ class Controller extends BaseController
         $this->validator    = new ValidationRepo;
         $this->tokenRepo    = new TokenRepo;
     	$this->videoRepo 	= new VideoRepo;
-        $this->commentRepo  = new CommentRepo;
+        $this->paymentRepo          = new PaymentRepo;
+        $this->commentRepo          = new CommentRepo;
         $this->cloudderRepo         = new CloudderRepo;
+        $this->paystackRepo         = new PaystackRepo;
         $this->videoRequestRepo     = new VideoRequestRepo;
         $this->postCategoriesRepo   = new PostCategoriesRepo;
-    	$this->paymentRepo          = new PaymentRepo;
 
         $this->middleware('auth', ['except' => [
             'login',
