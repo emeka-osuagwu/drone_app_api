@@ -28,6 +28,7 @@ class PaymentController extends Controller
         if ($response['data']['status'] === "success") 
         {
             $this->paymentRepo->savePaymentInfo($response, $request_data);
+            return back();
         }
         else
         {

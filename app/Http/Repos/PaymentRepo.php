@@ -13,8 +13,6 @@ class PaymentRepo
 
 	public function savePaymentInfo($response, $request_data)
 	{
-		dd($response);
-
 		$create = [
 			"user_id" 			=> 1,
 			"video_id" 			=> $request_data->video_id,
@@ -25,5 +23,7 @@ class PaymentRepo
 			"payment_status" 	=> $response['data']['status'],
 			"transaction_date" 	=> $response['data']['transaction_date'],
 		];
+
+		Payments::create($create);
 	}
 }
