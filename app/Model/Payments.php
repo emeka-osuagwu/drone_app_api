@@ -14,6 +14,7 @@ class Payments extends Model
 	    'post_id',  
 	    'card_type', 
 	    'customer_id', 
+	    'amount_paid', 
 	    'payment_type', 
 	    'payment_status', 
 	    'transaction_date', 

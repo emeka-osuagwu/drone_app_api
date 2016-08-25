@@ -291,7 +291,7 @@
     </div> 
     -->
 
-    
+
 
 
     <form method="POST" action="{{ route('pay') }}" accept-charset="UTF-8" class="form-horizontal" role="form">
@@ -307,7 +307,7 @@
                 <input type="hidden" name="orderID" value="345">
                 <input type="hidden" name="amount" value="2956"> {{-- required in kobo --}}
                 <input type="hidden" name="user_id" value="{{ Auth::user()->id }}"> {{-- required in kobo --}}
-                <input type="hidden" name="video_id" value="2956"> {{-- required in kobo --}}
+                <input type="hidden" name="post_id" value="1"> {{-- required in kobo --}}
                 <input type="hidden" name="quantity" value="3">
                 <input type="hidden" name="reference" value="{{ Paystack::genTranxRef() }}"> {{-- required --}}
                 <input type="hidden" name="key" value="{{ config('paystack.secretKey') }}"> {{-- required --}}

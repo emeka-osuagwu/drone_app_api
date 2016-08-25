@@ -9,10 +9,10 @@ class PaymentController extends Controller
 {
     public function getAllPayment()
     {
-        return $purchases =  $this->paymentRepo->getAllPayment();
+        $purchases =  $this->paymentRepo->getAllPayment();
         return view('dashboard.pages.purchases', compact('purchases'));
     }
-
+    
     public function makePayment(Request $request)
     {
         $time   =  time() + 3600;

@@ -43,7 +43,9 @@
                                     <tr>
                                         <th>Status</th>
                                         <th>File Name</th>
-                                        <th>Date</th>
+                                        <th>Payment Type</th>
+                                        <th>Log Date</th>
+                                        <th>Transaction Date</th>
                                         <th>Price (₦)</th>
                                         <th>User</th>
                                     </tr>
@@ -51,11 +53,13 @@
                                     <tbody>
                                     @foreach($purchases as $purchase)
                                         <tr>
-                                            <td><a class="orderhistory_downloadbtn btn btn-success">Paid</a></td>
-                                            <td>Aerial Footage of Fuel Queue</td>
+                                            <td><a class="orderhistory_downloadbtn btn btn-success">{{ $purchase->payment_status }}</a></td>
+                                            <td><a href="{{ Url('dashboard/video/' . $purchase->post->video_id ) }}">{{ $purchase->post->title }}</a></td>
+                                            <td>{{ $purchase->payment_type }}</td>
                                             <td>{{$purchase->created_at->diffForHumans()}}</td>
                                             <td>{{ $purchase->transaction_date}}</td>
-                                            <td>Yomi Eluwande</td>
+                                            <td>{{$purchase->amount_paid}}</td>
+                                            <td><a href="{{ url('user/' . $purchase->user->id) }}"> {{$purchase->user->first_name . " " . $purchase->user->last_name}}</a></td>
                                         </tr>
                                     @endforeach
                                     </tbody>

@@ -17,8 +17,9 @@ class CreatePaymentTable extends Migration
 
             $table->integer('user_id');
             $table->integer('post_id');
-            $table->integer('payment_status')->default(0);
+            $table->string('payment_status');
             $table->string('customer_code');
+            $table->string('amount_paid');
             $table->integer('customer_id');
             $table->string('card_type')->nullable();
             $table->string('payment_type')->nullable();
