@@ -16,7 +16,7 @@ class CreatePaymentTable extends Migration
             $table->increments('id');
 
             $table->integer('user_id');
-            $table->integer('video_id');
+            $table->integer('post_id');
             $table->integer('payment_status')->default(0);
             $table->string('customer_code');
             $table->integer('customer_id');

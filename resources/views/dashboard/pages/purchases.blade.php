@@ -53,8 +53,8 @@
                                         <tr>
                                             <td><a class="orderhistory_downloadbtn btn btn-success">Paid</a></td>
                                             <td>Aerial Footage of Fuel Queue</td>
-                                            <td>March 26, 2016</td>
-                                            <td>5000</td>
+                                            <td>{{$purchase->created_at->diffForHumans()}}</td>
+                                            <td>{{ $purchase->transaction_date}}</td>
                                             <td>Yomi Eluwande</td>
                                         </tr>
                                     @endforeach

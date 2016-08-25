@@ -11,7 +11,7 @@ class Payments extends Model
 
 	protected $fillable = [
 	    'user_id', 
-	    'video_id',  
+	    'post_id',  
 	    'card_type', 
 	    'customer_id', 
 	    'payment_type', 
@@ -23,5 +23,10 @@ class Payments extends Model
 	public function user()
 	{
 	   return $this->belongsTo('App\User');
+	}
+
+	public function post()
+	{
+	   return $this->belongsTo('App\Model\Post');
 	}
 }

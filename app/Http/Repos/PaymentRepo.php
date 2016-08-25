@@ -8,14 +8,14 @@ class PaymentRepo
 {
 	public function getAllPayment()
 	{
-		return Payments::all();
+		return Payments::with('user', 'video')->get();
 	}
 
 	public function savePaymentInfo($response, $request_data)
 	{
 		$create = [
 			"user_id" 			=> 1,
-			"video_id" 			=> $request_data->video_id,
+			"post_id" 			=> $request_data->video_id,
 			"card_type" 		=> $response['data']['authorization']['card_type'],
 			"customer_id" 		=> $response['data']['customer']['id'],
 			"payment_type" 		=> $response['data']['authorization']['channel'],
