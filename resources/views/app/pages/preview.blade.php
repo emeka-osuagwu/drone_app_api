@@ -4,8 +4,7 @@
 @section('title', 'Page Title')
 
 @section('content')
-
-    <!--     
+        
     <section class="singlevideo">
         <div class="container">
 
@@ -75,11 +74,19 @@
 
                         <div class="row">
 
+                            @if(checkUserPaidForVideo(Auth::user()->id, $video->id))
                             <div class="col-md-6">
                                 <div class="singlevideo_details_download">
-                                    <button data-toggle="modal" data-target="#myModal" type="button" class="btn btn-danger">DOWNLOAD THIS VIDEO</button>
+                                    <a href="{{ $video->video->original_url }}" type="button" class="btn btn-success" download>Save Video</a>
                                 </div>
                             </div>
+                            @else
+                                <div class="col-md-6">
+                                    <div class="singlevideo_details_download">
+                                        <button data-toggle="modal" data-target="#myModal" type="button" class="btn btn-danger">DOWNLOAD THIS VIDEO</button>
+                                    </div>
+                                </div>
+                            @endif
 
                         </div>
 
@@ -91,8 +98,6 @@
                 <div class="reviews">
                     <div class="col-md-12">
                         <h4>Reviews</h4>
-
-                        
                     </div>
                 </div>
             </div>
@@ -289,12 +294,12 @@
         </div>
       </div>
     </div> 
-    -->
+   
 
 
 
 
-    <form method="POST" action="{{ route('pay') }}" accept-charset="UTF-8" class="form-horizontal" role="form">
+<!--     <form method="POST" action="{{ route('pay') }}" accept-charset="UTF-8" class="form-horizontal" role="form">
             <div class="row" style="margin-bottom:40px;">
               <div class="col-md-8 col-md-offset-2">
                 <p>
@@ -323,6 +328,6 @@
                 </p>
               </div>
             </div>
-    </form>
+    </form> -->
 
 @endsection

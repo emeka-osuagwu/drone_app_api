@@ -17,7 +17,7 @@
 		</script>
 	@endif
 
-	<div class="content-page">
+<!-- 	<div class="content-page">
         <div class="content">
             <div class="container">
 
@@ -82,5 +82,5 @@
             </div> <!-- container -->
                        
         </div>
-    </div>
+    </div> -->
 @endsection

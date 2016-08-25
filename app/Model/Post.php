@@ -40,4 +40,9 @@ class Post extends Model
 	   return $this->belongsTo('App\Model\PostCategories');
 	}
 
+	public function paid_user()
+	{
+		return $this->hasMany('App\Model\Payments');	
+	}
+
 }
