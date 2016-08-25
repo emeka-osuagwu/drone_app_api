@@ -93,9 +93,11 @@ Route::post('password/change', [
 
 
 Route::post('/pay', [
-    'uses' => 'PaymentController@redirectToGateway',
+    'uses' => 'PaymentController@makePayment',
     'as' => 'pay'
 ]);
+
+Route::get('/payment/callback', 'PaymentController@handleGatewayCallback');
 
 Route::group(['prefix' => 'dashboard'], function () {
 
