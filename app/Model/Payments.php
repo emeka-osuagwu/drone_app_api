@@ -11,11 +11,13 @@ class Payments extends Model
 
 	protected $fillable = [
 	    'user_id', 
-	    'video_id', 
-	    'narration', 
+	    'video_id',  
+	    'card_type', 
+	    'customer_id', 
+	    'payment_type', 
 	    'payment_status', 
+	    'transaction_date', 
 	    'transaction_number', 
-	    'card_id', 
 	];
 
 	public function user()
