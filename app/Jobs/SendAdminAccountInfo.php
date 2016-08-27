@@ -22,7 +22,8 @@ class SendAdminAccountInfo extends Job
         $user = $this->user;
 
         Mail::send('emails.users.send_new_user_info', compact('user'), function ($message) use ($user) {
-            $message->to($user['email'])->subject("Welcome to Oyster " . $user['name']);
+            $message->from(env('ADMIN_EMAIL'), env('SENDER_NAME'));
+            $message->to($user['email'])->subject("Welcome to AnakelVM " . $user['name']);
         });
     }
 }

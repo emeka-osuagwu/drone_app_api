@@ -73,20 +73,16 @@
                         </div>
 
                         <div class="row">
-
-                            @if(checkUserPaidForVideo(Auth::user()->id, $video->id))
-                            <div class="col-md-6">
-                                <div class="singlevideo_details_download">
-                                    <a href="{{ $video->video->original_url }}" type="button" class="btn btn-success" download>Save Video</a>
-                                </div>
-                            </div>
-                            @else
+                            @if(Auth::check())
+                                @if(checkUserPaidForVideo(Auth::user()->id, $video->id))
                                 <div class="col-md-6">
                                     <div class="singlevideo_details_download">
-                                        <button data-toggle="modal" data-target="#myModal" type="button" class="btn btn-danger">DOWNLOAD THIS VIDEO</button>
+                                        <a href="{{ $video->video->original_url }}" type="button" class="btn btn-success" download>Save Video</a>
                                     </div>
                                 </div>
+                                @endif
                             @endif
+                            {{$video}}
 
                         </div>
 
@@ -294,40 +290,5 @@
         </div>
       </div>
     </div> 
-   
-
-
-
-
-<!--     <form method="POST" action="{{ route('pay') }}" accept-charset="UTF-8" class="form-horizontal" role="form">
-            <div class="row" style="margin-bottom:40px;">
-              <div class="col-md-8 col-md-offset-2">
-                <p>
-                    <div>
-                        Lagos Eyo Print Tee Shirt
-                        ₦ 2,950
-                    </div>
-                </p>
-                <input type="hidden" name="email" value="emekaosuagwu@hotmail"> {{-- required --}}
-                <input type="hidden" name="orderID" value="345">
-                <input type="hidden" name="amount" value="2956"> {{-- required in kobo --}}
-                <input type="hidden" name="user_id" value="{{ Auth::user()->id }}"> {{-- required in kobo --}}
-                <input type="hidden" name="post_id" value="1"> {{-- required in kobo --}}
-                <input type="hidden" name="quantity" value="3">
-                <input type="hidden" name="reference" value="{{ Paystack::genTranxRef() }}"> {{-- required --}}
-                <input type="hidden" name="key" value="{{ config('paystack.secretKey') }}"> {{-- required --}}
-                {{ csrf_field() }} {{-- works only when using laravel 5.1, 5.2 --}}
-
-                 <input type="hidden" name="_token" value="{{ csrf_token() }}"> {{-- employ this in place of csrf_field only in laravel 5.0 --}}
-
-
-                <p>
-                  <button class="btn btn-success btn-lg btn-block" type="submit" value="Pay Now!">
-                  <i class="fa fa-plus-circle fa-lg"></i> Pay Now!
-                  </button>
-                </p>
-              </div>
-            </div>
-    </form> -->
 
 @endsection
