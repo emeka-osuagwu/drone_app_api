@@ -21,7 +21,7 @@ class PaymentController extends Controller
         $domain = env('host'); 
 
         setcookie("__R_TOKEN", $data, $time, $path, $domain);
-        return $request->all();
+
         return $this->paystackRepo->redirectToGateway();
     }
 
@@ -34,7 +34,8 @@ class PaymentController extends Controller
         if ($response['data']['status'] === "success") 
         {
             $this->paymentRepo->savePaymentInfo($response, $request_data);
-            return back();
+            
+            return redirect('preview/' . $request_data->post_id);
         }
         else
         {

@@ -28,7 +28,7 @@
 
 
                             	<div class="m-t-20 m-b-20">
-				                    <video width="100%" controls="">
+				                    <video style="height: 500px; width: 100%;" controls="">
 				                        <source src="{{ $post->video->original_url }}" type="video/mp4">
 				                    </video>
 				                </div>

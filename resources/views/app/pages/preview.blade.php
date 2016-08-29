@@ -76,35 +76,37 @@
 
                             <div class="row">
 
-                                <input type="hidden" name="email" value="{{ Auth::user()->email }}">
-                                <input type="hidden" name="orderID" value="{{ rand(234, 4948) }}">
-                                <input type="hidden" name="amount" value="{{ $video->price }}">
-                                <input type="hidden" name="user_id" value="{{ Auth::user()->id }}"> 
-                                <input type="hidden" name="post_id" value="{{ $video->id }}"> 
-                                <input type="hidden" name="reference" value="{{ Paystack::genTranxRef() }}">
-                                <input type="hidden" name="key" value="{{ config('paystack.secretKey') }}"> 
 
                                 @if(Auth::check())
+                                  
+                                    <input type="hidden" name="email" value="{{ Auth::user()->email }}">
+                                    <input type="hidden" name="orderID" value="{{ rand(234, 4948) }}">
+                                    <input type="hidden" name="amount" value="{{ $video->price }}">
+                                    <input type="hidden" name="user_id" value="{{ Auth::user()->id }}"> 
+                                    <input type="hidden" name="post_id" value="{{ $video->id }}"> 
+                                    <input type="hidden" name="reference" value="{{ Paystack::genTranxRef() }}">
+                                    <input type="hidden" name="key" value="{{ config('paystack.secretKey') }}"> 
+                                   
                                     @if(checkUserPaidForVideo(Auth::user()->id, $video->id))
                                         <div class="col-md-6">
                                             <div class="singlevideo_details_download">
                                                 <a href="{{ $video->video->original_url }}" type="button" class="btn btn-success" download>Save Video</a>
                                             </div>
                                         </div>
+                                    @else
+                                        <div class="col-md-6">
+                                            <div class="singlevideo_details_download">
+                                                <button type="submit" class="btn btn-danger">DOWNLOAD THIS VIDEO</button>
+                                            </div>
+                                        </div>
                                     @endif
                                 @else
                                     <div class="col-md-6">
                                         <div class="singlevideo_details_download">
-                                            <button data-toggle="modal" data-target="#myModal" type="button" class="btn btn-danger">DOWNLOAD THIS VIDEO</button>
+                                            <a href="{{ Url('login') }}" class="btn btn-danger">DOWNLOAD THIS VIDEO</a>
                                         </div>
                                     </div>
                                 @endif
-
-                                <div class="col-md-6">
-                                    <div class="singlevideo_details_download">
-                                        <button type="submit" class="btn btn-danger">DOWNLOAD THIS VIDEO</button>
-                                    </div>
-                                </div>
 
                             </div>
 
@@ -127,6 +129,7 @@
                         <h4>Related Videos</h4>
 
                         <div class="row">
+
                             <div class="col-xs-12 col-sm-3 fv-box">
                                 <a href="frontsinglevideo.php">
                                     <video width="100%">
@@ -137,6 +140,7 @@
                                     </div>
                                 </a>
                             </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -159,78 +163,5 @@
         <h3 class="text-center text-white m-b-none">Footer here</h3>
     </footer>
 
-    <div class="modal" id="myModal" tabindex="-1" aria-hidden="true" role="dialog" aria-labelledby="myModalLabel">
-      <div class="modal-dialog">
-        <div class="modal-content">
-         
-          <div class="modal-body">
-            
-            <div class="panel panel-default panel-fill">
-                <div class="panel-heading"> 
-                    <h3 class="panel-title">Cards</h3> 
-                </div> 
-                <div class="panel-body"> 
-                    <form action="" class="cardinfo_form ">
-                        
-                        <div class="form-group">
-                          <label>
-                            <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
-                            XXXX XXXX XXXX 1234 (Visa)
-                          </label> <button class="btn btn-success savechanges" href="#">PAY</button>
-                        </div>
-                        <div class="form-group">
-                          <label>
-                            <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-                            XXXX XXXX XXXX 1234 (Mastercard)
-                          </label> <button class="btn btn-success savechanges" href="#">PAY</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-
-            <div class="panel panel-default panel-fill">
-                <a href="#" data-toggle="collapse" data-target="#collapseExample">
-                    <div class="panel-heading" aria-expanded="false"> 
-                        <h3 class="panel-title">Add Card</h3> 
-                    </div>
-                </a>
-                 
-                <div class="panel-body collapse" id="collapseExample"> 
-                    <form action="" class="cardinfo_form ">
-                        
-                        <div class="form-group">
-                            <label>Card Number</label>
-                            <input class="form-control" type="text" placeholder="Card No" name="number">
-                        </div>
-
-                        <div class="form-group">
-                            <label>Full Name</label>
-                            <input class="form-control" type="text" placeholder="Full Name" name="name">
-                        </div>
-                        <div class="form-group">
-                            
-                            <div class="row">
-                                <div class="col-md-6 col-xs-6">
-                                    <label>Expiry Date</label>
-                                    <input class="form-control" type="text" placeholder="MM/YY" name="expiry">
-                                </div>
-                                <div class="col-md-6 col-xs-6">
-                                    <label>CVC</label>
-                                    <input class="form-control" type="text" placeholder="CVC" name="cvc">
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <a class="btn btn-success savechanges" href="#">SAVE CHANGES</a>
-                        </div>
-                    </form>
-                </div>
-            </div>  
-
-          </div>
-        </div>
-      </div>
-    </div> 
 
 @endsection
