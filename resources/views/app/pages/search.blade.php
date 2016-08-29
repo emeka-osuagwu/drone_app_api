@@ -54,24 +54,26 @@
                     </ul>
                 </div>
 
-                <div class="search-length m-t-md">
-                    <h5>Video Length</h5>
-                    <ul>
-                        <li>
-                            <a href="#">Less than 5s</a>
-                        </li>
-                        <li>
-                            <a href="#">Less than 10s</a>
-                        </li>
-                        <li>
-                            <a href="#">More than 10s</a>
-                        </li>
-                    </ul>
-                </div>
+                <form lpformnum="1" action="{{ Url('search') }}" method="get">
 
-                <div class="search-location m-t-md">
-                    <h5>Location</h5>
-                    <form lpformnum="1">
+                    <div class="search-length m-t-md">
+                        <h5>Video Length</h5>
+                        <ul>
+                            <li>
+                                <a href="#">Less than 5s</a>
+                            </li>
+                            <li>
+                                <a href="#">Less than 10s</a>
+                            </li>
+                            <li>
+                                <a href="#">More than 10s</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="search-location m-t-md">
+                        <h5>Location</h5>
+                        
                         <div class="form-group">
                             <select class="form-control">
                                 <option>Any Location</option>
@@ -79,13 +81,12 @@
                                 <option>Abuja</option>
                                 <option>Ibadan</option>
                             </select>
-                        </div>
-                    </form>
-                </div>
+                        </div>  
+                    </div>
 
-                <div class="search-category m-t-md">
-                    <h5>Category</h5>
-                    <form lpformnum="2">
+                    <div class="search-category m-t-md">
+                        <h5>Category</h5>
+                        
                         <div class="form-group">
                             <select class="form-control">
                                 <option>Any Category</option>
@@ -94,8 +95,14 @@
                                 <option>Nature</option>
                             </select>
                         </div>
-                    </form>
-                </div>
+
+                        <div class="form-group">
+                            <button class="btn btn-bg btn-success savechanges" type="submit">SEARCH</button>
+                        </div>
+                    </div>
+                
+                </form>
+
             </div>
 
             <div class="col-sm-9 p-t-md">
@@ -106,7 +113,9 @@
                                 <source src="{{ $video->video->watermark_url }}" type="video/mp4">
                             </video>
                             <div>
-                                <p class="text-sm text-grey"><span>HD</span> 00:12</p>
+                                <br>
+                                <p class="text-sm text-grey" style="display:inline">{{ $video->title }}</p>
+                                <p class=""><span>HD</span> 00:12</p>
                             </div>
                         </a>
                     </div>
