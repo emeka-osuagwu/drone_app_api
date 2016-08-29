@@ -13,7 +13,7 @@
                 <div class="col-md-6">
                     <div class="singlevideo_preview">
                         <video width="100%" controls="">
-                            <source src="video/ozumba.mp4" type="video/mp4">
+                            <source src="{{ $video->video->watermark_url }}" type="video/mp4">
                         </video>
                     </div>
 
@@ -23,10 +23,10 @@
                     <div class="singlevideo_details">
                         <div class="singlevideo_header">
                             <div class="singlevideo_title">
-                                <h3>Aerial Footage of Fuel Queue in Lekki, Lagos Nigeria</h3>
+                                <h3>{{ $video->title }}</h3>
                             </div>
                             <div class="singlevideo_keywords">
-                                <h4><strong>Tags</strong>: Lagos, Drone, Fuel Queue, Nigeria, Aerial Footage</h4>
+                                <h4><strong>Tags</strong>: {{ $video->tags }}</h4>
                             </div>
                         </div>
 
@@ -42,50 +42,73 @@
                                 <div class="col-md-6">
                                     <div class="rightspecs">
                                         <p>Aspect Ratio: <span>16:9</span></p>
-                                        <p>Uploaded By: <span>Yomi Eluwande</span></p>
+                                        <p>Uploaded By: <span>{{$video->user->first_name . " "  . $video->user->last_name}}</span></p>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="sv_download">
-                            <table class="table table-hover">
-                                <thead>
-                                <tr></tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <th><label><input name="priceoptions" type="radio" id="radio1" value="option1"></label></th>
-                                    <td>HD</td>
-                                    <td>$79</td>
-                                    <td>1920 x 1080 @ 29.97fps MJPEG</td>
-                                    <td>137.3MB</td>
-                                </tr>
-                                <tr>
-                                    <th><label><input name="priceoptions" type="radio" id="radio2" value="option2"></label></th>
-                                    <td>SD</td>
-                                    <td>$49</td>
-                                    <td>852 x 480 @ 29.97fps MOV</td>
-                                    <td>11.6MB</td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
+                        <form action="{{route('pay')}}" method="post" >
 
-                        <div class="row">
-                            @if(Auth::check())
-                                @if(checkUserPaidForVideo(Auth::user()->id, $video->id))
+                            <div class="sv_download">
+                                <table class="table table-hover">
+                                    <thead>
+                                    <tr></tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <th><label><input name="priceoptions" type="radio" id="radio1" value="option1"></label></th>
+                                        <td>HD</td>
+                                        <td>$79</td>
+                                        <td>1920 x 1080 @ 29.97fps MJPEG</td>
+                                        <td>137.3MB</td>
+                                    </tr>
+                                    <tr>
+                                        <th><label><input name="priceoptions" type="radio" id="radio2" value="option2"></label></th>
+                                        <td>SD</td>
+                                        <td>$49</td>
+                                        <td>852 x 480 @ 29.97fps MOV</td>
+                                        <td>11.6MB</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="row">
+
+                                <input type="hidden" name="email" value="{{ Auth::user()->email }}">
+                                <input type="hidden" name="orderID" value="{{ rand(234, 4948) }}">
+                                <input type="hidden" name="amount" value="{{ $video->price }}">
+                                <input type="hidden" name="user_id" value="{{ Auth::user()->id }}"> 
+                                <input type="hidden" name="post_id" value="{{ $video->id }}"> 
+                                <input type="hidden" name="reference" value="{{ Paystack::genTranxRef() }}">
+                                <input type="hidden" name="key" value="{{ config('paystack.secretKey') }}"> 
+
+                                @if(Auth::check())
+                                    @if(checkUserPaidForVideo(Auth::user()->id, $video->id))
+                                        <div class="col-md-6">
+                                            <div class="singlevideo_details_download">
+                                                <a href="{{ $video->video->original_url }}" type="button" class="btn btn-success" download>Save Video</a>
+                                            </div>
+                                        </div>
+                                    @endif
+                                @else
+                                    <div class="col-md-6">
+                                        <div class="singlevideo_details_download">
+                                            <button data-toggle="modal" data-target="#myModal" type="button" class="btn btn-danger">DOWNLOAD THIS VIDEO</button>
+                                        </div>
+                                    </div>
+                                @endif
+
                                 <div class="col-md-6">
                                     <div class="singlevideo_details_download">
-                                        <a href="{{ $video->video->original_url }}" type="button" class="btn btn-success" download>Save Video</a>
+                                        <button type="submit" class="btn btn-danger">DOWNLOAD THIS VIDEO</button>
                                     </div>
                                 </div>
-                                @endif
-                            @endif
-                            {{$video}}
 
-                        </div>
+                            </div>
 
+                        </form>
                     </div>
                 </div>
             </div>
@@ -111,87 +134,6 @@
                                     </video>
                                     <div>
                                         <p class="text-sm text-grey"><span>HD</span> 00:12</p>
-                                    </div>
-                                </a>
-                            </div>
-
-                            <div class="col-xs-12 col-sm-3 fv-box">
-                                <a href="frontsinglevideo.php">
-                                    <video width="100%">
-                                        <source src="video/events.mp4" type="video/mp4">
-                                    </video>
-                                    <div>
-                                        <p class="text-sm text-grey"><span>HD</span> 00:22</p>
-                                    </div>
-                                </a>
-                            </div>
-
-                            <div class="col-xs-12 col-sm-3 fv-box">
-                                <a href="frontsinglevideo.php">
-                                    <video width="100%">
-                                        <source src="video/ozumba.mp4" type="video/mp4">
-                                    </video>
-                                    <div>
-                                        <p class="text-sm text-grey"><span>4K</span> 00:07</p>
-                                    </div>
-                                </a>
-
-                                
-                            </div>
-
-                            <div class="col-xs-12 col-sm-3 fv-box">
-                                <a href="frontsinglevideo.php">
-                                        <video width="100%">
-                                            <source src="video/intercontinental.mp4" type="video/mp4">
-                                        </video>
-                                        <div>
-                                            <p class="text-sm text-grey"><span>HD</span> 00:30</p>
-                                        </div>
-                                </a>
-                                
-                            </div>
-
-                            <div class="col-xs-12 col-sm-3 fv-box">
-                                <a href="frontsinglevideo.php">
-                                    <video width="100%">
-                                        <source src="video/intercontinental.mp4" type="video/mp4">
-                                    </video>
-                                    <div>
-                                        <p class="text-sm text-grey"><span>HD</span> 00:12</p>
-                                    </div>
-                                </a>
-
-                            </div>
-
-                            <div class="col-xs-12 col-sm-3 fv-box">
-                                <a href="frontsinglevideo.php">
-                                    <video width="100%">
-                                        <source src="video/ozumba.mp4" type="video/mp4">
-                                    </video>
-                                    <div>
-                                        <p class="text-sm text-grey"><span>HD</span> 00:22</p>
-                                    </div>
-                                </a>
-                            </div>
-
-                            <div class="col-xs-12 col-sm-3 fv-box">
-                                <a href="frontsinglevideo.php">
-                                    <video width="100%">
-                                        <source src="video/events.mp4" type="video/mp4">
-                                    </video>
-                                    <div>
-                                        <p class="text-sm text-grey"><span>4K</span> 00:07</p>
-                                    </div>
-                                </a>
-                            </div>
-
-                            <div class="col-xs-12 col-sm-3 fv-box">
-                                <a href="frontsinglevideo.php">
-                                    <video width="100%">
-                                        <source src="video/bauchi.mp4" type="video/mp4">
-                                    </video>
-                                    <div>
-                                        <p class="text-sm text-grey"><span>HD</span> 00:30</p>
                                     </div>
                                 </a>
                             </div>

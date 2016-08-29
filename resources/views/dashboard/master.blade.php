@@ -5,7 +5,7 @@
 		<meta name="viewport" content="width=device-width,initial-scale=1">
 		<meta name="description" content="A fully featured admin theme which can be used to build CRM, CMS, etc.">
 		<meta name="author" content="Coderthemes">
-		<title>Rents/Property Manager | @yield('title')</title>
+		<title>AnakleUV | @yield('title')</title>
 		@include('dashboard.pages.includes.sections.links')
 	</head>
 	

@@ -12,6 +12,11 @@ class PostRepo
 		return Post::with('video', 'user', 'category')->get();
 	}	
 
+	public function getRelatedPost($tags)
+	{
+		return Post::where($tags, 'like', 'T%');
+	}
+
 	public function getPostWhere($field, $value)
 	{
 		return Post::with('video', 'user', 'likes', 'category')->where($field, $value);

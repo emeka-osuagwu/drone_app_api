@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Auth;
+use App\Model\Post;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 
@@ -72,13 +73,21 @@ class PagesController extends Controller
 
       public function searchPage(Request $request)
       {
+
          if ($request->has('videos')) 
          {
-            return 1;
+            $query =  $request->videos;
+
+            $searchTerms = explode(' ', $query);
+
+            foreach($searchTerms as $term)
+            {
+               $videos = Post::with('video', 'user', 'category')->where('title', 'LIKE', '%'. $term .'%')->get();
+            }
          }
          else
          {
-            $videos = $this->postRepo->getAllPost();
+           $videos = $this->postRepo->getAllPost();
 
          }
 

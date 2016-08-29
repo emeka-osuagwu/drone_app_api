@@ -1,6 +1,8 @@
 
 @extends('dashboard.master')
 
+@section('title', 'Dashboard')
+
 @section('content')
 	
 	@include('dashboard.pages.includes.sections.side_bar')

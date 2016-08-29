@@ -70,13 +70,13 @@ class VideoController extends Controller
 		}
 		else
 		{
+			$request['price']		= tofloat($request->price);
 			$user_id 				= Auth::user()->id;
 			$video_data 			= $this->videoRepo->uploadVideo($user_id, $request->file('file'));
 			$request['video_id'] 	= $video_data['id'];
 			
 			$this->postRepo->createPost($request->all());
 			session()->flash('message', 'good');
-			
 			return back();
 		}
 	}
