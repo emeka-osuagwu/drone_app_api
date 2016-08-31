@@ -16,6 +16,7 @@ class CreateVideoMigration extends Migration
             $table->increments('id');
             $table->string('original_url');
             $table->string('watermark_url');
+            $table->string('thumbnail')->nullable();
             $table->integer('user_id');
             $table->timestamps();
         });

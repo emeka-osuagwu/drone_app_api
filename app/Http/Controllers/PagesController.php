@@ -74,8 +74,11 @@ class PagesController extends Controller
       public function searchPage(Request $request)
       {
 
+         $search = [];
+
          if ($request->has('videos')) 
          {
+            $search = $request->videos3;
             $query =  $request->videos;
 
             $searchTerms = explode(' ', $query);
@@ -88,9 +91,8 @@ class PagesController extends Controller
          else
          {
            $videos = $this->postRepo->getAllPost();
-
          }
 
-         return view('app.pages.search', compact('videos'));
+         return view('app.pages.search', compact('videos', 'search'));
       }
 }

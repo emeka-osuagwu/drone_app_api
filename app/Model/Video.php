@@ -10,6 +10,7 @@ class Video extends Model
 	protected $primaryKey 	= 'id';
 
 	protected $fillable = [
+	    'thumbnail', 
 	    'original_url', 
 	    'watermark_url', 
 	];

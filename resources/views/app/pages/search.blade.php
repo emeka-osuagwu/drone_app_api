@@ -28,7 +28,11 @@
         <div class="container-fluid">
         <div class="row m-t-lg">
             <div class="col-sm-6">
-                <p class="text-lg">Search results for Aerial shots of Lagos state</p>
+                <p class="text-lg">Search results for
+                    @if($search != null)
+                        {{$search}}
+                    @endif
+                </p>
                 <p class="text-xs">Related: <a href="frontsearch.php">aerial view</a>, <a href="frontsearch.php">aerial city</a>, <a href="frontsearch.php">antenna</a></p>
             </div>
             <div class="col-sm-6"></div>
