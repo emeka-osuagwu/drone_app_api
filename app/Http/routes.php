@@ -12,10 +12,10 @@
 */
 
 
-Route::get('/', function (){
-	return view('app.pages.index');
-});
-
+Route::get('', [
+	'uses' 	=> 'PagesController@indexPage',
+	'as' 	=> '/'
+]);
 Route::get('logout', [
 	'uses' 	=> 'Auth\AuthController@logout',
 	'as' 	=> 'api.v1.login'
@@ -114,10 +114,6 @@ Route::group(['prefix' => 'dashboard'], function () {
 	]);
 
 	Route::group(['prefix' => 'video'], function () {
-
-		Route::get('create', function (){
-			return view('upload');
-		});	
 
 		Route::get('request', [
 			'uses' 	=> 'PostController@getVideoRequest',

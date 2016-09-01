@@ -1,7 +1,7 @@
 
 @extends('app.master')
 
-@section('title', 'Page Title')
+@section('title', 'Home')
 
 @section('content')
 
@@ -146,84 +146,23 @@
         </div>
         <div class="samplevideos_content m-t-sm">
             <div class="row">
+
+            @foreach($posts as $post)
                 <div class="m-t-lg col-sm-4 col-xs-12">
                     <div class="sv_box" id="play_thumbnail">
                         <video loop>
-                            <source src="./video/bauchi.mp4" type="video/mp4">
+                            <source src="{{ $post->video->watermark_url }}" type="video/mp4">
                         </video>
                         <div class="sv_box_content">
-                            <p>Footage of a rural environment in northern nigeria</p>
-                            <p>Category: <a href="#">Northern Nigeria</a></p>
+                            <p>{{ $post->title }}</p>
+                            <p>Category: <a href="#">{{ $post->category->name }}</a></p>
                             <p>Location: Bauchi</p>
-                            <a class="btn btn-success one-radius" ui-sref="singlevideo">Buy Now</a>
+                            <a class="btn btn-success one-radius" href="{{ Url('preview/' . $post->id ) }}">Preview</a>
                         </div>
                     </div>
                 </div>
-                <div class="m-t-lg col-sm-4 col-xs-12">
-                    <div class="sv_box" id="play_thumbnail">
-                        <video loop>
-                            <source src="./video/beach.mp4" type="video/mp4">
-                        </video>
-                        <div class="sv_box_content">
-                            <p>Aerial shot of Lagos Island Beach</p>
-                            <p>Category: <a href="#">Landscape</a></p>
-                            <p>Location: Lagos</p>
-                            <a class="btn btn-success one-radius" ui-sref="singlevideo">Buy Now</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="m-t-lg col-sm-4 col-xs-12">
-                    <div class="sv_box" id="play_thumbnail">
-                        <video loop>
-                            <source src="./video/events.mp4" type="video/mp4">
-                        </video>
-                        <div class="sv_box_content">
-                            <p>Night event in Lagos with lightning</p>
-                            <p>Category: <a href="#">Events</a></p>
-                            <p>Location: Lagos</p>
-                            <a class="btn btn-success one-radius" ui-sref="singlevideo">Buy Now</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="m-t-lg col-sm-4 col-xs-12">
-                    <div class="sv_box" id="play_thumbnail">
-                        <video loop>
-                            <source src="./video/intercontinental.mp4" type="video/mp4">
-                        </video>
-                        <div class="sv_box_content">
-                            <p>Aerial shot of the Lagos landscape</p>
-                            <p>Category: <a href="#">Environment</a></p>
-                            <p>Location: Lagos</p>
-                            <a class="btn btn-success one-radius" ui-sref="singlevideo">Buy Now</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="m-t-lg col-sm-4 col-xs-12">
-                    <div class="sv_box" id="play_thumbnail">
-                        <video loop>
-                            <source src="./video/roundabout.mp4" type="video/mp4">
-                        </video>
-                        <div class="sv_box_content">
-                            <p>Aerial footage of 2nd Roundabout Lekki, Lagos</p>
-                            <p>Category: <a href="#">Traffic</a></p>
-                            <p>Location: Lagos</p>
-                            <a class="btn btn-success one-radius" ui-sref="singlevideo">Buy Now</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="m-t-lg col-sm-4 col-xs-12">
-                    <div class="sv_box" id="play_thumbnail">
-                        <video loop>
-                            <source src="./video/ozumba.mp4" type="video/mp4">
-                        </video>
-                        <div class="sv_box_content">
-                            <p>Aerial Footage of traffic at Ozumba Mbadiwe</p>
-                            <p>Category: <a href="#">Traffic</a></p>
-                            <p>Location: Lagos</p>
-                            <a class="btn btn-success one-radius" ui-sref="singlevideo">Buy Now</a>
-                        </div>
-                    </div>
-                </div>
+            @endforeach
+
             </div>
         </div>
     </section>

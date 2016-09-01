@@ -10,6 +10,12 @@ use Illuminate\Http\Request;
 class PagesController extends Controller
 {
    	
+      public function indexPage()
+      {
+         $posts =  $this->postRepo->getAllPost();
+         return view('app.pages.index', compact('posts'));
+      }
+
    	public function register()
    	{
    		return view('app.pages.register');
