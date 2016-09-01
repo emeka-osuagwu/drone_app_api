@@ -29,6 +29,34 @@
 </section>
 
 <div>
+
+    <section class="samplevideos container m-t-lg">
+        <div class="samplevideos_header">
+            <h3 class="text-center text-u-c">Top Videos</h3>
+        </div>
+        <div class="samplevideos_content m-t-sm">
+            <div class="row">
+
+            @foreach($posts as $post)
+                <div class="m-t-lg col-sm-4 col-xs-12">
+                    <div class="sv_box" id="play_thumbnail">
+                        <video loop>
+                            <source src="{{ $post->video->watermark_url }}" type="video/mp4">
+                        </video>
+                        <div class="sv_box_content">
+                            <p>{{ $post->title }}</p>
+                            <p>Category: <a href="#">{{ $post->category->name }}</a></p>
+                            <p>Location: Bauchi</p>
+                            <a class="btn btn-success one-radius" href="{{ Url('preview/' . $post->id ) }}">Preview</a>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+
+            </div>
+        </div>
+    </section>
+
     <section class="howitworks container">
         <div class="howitworks_header">
             <h3>How it works</h3>
@@ -136,33 +164,6 @@
                         </ul>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="samplevideos container m-t-lg">
-        <div class="samplevideos_header">
-            <h3 class="text-center text-u-c">Top Videos</h3>
-        </div>
-        <div class="samplevideos_content m-t-sm">
-            <div class="row">
-
-            @foreach($posts as $post)
-                <div class="m-t-lg col-sm-4 col-xs-12">
-                    <div class="sv_box" id="play_thumbnail">
-                        <video loop>
-                            <source src="{{ $post->video->watermark_url }}" type="video/mp4">
-                        </video>
-                        <div class="sv_box_content">
-                            <p>{{ $post->title }}</p>
-                            <p>Category: <a href="#">{{ $post->category->name }}</a></p>
-                            <p>Location: Bauchi</p>
-                            <a class="btn btn-success one-radius" href="{{ Url('preview/' . $post->id ) }}">Preview</a>
-                        </div>
-                    </div>
-                </div>
-            @endforeach
-
             </div>
         </div>
     </section>
