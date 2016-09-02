@@ -33,7 +33,7 @@
                     <div class="col-sm-12">
                         <h4 class="pull-left page-title">Upload Video</h4>
                         <ol class="breadcrumb pull-right">
-                            <li><a href="#">Dashboard</a></li>
+                            <li><a href="{{ Url('dashboard') }}">Dashboard</a></li>
                             <li class="active">Upload Video</li>
                         </ol>
                     </div>
@@ -108,8 +108,6 @@
                     </div>
                 
                 </div><!-- End row -->
-
-
 
             </div> <!-- container -->                       
         </div>

@@ -38,7 +38,7 @@
                                         <tbody>
                                             @foreach($videos as $video)
                                                 <tr>
-                                                    <td><img src="{{ $video->category['image'] }}" width="100" class="img-responsive"></td>
+                                                    <td><img src="{{ $video->video->thumbnail }}" width="100" class="img-responsive"></td>
                                                     <td>{{ $video->title }}</td>
                                                     <td>{{$video->user->first_name}} {{$video->user->last_name}}</td>
                                                     <td>01:12</td>
