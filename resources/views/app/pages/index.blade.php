@@ -40,9 +40,9 @@
             @foreach($posts as $post)
                 <div class="m-t-lg col-sm-4 col-xs-12">
                     <div class="sv_box" id="play_thumbnail">
-                        <video loop>
-                            <source src="{{ $post->video->watermark_url }}" type="video/mp4">
-                        </video>
+                        <div style="width: 100%; height: 200px; overflow: hidden;">
+                            <img src="{{ $post->video->thumbnail }}">
+                        </div>
                         <div class="sv_box_content">
                             <p>{{ $post->title }}</p>
                             <p>Category: <a href="#">{{ $post->category->name }}</a></p>

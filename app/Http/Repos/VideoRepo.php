@@ -48,7 +48,7 @@ class VideoRepo
 		$file->move($video_destination_path, $video_name);
 
 		$ffmpeg = \FFMpeg\FFMpeg::create();
-		$video = $ffmpeg->open("/home/emeka/Downloads/Cute baby funny video only 1 min.mp4");
+		$video = $ffmpeg->open("/home/emeka/Downloads/Funny Cat Videos - 1 minute Watch it -))).mp4");
 		$video
 		    ->frame(\FFMpeg\Coordinate\TimeCode::fromSeconds(10))
 		    ->save($image_destination_path . '/' . $image_name);
