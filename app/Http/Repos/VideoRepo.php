@@ -42,23 +42,41 @@ class VideoRepo
 		$file_error_message 		= $file->getErrorMessage();
 		$video_destination_path 	= public_path() . "/upload/videos";
 		$image_destination_path 	= public_path() . "/upload/images";
+		$watermark 					= md5($user_id) . time() . 'watermark' . '.mp4' ;
 		$video_name 				= md5($user_id) . time() . $file_name;
 		$image_name 				= md5($user_id) . time() . $file_name . '.jpg';
 
-		$file->move($video_destination_path, $video_name);
-
+		#====================================================
+		# get image from video
 		$ffmpeg = \FFMpeg\FFMpeg::create();
-		$video = $ffmpeg->open("/home/emeka/Downloads/Funny Cat Videos - 1 minute Watch it -))).mp4");
+		$video 	= $ffmpeg->open($file);
 		$video
-		    ->frame(\FFMpeg\Coordinate\TimeCode::fromSeconds(10))
-		    ->save($image_destination_path . '/' . $image_name);
+			->frame(\FFMpeg\Coordinate\TimeCode::fromSeconds(10))
+			->save($image_destination_path . '/' . $image_name);
+
+		#====================================================
+		# get image from video
+		$ffmpeg = \FFMpeg\FFMpeg::create();
+		$video 	= $ffmpeg->open($file);
+		$video
+		    ->filters()
+		    ->clip(\FFMpeg\Coordinate\TimeCode::fromSeconds(0), \FFMpeg\Coordinate\TimeCode::fromSeconds(5))
+		    ->watermark('/home/emeka/Desktop/13310425_1032213276867714_8188582685969262486_n.jpg', array(
+		        'position' => 'relative',
+		        'bottom' => 300,
+		        'right' => 300,
+		    ));
+
+		$video->save(new \FFMpeg\Format\Video\X264(), $video_destination_path . '/' . $watermark);
 
 		$create = [
 			"user_id" 			=> $user_id,
 			"thumbnail" 		=> url('upload/images/' . $image_name),
 			"original_url" 		=> url('upload/videos/' . $video_name),
-			"watermark_url" 	=> url('upload/videos/' . $video_name),
+			"watermark_url" 	=> url('upload/videos/' . $watermark),
 		];
+		
+		$file->move($video_destination_path, $video_name);
 
 		return Video::create($create);
 	}

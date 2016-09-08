@@ -28,6 +28,7 @@ class PaymentController extends Controller
     public function getPaymentResponse()
     {
         $response           = $this->paystackRepo->handleGatewayCallback();
+        dd($response);
         $request_data       = json_decode($_COOKIE['__R_TOKEN']);
         $response_data      = $response['data'];
 
