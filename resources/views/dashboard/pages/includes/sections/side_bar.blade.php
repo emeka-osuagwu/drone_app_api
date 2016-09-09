@@ -33,6 +33,8 @@
 					<ul>
 						<li><a href="{{ Url('/dashboard') }}" class="waves-effect waves-light active"><i class="md md-home"></i><span> Dashboard </span></a></li>
 						<li><a href="{{ Url('/dashboard/user/videos') }}" class="waves-effect waves-light active"><i class="md md-home"></i><span> Videos </span></a></li>
+						<li><a href="{{ Url('/dashboard/user/downloads') }}" class="waves-effect waves-light active"><i class="md md-home"></i><span> Downloads </span></a></li>
+						<li><a href="{{ Url('/dashboard/user') }}" class="waves-effect waves-light active"><i class="md md-home"></i><span> Profile </span></a></li>
 					</ul>
 					<div class="clearfix"></div>
 				</div>

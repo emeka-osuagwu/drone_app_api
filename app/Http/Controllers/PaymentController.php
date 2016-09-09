@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 
@@ -10,6 +11,12 @@ class PaymentController extends Controller
     public function getAllPayment()
     {
         $purchases =  $this->paymentRepo->getAllPayment();
+        return view('dashboard.pages.purchases', compact('purchases'));
+    }
+
+    public function getUserPaymentHistory()
+    {
+        $purchases = $this->paymentRepo->getPaymentWhere('user_id', Auth::user()->id)->get();
         return view('dashboard.pages.purchases', compact('purchases'));
     }
     

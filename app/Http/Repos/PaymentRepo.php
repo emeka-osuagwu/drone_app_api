@@ -11,6 +11,11 @@ class PaymentRepo
 		return Payments::with('user', 'post')->get();
 	}
 
+	public function getPaymentWhere($field, $value)
+	{
+		return Payments::where($field, $value);
+	}
+
 	public function savePaymentInfo($response, $request_data)
 	{
 

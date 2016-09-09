@@ -170,6 +170,11 @@ Route::group(['prefix' => 'dashboard'], function () {
 			'as' 	=> 'dashboard.user.videos'
 		]);
 
+		Route::get('downloads', [
+			'uses' 	=> 'PaymentController@getUserPaymentHistory',
+			'as' 	=> 'dashboard.user.downloads'
+		]);
+
 		Route::get('/{id}', [
 			'uses' 	=> 'PagesController@getUserProfile',
 			'as' 	=> 'dashboard.user.create'

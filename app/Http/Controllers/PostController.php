@@ -25,7 +25,8 @@ class PostController extends Controller
 
 	public function getUserPosts()
 	{
-		return $this->postRepo->getPostWhere('user_id', Auth::user()->id)->get();
+		$videos =  $this->postRepo->getPostWhere('user_id', Auth::user()->id)->get();
+		return view('dashboard.pages.videos', compact('videos'));
 	}
 
 	public function postCreatePost(Request $request)
