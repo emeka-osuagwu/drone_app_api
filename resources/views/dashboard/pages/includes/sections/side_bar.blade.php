@@ -27,8 +27,19 @@
 				  </p>
 			  </div>
 		  </div>
-		  <!--- Divider -->
-		  <div id="sidebar-menu">
+
+		  	@if( Auth::user()->role == 0)
+				<div id="sidebar-menu">
+					<ul>
+						<li><a href="{{ Url('/dashboard') }}" class="waves-effect waves-light active"><i class="md md-home"></i><span> Dashboard </span></a></li>
+						<li><a href="{{ Url('/dashboard/user/videos') }}" class="waves-effect waves-light active"><i class="md md-home"></i><span> Videos </span></a></li>
+					</ul>
+					<div class="clearfix"></div>
+				</div>
+			@endif
+
+			@if( Auth::user()->role == 1)
+			<div id="sidebar-menu">
 			  	<ul>
 					<li>
 						<a href="{{ Url('/dashboard') }}" class="waves-effect waves-light active"><i class="md md-home"></i><span> Dashboard </span></a>
@@ -82,7 +93,9 @@
 
 			  </ul>
 			  <div class="clearfix"></div>
-		  </div>
+			</div>
+			@endif
+		  
 		  <div class="clearfix"></div>
 	  </div>
   </div>

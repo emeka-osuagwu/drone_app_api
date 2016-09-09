@@ -1,4 +1,17 @@
-<section class="footer container-fluid">
+<footer class="p-t-xxl p-b-xxl">
+    <h3 class="text-center text-white m-b-none">Footer here</h3>
+</footer>
+
+
+
+
+
+
+
+
+
+
+<!-- <section class="footer container-fluid">
     <div class="footer_content">
         <div class="row">
             <div class="col-xs-12 col-sm-3 ft-logo">
@@ -24,4 +37,4 @@
             <div class="col-xs-12 col-sm-3"></div>
         </div>
     </div>
-</section>
+</section> -->

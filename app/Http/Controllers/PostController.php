@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 
@@ -20,6 +21,11 @@ class PostController extends Controller
 	public function getUserPost($id)
 	{
 		return $this->postRepo->getPostWhere('id', $id)->get();
+	}
+
+	public function getUserPosts()
+	{
+		return $this->postRepo->getPostWhere('user_id', Auth::user()->id)->get();
 	}
 
 	public function postCreatePost(Request $request)

@@ -12,7 +12,7 @@
 */
 
 
-Route::get('', [
+Route::get('/', [
 	'uses' 	=> 'PagesController@indexPage',
 	'as' 	=> '/'
 ]);
@@ -99,6 +99,7 @@ Route::post('/pay', [
 
 Route::get('/payment/callback', 'PaymentController@getPaymentResponse');
 
+
 Route::group(['prefix' => 'dashboard'], function () {
 
 	
@@ -163,6 +164,11 @@ Route::group(['prefix' => 'dashboard'], function () {
 			'uses' 	=> 'PagesController@getCreateUser',
 			'as' 	=> 'dashboard.user.create'
 		]);	
+
+		Route::get('videos', [
+			'uses' 	=> 'PostController@getUserPosts',
+			'as' 	=> 'dashboard.user.videos'
+		]);
 
 		Route::get('/{id}', [
 			'uses' 	=> 'PagesController@getUserProfile',

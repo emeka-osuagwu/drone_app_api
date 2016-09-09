@@ -159,9 +159,7 @@
 
     </section>
 
-    <footer class="p-t-xxl p-b-xxl">
-        <h3 class="text-center text-white m-b-none">Footer here</h3>
-    </footer>
+    @include('app.pages.sections.footer')
 
 
 @endsection

@@ -41,6 +41,7 @@ class Controller extends BaseController
         $this->postCategoriesRepo   = new PostCategoriesRepo;
 
         $this->middleware('auth', ['except' => [
+            'indexPage',
             'login',
             'register',
             'postLogin',

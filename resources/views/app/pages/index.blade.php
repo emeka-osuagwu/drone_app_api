@@ -189,6 +189,9 @@
             </div>
         </div>
     </section>
+
+    @include('app.pages.sections.footer')
+
 </div>
 
 @endsection
