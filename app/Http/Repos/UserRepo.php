@@ -18,7 +18,7 @@ class UserRepo extends CloudderRepo
 	==========================================*/
 	public function getUserWhere($field, $value)
 	{
-		return User::where($field, $value);
+		return User::with('downloads')->where($field, $value);
 	}
 
 	/*=========================================

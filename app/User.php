@@ -48,6 +48,11 @@ class User extends Authenticatable
        return $this->hasMany('App\Model\Video', 'id');
     }
 
+    public function downloads()
+    {
+       return $this->hasMany('App\Model\Payments', 'id');
+    }
+
     /*================================
     # Create User
     # Fires UserCreated Event

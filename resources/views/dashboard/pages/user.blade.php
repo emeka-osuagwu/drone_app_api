@@ -44,12 +44,16 @@
 		                        <span class="hidden-xs">About Me</span> 
 		                    </a> 
 		                </li> 
+
+		                @if(Auth::user()->role == 0)
 		                <li class="tab"> 
 		                    <a href="#profile-2" data-toggle="tab" aria-expanded="false"> 
 		                        <span class="visible-xs"><i class="fa fa-user"></i></span> 
-		                        <span class="hidden-xs">ORDER HISTORY</span> 
+		                        <span class="hidden-xs">DOWNLOADS HISTORY</span> 
 		                    </a> 
-		                </li> 
+		                </li>
+		                @endif
+		                
 		                @if(Auth::user()->id == $user->first()->id)
 		                <li class="tab"> 
 		                    <a href="#settings-2" data-toggle="tab" aria-expanded="false" class=""> 
@@ -125,22 +129,33 @@
                                 <div class="panel-body"> 
                                     <table class="table table-responsive" id="sortable-table">
 
-                                        <thead>
-                                        <tr>
-                                            <th>Status</th>
-                                            <th>File Name</th>
-                                            <th>Date</th>
-                                            <th>Price (₦)</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <tr>
-                                            <td><a href="" class="orderhistory_downloadbtn btn btn-success">Download</a></td>
-                                            <td>Aerial Footage of Fuel Queue</td>
-                                            <td>March 26, 2016</td>
-                                            <td>5000</td>
-                                        </tr>
-                                        </tbody>
+	                                    @if($user->first()->downloads->count() < 1)
+	                                    	<div class="alert alert-info alert-dismissable">
+	                                    	    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+	                                    	    Opps we currently haven't download any Videos <a href="{{ Url('videos') }}" class="alert-link">Click here to view some videos</a>
+	                                    	</div>
+	                                    @else
+	                                        <thead>
+	                                        <tr>
+	                                            <th>Status</th>
+	                                            <th>File Name</th>
+	                                            <th>Date</th>
+	                                            <th>Price (₦)</th>
+	                                        </tr>
+	                                        </thead>
+	                                        <tbody>
+
+		                                        @foreach($user->first()->downloads as $downloads)
+			                                        <tr>
+			                                            <td><a href="" class="orderhistory_downloadbtn btn btn-success">Download</a></td>
+			                                            <td>Aerial Footage of Fuel Queue</td>
+			                                            <td>March 26, 2016</td>
+			                                            <td>5000</td>
+			                                        </tr>
+		                                        @endforeach
+
+	                                        </tbody>
+	                                    @endif
                                     </table>
                                 </div>
                             </div>
