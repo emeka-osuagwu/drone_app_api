@@ -81,7 +81,7 @@
                                   
                                     <input type="hidden" name="email" value="{{ Auth::user()->email }}">
                                     <input type="hidden" name="orderID" value="{{ rand(234, 4948) }}">
-                                    <input type="hidden" name="amount" value="{{ $video->price }}">
+                                    <input type="hidden" name="amount" value="{{ tofloat($video->price) }}">
                                     <input type="hidden" name="user_id" value="{{ Auth::user()->id }}"> 
                                     <input type="hidden" name="post_id" value="{{ $video->id }}"> 
                                     <input type="hidden" name="reference" value="{{ Paystack::genTranxRef() }}">

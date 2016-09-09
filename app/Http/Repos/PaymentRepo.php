@@ -20,7 +20,7 @@ class PaymentRepo
 	{
 
 		$create = [
-			"user_id" 			=> 1,
+			"user_id" 			=> $request_data->user_id,
 			"post_id" 			=> $request_data->post_id,
 			"card_type" 		=> $response['data']['authorization']['card_type'],
 			"customer_id" 		=> $response['data']['customer']['id'],

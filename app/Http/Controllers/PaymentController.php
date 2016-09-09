@@ -28,7 +28,7 @@ class PaymentController extends Controller
         $domain = env('host'); 
 
         setcookie("__R_TOKEN", $data, $time, $path, $domain);
-
+        
         return $this->paystackRepo->redirectToGateway();
     }
 

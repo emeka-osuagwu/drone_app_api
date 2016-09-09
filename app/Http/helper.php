@@ -27,7 +27,7 @@ function checkUserPaidForVideo($user_id, $video_id)
 	$video 			=  Post::with('paid_user')->where('id', $video_id)->get()->toArray()[0];
 	$paid_user_ids 	= array_pluck($video['paid_user'], 'id');
 
-	if (array_has($paid_user_ids, $user_id)) 
+	if (array_pull($paid_user_ids, $user_id)) 
 	{
 	 	return true;
 	}
