@@ -90,7 +90,7 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle profile" data-toggle="dropdown" aria-expanded="true"><img src="{{ (Auth::user()->image)? Auth::user()->image : asset('assets/images/users/avatar-1.jpg') }}" alt="user-img" class="img-circle"> </a>
                         <ul class="dropdown-menu">
-                            <li><a href="{{ Url('dashboard/user') }}"><i class="md md-face-unlock"></i>Profile</a></li>
+                            <li><a href="{{ Url('dashboard/user') }}"><i class="md md-face-unlock"></i> Profile</a></li>
                             <li><a href="{{ Url('logout') }}"><i class="md md-settings-power"></i> Logout</a></li>
                         </ul>
                     </li>
