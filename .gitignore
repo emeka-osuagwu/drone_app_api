@@ -1,0 +1,11 @@
+/vendor
+/node_modules
+/public/storage
+Homestead.yaml
+Homestead.json
+.env
+.composer.lock
+.user.ini
+/public/upload/images/
+/public/upload/videos/
+.phpintel
